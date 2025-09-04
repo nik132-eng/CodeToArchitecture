@@ -64,11 +64,11 @@ Each folder will include:
 ---
 
 ## 🔗 Get in Touch
+
 Inspired by InsightVeda. Open to feedback, collaboration, or discussion on system design.
 
-- 🐦 [X (Twitter)](https://x.com/yourhandle)
-- 💼 [LinkedIn](https://linkedin.com/in/yourprofile)
-- 💬 [Join me on Discord](https://discord.gg/your-invite)
+- 🐦 [X (Twitter)](https://x.com/nikunj_rohit10)
+- 💼 [LinkedIn](https://www.linkedin.com/in/nikunj-rohit/)
 
 ---
 
