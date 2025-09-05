@@ -2,6 +2,7 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const fetch = require('node-fetch');
+const circuitBreaker = require('opossum');
 const eventBus = require('../event-bus');
 
 // --- Circuit Breaker Implementation ---
@@ -68,81 +69,118 @@ let db;
 MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
   .then(client => {
     db = client.db(dbName);
-    console.log('✅ Post Service connected to MongoDB');
+    console.log('✅ Post Service: Connected to MongoDB');
   })
-  .catch(err => console.error(err));
+  .catch(err => console.error('❌ MongoDB connection error:', err));
+
+// --- 2. Define the call to User Service ---
+let getUser = async (userId) => {
+  const res = await fetch(`http://localhost:3001/users/${userId}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (!res.ok) {
+    throw new Error(`User Service responded with ${res.status}`);
+  }
+  return await res.json();
+};
+
+// --- 3. Wrap with Circuit Breaker ---
+const options = {
+  timeout: 2000,                    // Fail if >2s
+  errorThresholdPercentage: 50,     // Open circuit if >50% failures
+  resetTimeout: 30000,              // Try again after 30s
+  fallbackTimeout: 5000             // Give fallback 5s to respond
+};
+const breaker = new circuitBreaker(getUser, options);
+
+// --- 4. Add Fallback ---
+breaker.fallback((userId) => {
+  console.log(`🛡️ Fallback: User Service down. Using default name for userId=${userId}`);
+  return { id: userId, name: 'Unknown', email: 'unknown@fallback.com' };
+});
+
+// --- 5. Add Event Listeners (for visibility) ---
+breaker.on('call', () => console.log('🟢 Calling User Service...'));
+breaker.on('timeout', () => console.log('⏰ getUser timed out'));
+breaker.on('reject', () => console.log('🚫 Request rejected (too many in-flight)'));
+breaker.on('open', () => console.log('🔴 Circuit OPENED - stopping calls to User Service'));
+breaker.on('halfOpen', () => console.log('🔧 Circuit HALF-OPEN - testing recovery'));
+breaker.on('close', () => console.log('✅ Circuit CLOSED - calls resumed'));
+breaker.on('failure', (err) => console.log('❌ getUser failed:', err.message));
+
+// In-memory store for idempotency keys (use Redis in production)
+const idempotencyStore = new Map();
 
 // CREATE post
 app.post('/posts', async (req, res) => {
-  const { userId, content } = req.body;
-  let user = null;
-  let userName = 'Unknown';
-  try {
-    // --- Timeout and Retry Logic ---
-    async function fetchUserWithTimeout() {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 sec
-      try {
-        const userRes = await fetch(`http://localhost:3001/users/${userId}`, {
-          signal: controller.signal
-        });
-        clearTimeout(timeoutId);
-        if (userRes.status === 200) {
-          return await userRes.json();
-        } else {
-          throw new Error('User not found');
-        }
-      } catch (err) {
-        clearTimeout(timeoutId);
-        throw err;
-      }
-    }
+  const { userId, content, idempotencyKey } = req.body;
 
-    // --- Retry with Exponential Backoff ---
-    async function callWithRetry(maxRetries = 3) {
-      let lastError;
-      for (let i = 0; i <= maxRetries; i++) {
-        try {
-          return await fetchUserWithTimeout();
-        } catch (err) {
-          lastError = err;
-          if (i < maxRetries) {
-            const delay = Math.pow(2, i) * 1000; // 1s, 2s, 4s
-            await new Promise(r => setTimeout(r, delay));
-            console.log(`Retry ${i + 1} after ${delay}ms`);
-          }
-        }
-      }
-      throw lastError;
-    }
-
-    // --- Circuit Breaker ---
-    user = await userServiceBreaker.call(() => callWithRetry(2));
-    userName = user.name;
-  } catch (err) {
-    // --- Fallback ---
-    console.error('User Service failure:', err.message);
-    userName = 'Unknown';
+  // --- 1. Idempotency Check ---
+  if (!idempotencyKey) {
+    return res.status(400).json({ error: 'Missing idempotencyKey' });
+  }
+  if (idempotencyStore.has(idempotencyKey)) {
+    const cached = idempotencyStore.get(idempotencyKey);
+    console.log(`🔁 Idempotency hit: returning cached response for key=${idempotencyKey}`);
+    return res.status(cached.status).json(cached.body);
   }
 
+  // --- 2. Validate User (via Circuit Breaker) ---
+  let user;
   try {
-    const post = { userId, content, createdAt: new Date() };
-    const result = await db.collection('posts').insertOne(post);
-
-    // Emit event with fallback userName if needed
-    eventBus.emit('PostCreated', {
-      postId: result.insertedId,
-      userId,
-      userName,
-      content,
-      createdAt: post.createdAt
+    user = await breaker.fire(userId); // This uses the circuit breaker
+  } catch (err) {
+    console.log('💥 Failed to get user:', err.message);
+    return res.status(503).json({
+      error: 'User service unavailable',
+      message: 'Your post will be processed later.'
     });
-
-    res.status(201).send('Post created');
-  } catch (err) {
-    console.error('Post creation failure:', err.message);
-    res.status(500).send('Server error');
   }
+
+  // --- 3. Create Post ---
+  const post = {
+    userId,
+    content,
+    userName: user.name,
+    createdAt: new Date()
+  };
+
+  try {
+    const result = await db.collection('posts').insertOne(post);
+    // --- 4. Cache idempotency result ---
+    const response = {
+      status: 201,
+      body: { id: result.insertedId, message: 'Post created' }
+    };
+    idempotencyStore.set(idempotencyKey, response);
+    res.status(201).json(response.body);
+  } catch (err) {
+    console.error('❌ DB error:', err);
+    res.status(500).json({ error: 'Failed to save post' });
+  }
+});
+
+// For testing: simulate User Service failure
+app.get('/simulate-failure', (req, res) => {
+  getUser = () => {
+    return new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('Simulated failure')), 2500)
+    );
+  };
+  console.log('🎯 Simulated failure activated in getUser');
+  res.send('💥 Simulated User Service failure (next calls will timeout)');
+});
+
+// Reset to normal
+app.get('/reset-failure', (req, res) => {
+  getUser = async (userId) => {
+    const res = await fetch(`http://localhost:3001/users/${userId}`);
+    if (!res.ok) throw new Error(`Status: ${res.status}`);
+    return await res.json();
+  };
+  console.log('✅ getUser restored to normal');
+  res.send('🔁 getUser restored');
 });
 
 app.listen(3002, () => console.log('📝 Post Service running on port 3002'));
