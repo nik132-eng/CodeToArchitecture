@@ -1,0 +1,5 @@
+# Overview of Microservices
+
+Microservices architecture is a design approach where applications are structured as a collection of loosely coupled, independently deployable services. These services are built around specific business capabilities and can evolve independently. This section will cover fundamental design principles essential for building robust microservices.
+
+**Mentor's Note:** Imagine building a large e-commerce application. Instead of one giant 'monolith' application handling everything (users, orders, payments, products), microservices break this down into smaller, independent services like `User Service`, `Order Service`, `Payment Service`, etc. Each runs independently, communicates via well-defined interfaces, scales on its own, and critically, can fail without bringing down the entire system. This is the core 'why' behind microservices.
