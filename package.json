@@ -9,9 +9,7 @@
     "watch": "cd book && mdbook watch",
     "clean": "cd book && mdbook clean"
   },
-  "devDependencies": {
-    "mdbook": "^0.4.0"
-  },
+  "devDependencies": {},
   "keywords": [
     "system-design",
     "microservices",

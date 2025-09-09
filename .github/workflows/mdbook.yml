@@ -44,9 +44,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - name: Install dependencies
+      - name: Install Node.js dependencies
         run: |
-          cd book
           npm install
       - name: Generate progress tracker
         run: |
