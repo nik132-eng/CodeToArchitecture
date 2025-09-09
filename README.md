@@ -29,13 +29,16 @@ Below is the full list of lessons. I’ll work through them sequentially and che
 - [ ] 🛠️ **Lesson 13: Platform Engineering and Internal Developer Platforms** — Jun 01, 2025
 - [ ] 🧠 **Lesson 14: Architectural Decision Records (ADRs)** — Jul 13, 2025
 
-> 📌 *Goal: Complete all 14 lessons with clear notes, diagrams, and practical takeaways.*
+### ☁️ AWS Certification Track
+- [ ] ☁️ **AWS Certified Cloud Practitioner (CLF-C02)** — Target: TBD
+
+> 📌 *Goal: Complete all 14 lessons with clear notes, diagrams, and practical takeaways, plus AWS certification preparation.*
 
 ---
 
 ## 🗂️ Folder Structure
 
-As I progress, I’ll organize content like this:
+As I progress, I'll organize content like this:
 ```
 System-Design-Practice/
 │
@@ -43,6 +46,8 @@ System-Design-Practice/
 ├── lesson-02-system-design-framework/
 ├── lesson-03-ddd-microservices/
 ├── ...
+├── certifications/
+│   └── aws-clf-c02/      # AWS Cloud Practitioner prep
 └── resources/
     └── diagrams/         # Mermaid or image files
 ```
