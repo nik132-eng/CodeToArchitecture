@@ -11,13 +11,12 @@ build-dir = "book"
 create-missing = true
 
 [output.html]
-default-theme = "navy"
-preferred-dark-theme = "navy"
+default-theme = "light"
+preferred-dark-theme = "light"
 git-repository-url = "https://github.com/nik132-eng/CodeToArchitecture"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/nik132-eng/CodeToArchitecture/edit/main/book/src/{path}"
-additional-css = ["src/assets/css/custom.css"]
-additional-js = ["src/assets/js/custom.js"]
+# No custom CSS or JS - using default mdbook styling
 
 [output.html.search]
 enable = true
