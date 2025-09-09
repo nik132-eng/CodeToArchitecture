@@ -40,8 +40,23 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          cd book
+          npm install
+      - name: Generate progress tracker
+        run: |
+          node scripts/generate-progress.js
       - name: Build with mdBook
         run: mdbook build book
+      - name: Copy generated files to book output
+        run: |
+          cp PROGRESS.md book/book/
+          cp -r certifications book/book/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

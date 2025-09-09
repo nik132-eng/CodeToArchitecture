@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Overview - CodeToArchitecture</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="System Design Practice and AWS Certification Preparation">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../src/assets/css/custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../PROGRESS.html"><strong aria-hidden="true">2.</strong> Progress Tracker</a></li><li class="chapter-item expanded affix "><li class="part-title">🏗️ System Design Lessons</li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/index.html" class="active"><strong aria-hidden="true">3.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-01-high-cohesion-low-coupling.html"><strong aria-hidden="true">4.</strong> 1. High Cohesion & Low Coupling</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-02-decentralize-data-management.html"><strong aria-hidden="true">5.</strong> 2. Decentralize Data Management</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-03-design-for-failure-and-resilience.html"><strong aria-hidden="true">6.</strong> 3. Design for Failure & Resilience</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-04-api-first-approach.html"><strong aria-hidden="true">7.</strong> 4. API First Approach</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-05-single-responsibility-principle.html"><strong aria-hidden="true">8.</strong> 5. Single Responsibility Principle</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-06-define-scope-properly.html"><strong aria-hidden="true">9.</strong> 6. Define the Scope Properly</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-07-event-driven-communication.html"><strong aria-hidden="true">10.</strong> 7. Event-Driven Communication</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-08-secure-each-service.html"><strong aria-hidden="true">11.</strong> 8. Secure Each Service</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-09-scalability-and-independence.html"><strong aria-hidden="true">12.</strong> 9. Scalability & Independence</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-10-automate-testing-and-cicd.html"><strong aria-hidden="true">13.</strong> 10. Automate Testing & CI/CD</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-11-manage-traffic.html"><strong aria-hidden="true">14.</strong> 11. Manage Traffic</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-02-system-design-framework/index.html"><strong aria-hidden="true">15.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-03-ddd-microservices/index.html"><strong aria-hidden="true">16.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-04-event-driven-architecture/index.html"><strong aria-hidden="true">17.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-05-api-gateway-service-mesh/index.html"><strong aria-hidden="true">18.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-06-resilient-architecture/index.html"><strong aria-hidden="true">19.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-07-cloud-iot-architecture/index.html"><strong aria-hidden="true">20.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-08-scalability-patterns/index.html"><strong aria-hidden="true">21.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-09-multi-tenant-architecture/index.html"><strong aria-hidden="true">22.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-10-data-management/index.html"><strong aria-hidden="true">23.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-11-observability-monitoring/index.html"><strong aria-hidden="true">24.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-12-security-architecture/index.html"><strong aria-hidden="true">25.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-13-platform-engineering/index.html"><strong aria-hidden="true">26.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-14-adr/index.html"><strong aria-hidden="true">27.</strong> Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">☁️ AWS Certification Track</li><li class="chapter-item expanded "><a href="../../certifications/aws-clf-c02/index.html"><strong aria-hidden="true">28.</strong> AWS Certified Cloud Practitioner (CLF-C02)</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CodeToArchitecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nik132-eng/CodeToArchitecture" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/nik132-eng/CodeToArchitecture/edit/main/book/src/src/lessons/lesson-01-microservices-design-principles/README.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <blockquote>
+<h1 id="01---overview-of-microservices-architecture"><a class="header" href="#01---overview-of-microservices-architecture">01 - Overview of Microservices Architecture</a></h1>
+<blockquote>
+<p>💡 <em>&quot;Microservices are not just small services. They are a philosophy of independence, resilience, and evolution.&quot;</em></p>
+</blockquote>
+<p>Microservices architecture is a design approach where applications are structured as a collection of <strong>loosely coupled, independently deployable services</strong>. Each service is built around a specific business capability and can evolve, scale, and fail independently.</p>
+<p>This section introduces the <strong>core philosophy</strong> behind microservices and sets the stage for the 12 design principles we’ll explore.</p>
+<hr />
+<h2 id="-why-microservices"><a class="header" href="#-why-microservices">🧱 Why Microservices?</a></h2>
+<p>In the past, applications were built as <strong>monoliths</strong> — one large codebase handling all functionality (users, orders, payments, etc.). While simple at first, monoliths become:</p>
+<ul>
+<li>Hard to scale (scale entire app even if only one part needs more power)</li>
+<li>Slow to deploy (one change requires redeploying everything)</li>
+<li>Fragile (one bug can bring down the whole system)</li>
+<li>Difficult to maintain (teams step on each other’s toes)</li>
+</ul>
+<p>Microservices solve these problems by breaking the monolith into <strong>small, focused services</strong>.</p>
+<h3 id="-example-e-commerce-platform"><a class="header" href="#-example-e-commerce-platform">🎯 Example: E-Commerce Platform</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Monolith</th><th>Microservices</th></tr></thead><tbody>
+<tr><td>One app:<code>Users</code>, <code>Orders</code>, <code>Payments</code>, <code>Products</code></td><td>Four independent services:</td></tr>
+<tr><td>→ All share one database</td><td>→<code>User Service</code> (PostgreSQL)</td></tr>
+<tr><td>→ One team owns everything</td><td>→<code>Order Service</code> (MongoDB)</td></tr>
+<tr><td>→ Deployment takes 30 mins</td><td>→<code>Payment Service</code> (Redis + Kafka)</td></tr>
+<tr><td>→ Any failure crashes all</td><td>→<code>Product Service</code> (Elasticsearch)</td></tr>
+</tbody></table>
+</div>
+<p>✅ Now:</p>
+<ul>
+<li>Scale <code>Order Service</code> during Black Friday</li>
+<li>Deploy <code>Payment Service</code> without touching others</li>
+<li>If <code>Payment Service</code> fails → users can still view cart or order history</li>
+</ul>
+<hr />
+<h2 id="-key-characteristics-of-microservices"><a class="header" href="#-key-characteristics-of-microservices">🔗 Key Characteristics of Microservices</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Characteristic</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><strong>Loosely Coupled</strong></td><td>Services interact via well-defined APIs, not shared code or databases</td></tr>
+<tr><td><strong>Independently Deployable</strong></td><td>Each service can be updated, scaled, or restarted without affecting others</td></tr>
+<tr><td><strong>Owned by Teams</strong></td><td>Small teams own one or two services end-to-end (dev to ops)</td></tr>
+<tr><td><strong>Decentralized Data</strong></td><td>Each service owns its own data (no shared databases)</td></tr>
+<tr><td><strong>Resilient by Design</strong></td><td>Built to handle failures gracefully (circuit breakers, retries, fallbacks)</td></tr>
+<tr><td><strong>API First</strong></td><td>Contracts defined before implementation (OpenAPI, Swagger)</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>🚀 Think of it like a <strong>city</strong>:</p>
+<ul>
+<li>Each building is a service</li>
+<li>Roads are APIs</li>
+<li>Power grids are event buses</li>
+<li>No building depends on another’s internal wiring</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="-how-services-communicate"><a class="header" href="#-how-services-communicate">🌐 How Services Communicate</a></h2>
+<p>Microservices communicate over the network using various patterns:</p>
+<div class="table-wrapper"><table><thead><tr><th>Pattern</th><th>Use Case</th><th>Tools</th></tr></thead><tbody>
+<tr><td><strong>Synchronous REST/HTTP</strong></td><td>Immediate response needed</td><td>Express.js, Spring Boot, FastAPI</td></tr>
+<tr><td><strong>Asynchronous Events</strong></td><td>Decoupling, background work</td><td>Kafka, RabbitMQ, AWS SNS/SQS</td></tr>
+<tr><td><strong>gRPC</strong></td><td>High-performance internal calls</td><td>gRPC, Protocol Buffers</td></tr>
+<tr><td><strong>Service Mesh</strong></td><td>Manage traffic, security, observability</td><td>Istio, Linkerd</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ Rule: <strong>Use REST for user-facing actions, events for background workflows</strong></p>
+</blockquote>
+<h3 id="-diagram-monolith-vs-microservices"><a class="header" href="#-diagram-monolith-vs-microservices">📊 Diagram: Monolith vs Microservices</a></h3>
+<pre><code class="language-mermaid">
+graph TD
+  A[Monolith App] --&gt; B[Shared Database]
+  A --&gt; C[All Logic in One Codebase]
+  A --&gt; D[One Team, One Deployment]
+  A --&gt; E[Hard to Scale, Evolve]
+
+  F[Microservices] --&gt; G[Service 1: Users]
+  F --&gt; H[Service 2: Orders]
+  F --&gt; I[Service 3: Payments]
+  F --&gt; J[Service 4: Products]
+
+  G --&gt; K[Own DB: PostgreSQL]
+  H --&gt; L[Own DB: MongoDB]
+  I --&gt; M[Own DB: Redis]
+  J --&gt; N[Own DB: Elasticsearch]
+
+  O[Client] --&gt; P[API Gateway]
+  P --&gt; G
+  P --&gt; H
+  P --&gt; I
+  P --&gt; J
+
+  Q[Events] --&gt; R[OrderPlaced]
+  R --&gt; S[Inventory Service]
+  R --&gt; T[Email Service]
+</code></pre>
+<blockquote>
+<p>💡 Think of it like a  <strong>city</strong> :</p>
+<ul>
+<li>Each building is a service</li>
+<li>Roads are APIs</li>
+<li>Power grids are event buses</li>
+<li>No building depends on another’s internal wiring</li>
+</ul>
+</blockquote>
+<h2 id="-common-misconceptions"><a class="header" href="#-common-misconceptions">⚠️ Common Misconceptions</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Myth</th><th>Reality</th></tr></thead><tbody>
+<tr><td>&quot;Microservices = smaller monolith&quot;</td><td>❌ It's a different architecture — not just size</td></tr>
+<tr><td>&quot;I can use shared DB&quot;</td><td>❌ That defeats the purpose — leads to tight coupling</td></tr>
+<tr><td>&quot;It’s always faster&quot;</td><td>❌ More complex — slower in simple cases</td></tr>
+<tr><td>&quot;No need for monitoring&quot;</td><td>❌ Distributed systems require more observability</td></tr>
+<tr><td>&quot;One team per service&quot;</td><td>❌ Teams can own multiple services — but autonomy matters</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-the-mindset-shift"><a class="header" href="#-the-mindset-shift">🧠 The Mindset Shift</a></h2>
+<p>To build great microservices, shift from:</p>
+<ul>
+<li><strong>&quot;How do I make this work?&quot;</strong> → <strong>&quot;How do I make this resilient?&quot;</strong></li>
+<li><strong>&quot;What does this function do?&quot;</strong> → <strong>&quot;What problem does this service solve?&quot;</strong></li>
+<li><strong>&quot;Can I reuse this code?&quot;</strong> → <strong>&quot;Can I reuse this API contract?&quot;</strong></li>
+</ul>
+<blockquote>
+<p>💡 Your goal: Build systems that <strong>evolve, survive, and scale</strong> — not just run.</p>
+</blockquote>
+<hr />
+<h2 id="-next-steps-in-this-book"><a class="header" href="#-next-steps-in-this-book">🔁 Next Steps in This Book</a></h2>
+<p>We’ll now dive into the <strong>12 Core Design Principles</strong>:</p>
+<ol>
+<li><strong>High Cohesion &amp; Low Coupling</strong> — Focus on one thing, talk minimally</li>
+<li><strong>Decentralize Data Management</strong> — Each service owns its data</li>
+<li><strong>Design for Failure &amp; Resilience</strong> — Assume failure, plan for recovery</li>
+<li><strong>API First Approach</strong> — Define contracts before coding</li>
+<li><strong>Single Responsibility Principle</strong> — One service, one job</li>
+<li><strong>Define Scope Properly</strong> — Avoid scope creep</li>
+<li><strong>Event-Driven Communication</strong> — Use events to decouple</li>
+<li><strong>Secure Each Service Individually</strong> — AuthN/AuthZ per service</li>
+<li><strong>Scalability &amp; Independence</strong> — Scale what needs it</li>
+<li><strong>Automate Testing &amp; CI/CD</strong> — Deploy fast, safely</li>
+<li><strong>Manage Traffic</strong> — Rate limiting, load balancing, circuit breakers</li>
+<li><strong>Monitor Constantly</strong> — Metrics, logs, traces, alerts</li>
+</ol>
+<hr />
+<h2 id="-summary-what-is-a-microservice"><a class="header" href="#-summary-what-is-a-microservice">🧩 Summary: What Is a Microservice?</a></h2>
+<p>A microservice is:</p>
+<ul>
+<li>A <strong>small, focused service</strong> around a business capability</li>
+<li><strong>Independent</strong> in deployment, scaling, and ownership</li>
+<li><strong>Loosely coupled</strong> via APIs or events</li>
+<li><strong>Resilient</strong> to failures</li>
+<li><strong>Evolutionary</strong> — can change without breaking others</li>
+</ul>
+<blockquote>
+<p>✅ It’s not about technology — it’s about <strong>design, autonomy, and resilience</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="-references--further-reading"><a class="header" href="#-references--further-reading">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://martinfowler.com/articles/microservices.html">Martin Fowler: Microservices</a></li>
+<li><a href="https://netflixtechblog.com/">Netflix Tech Blog: Chaos Engineering</a></li>
+<li><a href="https://www.oreilly.com/library/view/building-microservices/9781491931879/">O’Reilly: Building Microservices</a></li>
+<li><a href="https://openapis.org/">OpenAPI Specification</a></li>
+<li><a href="https://kafka.apache.org/documentation/">Kafka Documentation</a></li>
+</ul>
+<hr />
+<blockquote>
+<p>🧓 Mentor's Note:
+You’re not just learning microservices — you’re building a <strong>mental model</strong> of how modern systems work.
+Keep asking questions. Keep writing.
+This notebook will be your <strong>go-to guide</strong> for years.</p>
+</blockquote>
+</blockquote>
+<style>#mermaid-1757067093899{font-family:sans-serif;font-size:16px;fill:#333;}#mermaid-1757067093899 .error-icon{fill:#552222;}#mermaid-1757067093899 .error-text{fill:#552222;stroke:#552222;}#mermaid-1757067093899 .edge-thickness-normal{stroke-width:2px;}#mermaid-1757067093899 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1757067093899 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1757067093899 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1757067093899 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1757067093899 .marker{fill:#333333;}#mermaid-1757067093899 .marker.cross{stroke:#333333;}#mermaid-1757067093899 svg{font-family:sans-serif;font-size:16px;}#mermaid-1757067093899 .label{font-family:sans-serif;color:#333;}#mermaid-1757067093899 .label text{fill:#333;}#mermaid-1757067093899 .node rect,#mermaid-1757067093899 .node circle,#mermaid-1757067093899 .node ellipse,#mermaid-1757067093899 .node polygon,#mermaid-1757067093899 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-1757067093899 .node .label{text-align:center;}#mermaid-1757067093899 .node.clickable{cursor:pointer;}#mermaid-1757067093899 .arrowheadPath{fill:#333333;}#mermaid-1757067093899 .edgePath .path{stroke:#333333;stroke-width:1.5px;}#mermaid-1757067093899 .flowchart-link{stroke:#333333;fill:none;}#mermaid-1757067093899 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaid-1757067093899 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaid-1757067093899 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-1757067093899 .cluster text{fill:#333;}#mermaid-1757067093899 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1757067093899:root{--mermaid-font-family:sans-serif;}#mermaid-1757067093899:root{--mermaid-alt-font-family:sans-serif;}#mermaid-1757067093899 flowchart{fill:apa;}</style>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../PROGRESS.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../lessons/lesson-01-microservices-design-principles/topic-01-high-cohesion-low-coupling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../PROGRESS.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../lessons/lesson-01-microservices-design-principles/topic-01-high-cohesion-low-coupling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../src/assets/js/custom.js"></script>
+
+
+    </div>
+    </body>
+</html>

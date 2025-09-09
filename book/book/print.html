@@ -1,0 +1,2850 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CodeToArchitecture</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="System Design Practice and AWS Certification Preparation">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="src/assets/css/custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="PROGRESS.html"><strong aria-hidden="true">2.</strong> Progress Tracker</a></li><li class="chapter-item expanded affix "><li class="part-title">🏗️ System Design Lessons</li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/index.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-01-high-cohesion-low-coupling.html"><strong aria-hidden="true">4.</strong> 1. High Cohesion & Low Coupling</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-02-decentralize-data-management.html"><strong aria-hidden="true">5.</strong> 2. Decentralize Data Management</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-03-design-for-failure-and-resilience.html"><strong aria-hidden="true">6.</strong> 3. Design for Failure & Resilience</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-04-api-first-approach.html"><strong aria-hidden="true">7.</strong> 4. API First Approach</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-05-single-responsibility-principle.html"><strong aria-hidden="true">8.</strong> 5. Single Responsibility Principle</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-06-define-scope-properly.html"><strong aria-hidden="true">9.</strong> 6. Define the Scope Properly</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-07-event-driven-communication.html"><strong aria-hidden="true">10.</strong> 7. Event-Driven Communication</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-08-secure-each-service.html"><strong aria-hidden="true">11.</strong> 8. Secure Each Service</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-09-scalability-and-independence.html"><strong aria-hidden="true">12.</strong> 9. Scalability & Independence</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-10-automate-testing-and-cicd.html"><strong aria-hidden="true">13.</strong> 10. Automate Testing & CI/CD</a></li><li class="chapter-item expanded "><a href="lessons/lesson-01-microservices-design-principles/topic-11-manage-traffic.html"><strong aria-hidden="true">14.</strong> 11. Manage Traffic</a></li><li class="chapter-item expanded "><a href="lessons/lesson-02-system-design-framework/index.html"><strong aria-hidden="true">15.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-03-ddd-microservices/index.html"><strong aria-hidden="true">16.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-04-event-driven-architecture/index.html"><strong aria-hidden="true">17.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-05-api-gateway-service-mesh/index.html"><strong aria-hidden="true">18.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-06-resilient-architecture/index.html"><strong aria-hidden="true">19.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-07-cloud-iot-architecture/index.html"><strong aria-hidden="true">20.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-08-scalability-patterns/index.html"><strong aria-hidden="true">21.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-09-multi-tenant-architecture/index.html"><strong aria-hidden="true">22.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-10-data-management/index.html"><strong aria-hidden="true">23.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-11-observability-monitoring/index.html"><strong aria-hidden="true">24.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-12-security-architecture/index.html"><strong aria-hidden="true">25.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-13-platform-engineering/index.html"><strong aria-hidden="true">26.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lessons/lesson-14-adr/index.html"><strong aria-hidden="true">27.</strong> Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">☁️ AWS Certification Track</li><li class="chapter-item expanded "><a href="certifications/aws-clf-c02/index.html"><strong aria-hidden="true">28.</strong> AWS Certified Cloud Practitioner (CLF-C02)</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CodeToArchitecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nik132-eng/CodeToArchitecture" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="welcome-to-your-learning-journey"><a class="header" href="#welcome-to-your-learning-journey">Welcome to Your Learning Journey</a></h1>
+<p>Welcome to your comprehensive learning journey into Software Architecture and System Design. As your senior mentor, my goal is to guide you step by step, demystifying complex concepts, explaining jargon, and connecting theory to practical, real-world applications. We'll build a strong foundation, starting with the critical principles of microservices and beyond.</p>
+<h1 id="your-project-structure"><a class="header" href="#your-project-structure">Your Project Structure</a></h1>
+<p>Your learning material is organized within a structured project, designed to facilitate a systematic approach to understanding complex systems. This structure helps in organizing code examples, documentation (often managed using tools like <code>mdbook</code>), and practice problems.</p>
+<pre><code>CODETOARCHITECTURE
+├── .github/workflows
+│   └── mdbook.yml
+├── book / src
+│   ├── introduction.md
+│   └── SUMMARY.md
+├── codeforces
+├── Practice
+└── README.md
+</code></pre>
+<p>This setup allows for continuous documentation and iteration, ensuring that your learnings are always up-to-date and easily accessible.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="progress-tracker"><a class="header" href="#progress-tracker">Progress Tracker</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><blockquote>
+<h1 id="01---overview-of-microservices-architecture"><a class="header" href="#01---overview-of-microservices-architecture">01 - Overview of Microservices Architecture</a></h1>
+<blockquote>
+<p>💡 <em>&quot;Microservices are not just small services. They are a philosophy of independence, resilience, and evolution.&quot;</em></p>
+</blockquote>
+<p>Microservices architecture is a design approach where applications are structured as a collection of <strong>loosely coupled, independently deployable services</strong>. Each service is built around a specific business capability and can evolve, scale, and fail independently.</p>
+<p>This section introduces the <strong>core philosophy</strong> behind microservices and sets the stage for the 12 design principles we’ll explore.</p>
+<hr />
+<h2 id="-why-microservices"><a class="header" href="#-why-microservices">🧱 Why Microservices?</a></h2>
+<p>In the past, applications were built as <strong>monoliths</strong> — one large codebase handling all functionality (users, orders, payments, etc.). While simple at first, monoliths become:</p>
+<ul>
+<li>Hard to scale (scale entire app even if only one part needs more power)</li>
+<li>Slow to deploy (one change requires redeploying everything)</li>
+<li>Fragile (one bug can bring down the whole system)</li>
+<li>Difficult to maintain (teams step on each other’s toes)</li>
+</ul>
+<p>Microservices solve these problems by breaking the monolith into <strong>small, focused services</strong>.</p>
+<h3 id="-example-e-commerce-platform"><a class="header" href="#-example-e-commerce-platform">🎯 Example: E-Commerce Platform</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Monolith</th><th>Microservices</th></tr></thead><tbody>
+<tr><td>One app:<code>Users</code>, <code>Orders</code>, <code>Payments</code>, <code>Products</code></td><td>Four independent services:</td></tr>
+<tr><td>→ All share one database</td><td>→<code>User Service</code> (PostgreSQL)</td></tr>
+<tr><td>→ One team owns everything</td><td>→<code>Order Service</code> (MongoDB)</td></tr>
+<tr><td>→ Deployment takes 30 mins</td><td>→<code>Payment Service</code> (Redis + Kafka)</td></tr>
+<tr><td>→ Any failure crashes all</td><td>→<code>Product Service</code> (Elasticsearch)</td></tr>
+</tbody></table>
+</div>
+<p>✅ Now:</p>
+<ul>
+<li>Scale <code>Order Service</code> during Black Friday</li>
+<li>Deploy <code>Payment Service</code> without touching others</li>
+<li>If <code>Payment Service</code> fails → users can still view cart or order history</li>
+</ul>
+<hr />
+<h2 id="-key-characteristics-of-microservices"><a class="header" href="#-key-characteristics-of-microservices">🔗 Key Characteristics of Microservices</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Characteristic</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><strong>Loosely Coupled</strong></td><td>Services interact via well-defined APIs, not shared code or databases</td></tr>
+<tr><td><strong>Independently Deployable</strong></td><td>Each service can be updated, scaled, or restarted without affecting others</td></tr>
+<tr><td><strong>Owned by Teams</strong></td><td>Small teams own one or two services end-to-end (dev to ops)</td></tr>
+<tr><td><strong>Decentralized Data</strong></td><td>Each service owns its own data (no shared databases)</td></tr>
+<tr><td><strong>Resilient by Design</strong></td><td>Built to handle failures gracefully (circuit breakers, retries, fallbacks)</td></tr>
+<tr><td><strong>API First</strong></td><td>Contracts defined before implementation (OpenAPI, Swagger)</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>🚀 Think of it like a <strong>city</strong>:</p>
+<ul>
+<li>Each building is a service</li>
+<li>Roads are APIs</li>
+<li>Power grids are event buses</li>
+<li>No building depends on another’s internal wiring</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="-how-services-communicate"><a class="header" href="#-how-services-communicate">🌐 How Services Communicate</a></h2>
+<p>Microservices communicate over the network using various patterns:</p>
+<div class="table-wrapper"><table><thead><tr><th>Pattern</th><th>Use Case</th><th>Tools</th></tr></thead><tbody>
+<tr><td><strong>Synchronous REST/HTTP</strong></td><td>Immediate response needed</td><td>Express.js, Spring Boot, FastAPI</td></tr>
+<tr><td><strong>Asynchronous Events</strong></td><td>Decoupling, background work</td><td>Kafka, RabbitMQ, AWS SNS/SQS</td></tr>
+<tr><td><strong>gRPC</strong></td><td>High-performance internal calls</td><td>gRPC, Protocol Buffers</td></tr>
+<tr><td><strong>Service Mesh</strong></td><td>Manage traffic, security, observability</td><td>Istio, Linkerd</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ Rule: <strong>Use REST for user-facing actions, events for background workflows</strong></p>
+</blockquote>
+<h3 id="-diagram-monolith-vs-microservices"><a class="header" href="#-diagram-monolith-vs-microservices">📊 Diagram: Monolith vs Microservices</a></h3>
+<pre><code class="language-mermaid">
+graph TD
+  A[Monolith App] --&gt; B[Shared Database]
+  A --&gt; C[All Logic in One Codebase]
+  A --&gt; D[One Team, One Deployment]
+  A --&gt; E[Hard to Scale, Evolve]
+
+  F[Microservices] --&gt; G[Service 1: Users]
+  F --&gt; H[Service 2: Orders]
+  F --&gt; I[Service 3: Payments]
+  F --&gt; J[Service 4: Products]
+
+  G --&gt; K[Own DB: PostgreSQL]
+  H --&gt; L[Own DB: MongoDB]
+  I --&gt; M[Own DB: Redis]
+  J --&gt; N[Own DB: Elasticsearch]
+
+  O[Client] --&gt; P[API Gateway]
+  P --&gt; G
+  P --&gt; H
+  P --&gt; I
+  P --&gt; J
+
+  Q[Events] --&gt; R[OrderPlaced]
+  R --&gt; S[Inventory Service]
+  R --&gt; T[Email Service]
+</code></pre>
+<blockquote>
+<p>💡 Think of it like a  <strong>city</strong> :</p>
+<ul>
+<li>Each building is a service</li>
+<li>Roads are APIs</li>
+<li>Power grids are event buses</li>
+<li>No building depends on another’s internal wiring</li>
+</ul>
+</blockquote>
+<h2 id="-common-misconceptions"><a class="header" href="#-common-misconceptions">⚠️ Common Misconceptions</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Myth</th><th>Reality</th></tr></thead><tbody>
+<tr><td>&quot;Microservices = smaller monolith&quot;</td><td>❌ It's a different architecture — not just size</td></tr>
+<tr><td>&quot;I can use shared DB&quot;</td><td>❌ That defeats the purpose — leads to tight coupling</td></tr>
+<tr><td>&quot;It’s always faster&quot;</td><td>❌ More complex — slower in simple cases</td></tr>
+<tr><td>&quot;No need for monitoring&quot;</td><td>❌ Distributed systems require more observability</td></tr>
+<tr><td>&quot;One team per service&quot;</td><td>❌ Teams can own multiple services — but autonomy matters</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-the-mindset-shift"><a class="header" href="#-the-mindset-shift">🧠 The Mindset Shift</a></h2>
+<p>To build great microservices, shift from:</p>
+<ul>
+<li><strong>&quot;How do I make this work?&quot;</strong> → <strong>&quot;How do I make this resilient?&quot;</strong></li>
+<li><strong>&quot;What does this function do?&quot;</strong> → <strong>&quot;What problem does this service solve?&quot;</strong></li>
+<li><strong>&quot;Can I reuse this code?&quot;</strong> → <strong>&quot;Can I reuse this API contract?&quot;</strong></li>
+</ul>
+<blockquote>
+<p>💡 Your goal: Build systems that <strong>evolve, survive, and scale</strong> — not just run.</p>
+</blockquote>
+<hr />
+<h2 id="-next-steps-in-this-book"><a class="header" href="#-next-steps-in-this-book">🔁 Next Steps in This Book</a></h2>
+<p>We’ll now dive into the <strong>12 Core Design Principles</strong>:</p>
+<ol>
+<li><strong>High Cohesion &amp; Low Coupling</strong> — Focus on one thing, talk minimally</li>
+<li><strong>Decentralize Data Management</strong> — Each service owns its data</li>
+<li><strong>Design for Failure &amp; Resilience</strong> — Assume failure, plan for recovery</li>
+<li><strong>API First Approach</strong> — Define contracts before coding</li>
+<li><strong>Single Responsibility Principle</strong> — One service, one job</li>
+<li><strong>Define Scope Properly</strong> — Avoid scope creep</li>
+<li><strong>Event-Driven Communication</strong> — Use events to decouple</li>
+<li><strong>Secure Each Service Individually</strong> — AuthN/AuthZ per service</li>
+<li><strong>Scalability &amp; Independence</strong> — Scale what needs it</li>
+<li><strong>Automate Testing &amp; CI/CD</strong> — Deploy fast, safely</li>
+<li><strong>Manage Traffic</strong> — Rate limiting, load balancing, circuit breakers</li>
+<li><strong>Monitor Constantly</strong> — Metrics, logs, traces, alerts</li>
+</ol>
+<hr />
+<h2 id="-summary-what-is-a-microservice"><a class="header" href="#-summary-what-is-a-microservice">🧩 Summary: What Is a Microservice?</a></h2>
+<p>A microservice is:</p>
+<ul>
+<li>A <strong>small, focused service</strong> around a business capability</li>
+<li><strong>Independent</strong> in deployment, scaling, and ownership</li>
+<li><strong>Loosely coupled</strong> via APIs or events</li>
+<li><strong>Resilient</strong> to failures</li>
+<li><strong>Evolutionary</strong> — can change without breaking others</li>
+</ul>
+<blockquote>
+<p>✅ It’s not about technology — it’s about <strong>design, autonomy, and resilience</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="-references--further-reading"><a class="header" href="#-references--further-reading">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://martinfowler.com/articles/microservices.html">Martin Fowler: Microservices</a></li>
+<li><a href="https://netflixtechblog.com/">Netflix Tech Blog: Chaos Engineering</a></li>
+<li><a href="https://www.oreilly.com/library/view/building-microservices/9781491931879/">O’Reilly: Building Microservices</a></li>
+<li><a href="https://openapis.org/">OpenAPI Specification</a></li>
+<li><a href="https://kafka.apache.org/documentation/">Kafka Documentation</a></li>
+</ul>
+<hr />
+<blockquote>
+<p>🧓 Mentor's Note:
+You’re not just learning microservices — you’re building a <strong>mental model</strong> of how modern systems work.
+Keep asking questions. Keep writing.
+This notebook will be your <strong>go-to guide</strong> for years.</p>
+</blockquote>
+</blockquote>
+<style>#mermaid-1757067093899{font-family:sans-serif;font-size:16px;fill:#333;}#mermaid-1757067093899 .error-icon{fill:#552222;}#mermaid-1757067093899 .error-text{fill:#552222;stroke:#552222;}#mermaid-1757067093899 .edge-thickness-normal{stroke-width:2px;}#mermaid-1757067093899 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1757067093899 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1757067093899 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1757067093899 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1757067093899 .marker{fill:#333333;}#mermaid-1757067093899 .marker.cross{stroke:#333333;}#mermaid-1757067093899 svg{font-family:sans-serif;font-size:16px;}#mermaid-1757067093899 .label{font-family:sans-serif;color:#333;}#mermaid-1757067093899 .label text{fill:#333;}#mermaid-1757067093899 .node rect,#mermaid-1757067093899 .node circle,#mermaid-1757067093899 .node ellipse,#mermaid-1757067093899 .node polygon,#mermaid-1757067093899 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-1757067093899 .node .label{text-align:center;}#mermaid-1757067093899 .node.clickable{cursor:pointer;}#mermaid-1757067093899 .arrowheadPath{fill:#333333;}#mermaid-1757067093899 .edgePath .path{stroke:#333333;stroke-width:1.5px;}#mermaid-1757067093899 .flowchart-link{stroke:#333333;fill:none;}#mermaid-1757067093899 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaid-1757067093899 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaid-1757067093899 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-1757067093899 .cluster text{fill:#333;}#mermaid-1757067093899 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1757067093899:root{--mermaid-font-family:sans-serif;}#mermaid-1757067093899:root{--mermaid-alt-font-family:sans-serif;}#mermaid-1757067093899 flowchart{fill:apa;}</style>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="02---high-cohesion-and-low-coupling"><a class="header" href="#02---high-cohesion-and-low-coupling">02 - High Cohesion and Low Coupling</a></h1>
+<blockquote>
+<p>💡 <em>&quot;A microservice should do one thing well — and depend on others as little as possible.&quot;</em></p>
+</blockquote>
+<p>This principle is the <strong>foundation of good microservices design</strong>. It defines how to structure services so they are <strong>focused, maintainable, and independently evolvable</strong>.</p>
+<p>If you get this right, your system will scale gracefully.
+If you get it wrong, you'll end up with a <strong>distributed monolith</strong> — many services, but tightly bound together.</p>
+<p>Let's break down what <strong>high cohesion</strong> and <strong>low coupling</strong> mean, why they matter, and how to apply them.</p>
+<hr />
+<h2 id="-what-is-high-cohesion"><a class="header" href="#-what-is-high-cohesion">🎯 What Is High Cohesion?</a></h2>
+<blockquote>
+<p><strong>High Cohesion</strong> = A service is focused on a single business capability or a closely related set of functions.</p>
+</blockquote>
+<p>Think: <em>&quot;What is this service's job?&quot;</em>
+The answer should be <strong>short and specific</strong>.</p>
+<h3 id="-good-examples-high-cohesion"><a class="header" href="#-good-examples-high-cohesion">✅ Good Examples (High Cohesion)</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Responsibility</th></tr></thead><tbody>
+<tr><td><code>User Service</code></td><td>Manage user lifecycle: sign-up, login, profile</td></tr>
+<tr><td><code>Payment Service</code></td><td>Process payments, refunds, status checks</td></tr>
+<tr><td><code>Notification Service</code></td><td>Send emails, SMS, push notifications</td></tr>
+<tr><td><code>Inventory Service</code></td><td>Track stock levels, update on order</td></tr>
+</tbody></table>
+</div>
+<p>Each service has <strong>one clear purpose</strong>.</p>
+<h3 id="-bad-examples-low-cohesion"><a class="header" href="#-bad-examples-low-cohesion">❌ Bad Examples (Low Cohesion)</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Problem</th></tr></thead><tbody>
+<tr><td><code>User Service</code> sends emails</td><td>Now it does auth + notifications → two jobs</td></tr>
+<tr><td><code>Order Service</code> handles payments</td><td>Mixes order logic with money movement</td></tr>
+<tr><td><code>Notification Service</code> manages user profiles</td><td>No relation — violates single responsibility</td></tr>
+</tbody></table>
+</div>
+<p>📌 <strong>Golden Rule</strong>:</p>
+<blockquote>
+<p>If you can't describe a service's job in one sentence, it's doing too much.</p>
+</blockquote>
+<hr />
+<h2 id="-what-is-low-coupling"><a class="header" href="#-what-is-low-coupling">🔗 What Is Low Coupling?</a></h2>
+<blockquote>
+<p><strong>Low Coupling</strong> = Services depend on each other as little as possible.</p>
+</blockquote>
+<p>They interact through <strong>well-defined contracts</strong> (APIs or events), not internal details.</p>
+<h3 id="-characteristics-of-low-coupling"><a class="header" href="#-characteristics-of-low-coupling">✅ Characteristics of Low Coupling</a></h3>
+<ul>
+<li>Services communicate via <strong>APIs or events</strong></li>
+<li>One service doesn't know how another works internally</li>
+<li>Changes in one service don't force changes in others</li>
+<li>Failure in one service doesn't automatically break others</li>
+</ul>
+<h3 id="-tight-coupling-anti-patterns"><a class="header" href="#-tight-coupling-anti-patterns">❌ Tight Coupling Anti-Patterns</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Mistake</th><th>Why It's Bad</th></tr></thead><tbody>
+<tr><td>Direct database access across services</td><td>One schema change breaks others</td></tr>
+<tr><td>Hardcoded service URLs</td><td>Can't move or scale services</td></tr>
+<tr><td>Shared libraries with business logic</td><td>Update one → must redeploy all</td></tr>
+<tr><td>Synchronous blocking calls with no fallback</td><td>Failure cascades</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-real-world-analogy"><a class="header" href="#-real-world-analogy">🧩 Real-World Analogy</a></h2>
+<p>Think of a restaurant:</p>
+<div class="table-wrapper"><table><thead><tr><th>Role</th><th>Responsibility (Cohesion)</th><th>Independence (Coupling)</th></tr></thead><tbody>
+<tr><td>Chef</td><td>Cooks food</td><td>Doesn't wait for waiter to serve</td></tr>
+<tr><td>Waiter</td><td>Takes order, serves food</td><td>Doesn't need to know how food is cooked</td></tr>
+<tr><td>Cashier</td><td>Handles payment</td><td>Doesn't care who cooked the meal</td></tr>
+</tbody></table>
+</div>
+<p>✅ High cohesion: each role has a clear job
+✅ Low coupling: chef doesn't call the cashier — they use tickets (like events)</p>
+<p>Now imagine:</p>
+<ul>
+<li>Chef also serves food and takes payment → chaos</li>
+<li>Waiter can't serve unless chef is done <em>right now</em> → blocks everything</li>
+</ul>
+<p>That's <strong>low cohesion + tight coupling</strong>.</p>
+<hr />
+<h2 id="-diagram-high-cohesion--low-coupling"><a class="header" href="#-diagram-high-cohesion--low-coupling">📊 Diagram: High Cohesion &amp; Low Coupling</a></h2>
+<pre><code class="language-mermaid">graph TD
+   A[User Service] --&gt;|API: POST /users| B[Order Service]
+   B --&gt;|Event: OrderPlaced| C[Payment Service]
+   B --&gt;|Event: OrderPlaced| D[Inventory Service]
+   C --&gt;|Event: PaymentProcessed| E[Notification Service]
+
+   %% Good Cohesion &amp; Low Coupling Styles
+   style A fill:#4CAF50,stroke:#388E3C
+   style B fill:#2196F3,stroke:#1976D2
+   style C fill:#FF9800,stroke:#F57C00
+   style D fill:#9C27B0,stroke:#7B1FA2
+   style E fill:#00BCD4,stroke:#0097A7
+
+   subgraph Tightly_Coupled_Bad[&quot;Tightly Coupled (❌ Bad)&quot;]
+      F[Order Service]
+      G[Payment Service]
+      H[Inventory Service]
+      F --&gt; G
+      G --&gt; H
+      H --&gt; F
+      style F fill:#f44336,stroke:#d32f2f
+      style G fill:#f44336,stroke:#d32f2f
+      style H fill:#f44336,stroke:#d32f2f
+   end
+</code></pre>
+<p>✅ Left: Services interact via <strong>APIs and events</strong> — loose coupling
+❌ Right: Circular, direct dependencies — <strong>tight coupling</strong>, fragile system</p>
+<hr />
+<h2 id="-how-to-design-for-high-cohesion"><a class="header" href="#-how-to-design-for-high-cohesion">🛠️ How to Design for High Cohesion</a></h2>
+<h3 id="1-use-business-capabilities-as-boundaries"><a class="header" href="#1-use-business-capabilities-as-boundaries">1. <strong>Use Business Capabilities as Boundaries</strong></a></h3>
+<p>Ask: <em>&quot;What does this service enable for the business?&quot;</em></p>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>User Management</td><td><code>User Service</code></td></tr>
+<tr><td>Order Processing</td><td><code>Order Service</code></td></tr>
+<tr><td>Payment Handling</td><td><code>Payment Service</code></td></tr>
+<tr><td>Product Catalog</td><td><code>Product Service</code></td></tr>
+</tbody></table>
+</div>
+<p>Avoid technical boundaries like &quot;Auth Service&quot;, &quot;Logging Service&quot; — unless truly cross-cutting.</p>
+<h3 id="2-single-responsibility-principle-srp"><a class="header" href="#2-single-responsibility-principle-srp">2. <strong>Single Responsibility Principle (SRP)</strong></a></h3>
+<p>Each service should have <strong>one reason to change</strong>.</p>
+<p>If you update tax logic and it affects <code>Order</code>, <code>Payment</code>, and <code>Invoice</code> services → you've violated SRP.</p>
+<h3 id="3-avoid-scope-creep"><a class="header" href="#3-avoid-scope-creep">3. <strong>Avoid Scope Creep</strong></a></h3>
+<p>Don't let a service grow beyond its purpose.</p>
+<p>Example:</p>
+<ul>
+<li><code>Notification Service</code> starts storing user preferences → now it's doing user data</li>
+<li>Fix: Create a <code>UserPreferences Service</code> or let <code>User Service</code> own it</li>
+</ul>
+<hr />
+<h2 id="-how-to-achieve-low-coupling"><a class="header" href="#-how-to-achieve-low-coupling">🔁 How to Achieve Low Coupling</a></h2>
+<h3 id="1-use-apis-not-direct-dependencies"><a class="header" href="#1-use-apis-not-direct-dependencies">1. <strong>Use APIs, Not Direct Dependencies</strong></a></h3>
+<pre><code class="language-http">GET /users/123 → from User Service API
+</code></pre>
+<p>❌ NOT: <code>SELECT * FROM usersdb.users WHERE id = 123</code></p>
+<h3 id="2-prefer-asynchronous-communication"><a class="header" href="#2-prefer-asynchronous-communication">2. <strong>Prefer Asynchronous Communication</strong></a></h3>
+<p>Instead of:</p>
+<pre><code>Order Service → waits for → Payment Service → then proceeds
+</code></pre>
+<p>Use:</p>
+<pre><code>Order Service → publishes → OrderPlaced → continues
+Payment Service → listens → processes payment
+</code></pre>
+<p>Now:</p>
+<ul>
+<li>Payment can be slow → Order still succeeds</li>
+<li>Payment can be down → event waits in queue</li>
+</ul>
+<h3 id="3-use-events-for-side-effects"><a class="header" href="#3-use-events-for-side-effects">3. <strong>Use Events for Side Effects</strong></a></h3>
+<p>When user signs up:</p>
+<ul>
+<li>Publish: <code>UserSignedUp</code></li>
+<li>Let <code>Email Service</code>, <code>Analytics Service</code>, <code>Profile Service</code> react independently</li>
+</ul>
+<p>No direct calls → low coupling.</p>
+<h3 id="4-avoid-shared-libraries-with-business-logic"><a class="header" href="#4-avoid-shared-libraries-with-business-logic">4. <strong>Avoid Shared Libraries with Business Logic</strong></a></h3>
+<p>❌ Don't create <code>common-utils.jar</code> with validation rules used by 10 services.</p>
+<p>Why?</p>
+<ul>
+<li>Change one rule → must redeploy all 10 services</li>
+<li>Violates independence</li>
+</ul>
+<p>✅ Instead: Define <strong>API contracts</strong> (OpenAPI) or <strong>event schemas</strong> (Avro/Protobuf)</p>
+<hr />
+<h2 id="-example-e-commerce-platform-1"><a class="header" href="#-example-e-commerce-platform-1">🧪 Example: E-Commerce Platform</a></h2>
+<h3 id="-tightly-coupled-low-cohesion"><a class="header" href="#-tightly-coupled-low-cohesion">❌ Tightly Coupled, Low Cohesion</a></h3>
+<p>In a tightly coupled system, components are heavily dependent on one another, leading to low cohesion. This means that a change in one part of the system can have a significant impact on other parts, making the system difficult to maintain and scale.</p>
+<ul>
+<li><strong>Monolithic Architecture</strong>: A monolithic application handles various functionalities such as users, orders, payments, and emails within a single, tightly integrated codebase.
+<ul>
+<li><strong>Single Database</strong>: It uses one database for all its operations.</li>
+<li><strong>Single Team</strong>: Typically, one team is responsible for the entire application.</li>
+<li><strong>Single Deployment</strong>: The entire application is deployed as a single unit.</li>
+<li><strong>Potential Downside</strong>: If there is a failure in the email service, it could potentially bring down the entire application, illustrating the coupling between components.</li>
+</ul>
+</li>
+</ul>
+<h3 id="-loosely-coupled-high-cohesion"><a class="header" href="#-loosely-coupled-high-cohesion">✅ Loosely Coupled, High Cohesion</a></h3>
+<p><strong>Loosely Coupled, High Cohesion</strong></p>
+<ul>
+<li>User Service → creates user → publishes <code>UserCreated</code></li>
+<li>Order Service → creates order → publishes <code>OrderPlaced</code></li>
+<li>Payment Service ← listens to <code>OrderPlaced</code></li>
+<li>Inventory Service ← listens to <code>OrderPlaced</code></li>
+<li>Notification Service ← listens to both events</li>
+</ul>
+<p>Now:</p>
+<ul>
+<li>Each service can be developed, deployed, scaled independently</li>
+<li>Teams own their services</li>
+<li>Failure in one doesn't kill others</li>
+</ul>
+<hr />
+<h2 id="-common-anti-patterns"><a class="header" href="#-common-anti-patterns">🚫 Common Anti-Patterns</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>&quot;We'll just add it here&quot;</td><td>Define clear service boundaries</td></tr>
+<tr><td>Shared database tables</td><td>Each service owns its data</td></tr>
+<tr><td>Sync call chains: A→B→C→D</td><td>Break with events or async</td></tr>
+<tr><td>One service knows another's internal state</td><td>Use APIs, not direct access</td></tr>
+<tr><td>No event versioning</td><td>Use schema registry</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-mentors-insight-how-to-spot-coupling"><a class="header" href="#-mentors-insight-how-to-spot-coupling">🧠 Mentor's Insight: How to Spot Coupling</a></h2>
+<p>Ask these questions:</p>
+<ol>
+<li><strong>&quot;If I change this service, how many others must change?&quot;</strong>
+→ More than one? You're tightly coupled.</li>
+<li><strong>&quot;Can this service be deployed without coordinating with others?&quot;</strong>
+→ No? Tight coupling.</li>
+<li><strong>&quot;Does this service do only one thing?&quot;</strong>
+→ No? Low cohesion.</li>
+<li><strong>&quot;Can this service fail without bringing down the system?&quot;</strong>
+→ No? You need better isolation.</li>
+</ol>
+<hr />
+<h2 id="-summary-high-cohesion--low-coupling"><a class="header" href="#-summary-high-cohesion--low-coupling">🔁 Summary: High Cohesion &amp; Low Coupling</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th><th></th></tr></thead><tbody>
+<tr><td><strong>High Cohesion</strong></td><td>One service, one job</td><td>Align with business capabilities, follow SRP</td></tr>
+<tr><td><strong>Low Coupling</strong></td><td>Minimal dependencies</td><td>Use APIs/events, avoid shared DBs, prefer async</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ Together, they enable:</p>
+<ul>
+<li>Independent development</li>
+<li>Independent deployment</li>
+<li>Independent scaling</li>
+<li>Resilience to failure</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="-references--further-reading-1"><a class="header" href="#-references--further-reading-1">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://martinfowler.com/articles/microservices.html">Martin Fowler: Microservices</a></li>
+<li><a href="https://domainlanguage.com/ddd/">Domain-Driven Design by Eric Evans</a></li>
+<li><a href="https://www.oreilly.com/library/view/building-microservices/9781491931879/">Building Microservices by Sam Newman</a></li>
+<li><a href="https://spec.openapis.org/oas/v3.1.0">OpenAPI Specification</a></li>
+<li><a href="https://kafka.apache.org/documentation/">Apache Kafka Documentation</a></li>
+</ul>
+<blockquote>
+<p>🧓 Mentor's Note:
+This principle is simple to understand — but hard to get right in practice.
+Every time you add a new feature, ask:
+<em>&quot;Does this belong here, or should it be in another service?&quot;</em>
+Discipline today saves pain tomorrow.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="03---decentralize-data-management"><a class="header" href="#03---decentralize-data-management">03 - Decentralize Data Management</a></h1>
+<blockquote>
+<p>💡 <em>&quot;If multiple services share a database, they are not microservices — they are a distributed monolith.&quot;</em></p>
+</blockquote>
+<p>This principle is <strong>one of the most violated</strong> in microservices — even by experienced teams. But it's also one of the most important.</p>
+<p><strong>Decentralized data management</strong> means:</p>
+<blockquote>
+<p>✅ Each microservice owns its data.
+❌ No shared databases.
+🔐 No direct access to another service's data store.</p>
+</blockquote>
+<p>Let's break this down so you never make this mistake — and instead, build systems that scale, evolve, and survive.</p>
+<hr />
+<h2 id="-why-shared-databases-are-dangerous"><a class="header" href="#-why-shared-databases-are-dangerous">🧱 Why Shared Databases Are Dangerous</a></h2>
+<p>In monolithic applications, one database is shared by all components:</p>
+<pre><code class="language-text">+---------------------+
+|     Monolith App    |
+|                     |
+| - Users             |
+| - Orders            |
+| - Payments          |
++----------+----------+
+           |
+           ↓
+   +------------------+
+   | Shared Database  |
+   | (One schema)     |
+   +------------------+
+</code></pre>
+<p>This seems simple — until:</p>
+<ul>
+<li>One team changes the <code>orders</code> table → breaks <code>payments</code></li>
+<li>Can't scale the database per service</li>
+<li>Can't use the best database for each need (e.g., NoSQL for inventory)</li>
+<li>A bug in one part risks corrupting shared data</li>
+</ul>
+<hr />
+<h2 id="-what-decentralized-data-management-means"><a class="header" href="#-what-decentralized-data-management-means">✅ What Decentralized Data Management Means</a></h2>
+<blockquote>
+<p>Each microservice has its own <strong>private database</strong> — not shared with others.</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Owns This Data</th><th>Uses This Database</th></tr></thead><tbody>
+<tr><td><code>User Service</code></td><td>Users, profiles</td><td>PostgreSQL</td></tr>
+<tr><td><code>Order Service</code></td><td>Orders, line items</td><td>PostgreSQL</td></tr>
+<tr><td><code>Inventory Service</code></td><td>Stock levels</td><td>MongoDB</td></tr>
+<tr><td><code>Analytics Service</code></td><td>User behavior</td><td>ClickHouse</td></tr>
+</tbody></table>
+</div>
+<h3 id="-diagram-decentralized-data-architecture"><a class="header" href="#-diagram-decentralized-data-architecture">📊 Diagram: Decentralized Data Architecture</a></h3>
+<pre><code class="language-mermaid">graph TD
+  A[User Service] --&gt; B[Users DB PostgreSQL]
+  C[Order Service] --&gt; D[Orders DB PostgreSQL]
+  E[Inventory Service] --&gt; F[Stock DB MongoDB]
+  G[Analytics Service] --&gt; H[Analytics DB ClickHouse]
+
+  I[Client] --&gt; J[API Gateway]
+  J --&gt; A
+  J --&gt; C
+  J --&gt; E
+
+  C --&gt;|publishes| K[OrderPlaced Event]
+  K --&gt; E
+  K --&gt; G
+</code></pre>
+<p>✅ Each service:</p>
+<ul>
+<li>Owns its data lifecycle</li>
+<li>Can evolve its schema independently</li>
+<li>Can be scaled and backed up separately</li>
+</ul>
+<hr />
+<h2 id="-how-services-access-data-without-sharing-dbs"><a class="header" href="#-how-services-access-data-without-sharing-dbs">🔗 How Services Access Data (Without Sharing DBs)</a></h2>
+<p>If services can't share databases, how do they get the data they need?</p>
+<h3 id="-option-1-api-composition"><a class="header" href="#-option-1-api-composition">✅ Option 1: API Composition</a></h3>
+<p>Call other services via <strong>REST or gRPC</strong>.</p>
+<pre><code class="language-js">// In Order Service
+const user = await fetch(`http://user-service/users/${userId}`);
+</code></pre>
+<p>✔️ Pros: Simple
+❌ Cons: Synchronous, adds latency, failure propagation</p>
+<h3 id="-option-2-event-driven-with-projections-cqrs"><a class="header" href="#-option-2-event-driven-with-projections-cqrs">✅ Option 2: Event-Driven with Projections (CQRS)</a></h3>
+<p>Listen to events and build <strong>denormalized views</strong>.</p>
+<pre><code class="language-text">User Service → publishes → UserCreated
+Order Service → publishes → OrderPlaced
+                              ↓
+              [ Dashboard Service ]
+                              ↓
+         Builds: user_orders_view (PostgreSQL)
+                              ↓
+                 Clients query this view
+</code></pre>
+<p>✔️ Pros: Fast reads, eventual consistency, resilient
+❌ Cons: More complex, requires event infrastructure</p>
+<hr />
+<h2 id="-diagram-cqrs-command-query-responsibility-segregation"><a class="header" href="#-diagram-cqrs-command-query-responsibility-segregation">📊 Diagram: CQRS (Command Query Responsibility Segregation)</a></h2>
+<pre><code class="language-mermaid">graph LR
+  subgraph &quot;Command Side (Write)&quot;
+    A1[User Service] --&gt;|Emits| E1[UserCreated]
+    B1[Order Service] --&gt;|Emits| F1[OrderPlaced]
+    E1 --&gt; G1[(Event Bus: Kafka)]
+    F1 --&gt; G1
+  end
+
+  subgraph &quot;Query Side (Read)&quot;
+    G1 --&gt; H1[Projector]
+    H1 --&gt; I1[user_posts_view]
+    I1 --&gt; J1[GET /feed]
+  end
+
+  K1[Client] --&gt; J1
+</code></pre>
+<blockquote>
+<p>✅ <strong>CQRS</strong> separates:</p>
+<ul>
+<li><strong>Command Side</strong>: Handles writes, emits events</li>
+<li><strong>Query Side</strong>: Builds optimized read models from events</li>
+</ul>
+<p>This allows fast, scalable queries without JOINs across services.</p>
+</blockquote>
+<hr />
+<h2 id="-real-world-example-e-commerce-feed"><a class="header" href="#-real-world-example-e-commerce-feed">🧩 Real-World Example: E-Commerce Feed</a></h2>
+<p>You want to show:</p>
+<blockquote>
+<p>&quot;Show me all orders with user names and product details&quot;</p>
+</blockquote>
+<h3 id="-wrong-shared-db-with-joins"><a class="header" href="#-wrong-shared-db-with-joins">❌ Wrong: Shared DB with JOINs</a></h3>
+<pre><code class="language-sql">SELECT o.id, u.name, p.title 
+FROM orders o, users u, products p 
+WHERE o.userId = u.id AND o.productId = p.id;
+</code></pre>
+<p>→ Fails if you can't JOIN across databases.</p>
+<h3 id="-right-cqrs-with-materialized-view"><a class="header" href="#-right-cqrs-with-materialized-view">✅ Right: CQRS with Materialized View</a></h3>
+<ol>
+<li>On <code>OrderPlaced</code> event:
+<ul>
+<li>Fetch user name (via API or from event)</li>
+<li>Fetch product name (via API or from event)</li>
+<li>Insert into <code>order_summary_view</code></li>
+</ul>
+</li>
+<li>Query: <code>SELECT * FROM order_summary_view WHERE userId = 123</code></li>
+</ol>
+<p>✅ No JOINs, no cross-service calls at read time
+✅ Fast, scalable, resilient</p>
+<hr />
+<h2 id="-tools-that-help"><a class="header" href="#-tools-that-help">🛠️ Tools That Help</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><strong>Kafka / RabbitMQ</strong></td><td>Event streaming and messaging</td></tr>
+<tr><td><strong>OpenAPI / Swagger</strong></td><td>Define API contracts</td></tr>
+<tr><td><strong>Schema Registry</strong></td><td>Ensure event formats don't break</td></tr>
+<tr><td><strong>PostgreSQL / MongoDB</strong></td><td>Per-service data stores</td></tr>
+<tr><td><strong>Redis</strong></td><td>Cache frequently accessed data</td></tr>
+<tr><td><strong>Eventuate / EventStoreDB</strong></td><td>Event sourcing platforms</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-common-anti-patterns-1"><a class="header" href="#-common-anti-patterns-1">🚫 Common Anti-Patterns</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Mistake</th><th>Why It's Bad</th></tr></thead><tbody>
+<tr><td>Shared database tables</td><td>Tight coupling — one team's change breaks others</td></tr>
+<tr><td>Direct DB access from another service</td><td>Violates ownership, creates hidden dependencies</td></tr>
+<tr><td>Forcing all services to use same DB</td><td>Can't optimize for use case (e.g., graph, time-series)</td></tr>
+<tr><td>No ownership clarity</td><td>&quot;Who owns this data?&quot; → No one → chaos</td></tr>
+<tr><td>Ignoring eventual consistency</td><td>Expecting real-time sync in distributed systems</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-mentors-insight-data-ownership"><a class="header" href="#-mentors-insight-data-ownership">🧠 Mentor's Insight: Data Ownership</a></h2>
+<p>Ask: <strong>&quot;Who is the System of Record (SoR) for this data?&quot;</strong></p>
+<ul>
+<li>User email? → <code>User Service</code></li>
+<li>Order status? → <code>Order Service</code></li>
+<li>Stock level? → <code>Inventory Service</code></li>
+</ul>
+<p>✅ Only the SoR can <strong>write</strong> to that data.Others can <strong>read</strong> via API or events — but never write.</p>
+<blockquote>
+<p>📌 Rule: <strong>One service. One database. One source of truth.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-how-to-migrate-from-shared-db"><a class="header" href="#-how-to-migrate-from-shared-db">🔁 How to Migrate from Shared DB</a></h2>
+<p>If you're moving from a monolith:</p>
+<ol>
+<li><strong>Identify bounded contexts</strong> (DDD)</li>
+<li><strong>Extract services one at a time</strong></li>
+<li><strong>Create private DBs</strong> for each</li>
+<li><strong>Replace direct DB access</strong> with API calls</li>
+<li><strong>Introduce events</strong> for cross-service updates</li>
+<li><strong>Build materialized views</strong> for complex queries</li>
+</ol>
+<p>💡 Use <strong>strangler pattern</strong>: slowly route traffic to new services.</p>
+<hr />
+<h2 id="-benefits-of-decentralized-data"><a class="header" href="#-benefits-of-decentralized-data">✅ Benefits of Decentralized Data</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Benefit</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><strong>Independent Scaling</strong></td><td>Scale <code>Inventory DB</code> without touching <code>User DB</code></td></tr>
+<tr><td><strong>Technology Flexibility</strong></td><td>Use SQL, NoSQL, Graph, Time-Series per need</td></tr>
+<tr><td><strong>Team Autonomy</strong></td><td>Teams own their data — no coordination hell</td></tr>
+<tr><td><strong>Resilience</strong></td><td>One DB down → only that service affected</td></tr>
+<tr><td><strong>Easier Evolution</strong></td><td>Change <code>User</code> schema without impacting <code>Order</code></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-when-not-to-decentralize-yet"><a class="header" href="#-when-not-to-decentralize-yet">🚫 When Not to Decentralize (Yet)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Case</th><th>Recommendation</th></tr></thead><tbody>
+<tr><td>Early-stage startup</td><td>Start with shared DB, plan for split later</td></tr>
+<tr><td>Simple app, low traffic</td><td>Don't over-engineer</td></tr>
+<tr><td>No event infrastructure</td><td>Build it first before CQRS</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>🟡 Rule: <strong>Start simple, but design for decentralization.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-summary-decentralized-data-management"><a class="header" href="#-summary-decentralized-data-management">🔁 Summary: Decentralized Data Management</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Do</th><th>Don't</th></tr></thead><tbody>
+<tr><td>✅ Each service owns its database</td><td>❌ Share DB tables</td></tr>
+<tr><td>✅ Use APIs or events to get data</td><td>❌ Query another service's DB directly</td></tr>
+<tr><td>✅ Choose best DB per service</td><td>❌ Force all to use same DB</td></tr>
+<tr><td>✅ Own your data lifecycle</td><td>❌ Let others depend on your schema</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ This principle enables <strong>independent evolution, scalability, and resilience</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="-references--further-reading-2"><a class="header" href="#-references--further-reading-2">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://martinfowler.com/articles/microservices.html">Martin Fowler: Microservices</a></li>
+<li><a href="https://domainlanguage.com/ddd/">Domain-Driven Design by Eric Evans</a></li>
+<li><a href="https://www.oreilly.com/library/view/building-microservices/9781491931879/">Building Microservices by Sam Newman</a></li>
+<li><a href="https://www.confluent.io/resources/kafka-the-definitive-guide/">Kafka: The Definitive Guide</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs">CQRS Pattern - Microsoft Docs</a></li>
+</ul>
+<blockquote>
+<p>🧓 Mentor's Note:
+This principle separates real microservices from distributed monoliths.
+Every time you're tempted to write a JOIN across services, stop.
+Ask: <em>&quot;Am I violating data ownership?&quot;</em>
+Discipline here is what makes systems last.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="04---design-for-failure-and-resilience"><a class="header" href="#04---design-for-failure-and-resilience">04 - Design for Failure and Resilience</a></h1>
+<blockquote>
+<p>💡 <em>&quot;In distributed systems, failure is not a bug — it's a feature of reality.&quot;</em></p>
+</blockquote>
+<p>This principle is the <strong>mindset shift</strong> that separates junior engineers from senior system designers.</p>
+<p>Microservices run across networks, containers, databases, and cloud providers. At scale, <strong>something is always failing</strong> — a service crashes, the network slows, a database times out.</p>
+<p>If your system assumes &quot;everything works&quot;, it will fail <strong>catastrophically</strong>.</p>
+<p>But if you <strong>design for failure</strong>, your system becomes <strong>resilient</strong> — it survives, degrades gracefully, and recovers.</p>
+<p>Let's go deep.</p>
+<hr />
+<h2 id="-what-is-catastrophic-failure"><a class="header" href="#-what-is-catastrophic-failure">💥 What Is &quot;Catastrophic Failure&quot;?</a></h2>
+<blockquote>
+<p>❌ <strong>Catastrophic failure</strong> = A small problem triggers a <strong>chain reaction</strong> that brings down the <strong>entire system</strong>, even parts that could have kept working.</p>
+</blockquote>
+<p>It's not just &quot;a service is down.&quot;<br />
+It's:<br />
+➡️ One service fails →<br />
+➡️ Others wait for it →<br />
+➡️ Their threads fill up →<br />
+➡️ They start failing →<br />
+➡️ The <strong>whole app becomes unresponsive</strong> —<br />
+➡️ Even for features that had <strong>nothing to do</strong> with the original failure.</p>
+<p>This is called <strong>cascading failure</strong>.</p>
+<hr />
+<h3 id="-real-world-example-e-commerce-on-black-friday"><a class="header" href="#-real-world-example-e-commerce-on-black-friday">🔥 Real-World Example: E-Commerce on Black Friday</a></h3>
+<pre><code class="language-text">User → Clicks &quot;Place Order&quot;
+       ↓
+Order Service → Calls → Payment Service
+                         ↑
+                  Payment Service is slow (due to bug)
+                         ↑
+Order Service waits... and waits... (no timeout!)
+                         ↑
+10,000 users placing orders → 10,000 pending requests
+                         ↑
+Order Service runs out of threads → becomes unresponsive
+                         ↑
+Now even &quot;View Cart&quot; fails — even though it doesn't need Payment Service!
+</code></pre>
+<p>🎯 Result:<br />
+❌ The <strong>entire site is down</strong><br />
+❌ Because of <strong>one slow service</strong><br />
+❌ And <strong>no resilience</strong> (no timeout, no fallback)</p>
+<p>That's <strong>catastrophic failure</strong>.</p>
+<hr />
+<h2 id="-why-this-happens"><a class="header" href="#-why-this-happens">🧱 Why This Happens</a></h2>
+<p>In microservices, services talk over the <strong>network</strong> — which is <strong>unreliable by nature</strong>.</p>
+<div class="table-wrapper"><table><thead><tr><th>Wrong Assumption</th><th>Reality</th></tr></thead><tbody>
+<tr><td>&quot;The network is reliable&quot;</td><td>❌ Packets get lost, delayed, dropped</td></tr>
+<tr><td>&quot;Services always respond fast&quot;</td><td>❌ Services can be slow or crash</td></tr>
+<tr><td>&quot;One failure only affects one feature&quot;</td><td>❌ Without safeguards, it spreads</td></tr>
+</tbody></table>
+</div>
+<p>When you <strong>don't design for failure</strong>, you're building a house on sand.</p>
+<hr />
+<h2 id="-the-4-pillars-of-resilience"><a class="header" href="#-the-4-pillars-of-resilience">✅ The 4 Pillars of Resilience</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Pattern</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><strong>Timeouts</strong></td><td>Don't wait forever</td></tr>
+<tr><td><strong>Retries (with backoff)</strong></td><td>Try again, but wisely</td></tr>
+<tr><td><strong>Circuit Breaker</strong></td><td>Stop hammering a dead service</td></tr>
+<tr><td><strong>Fallbacks</strong></td><td>Keep working with degraded functionality</td></tr>
+</tbody></table>
+</div>
+<p>Let's explore each.</p>
+<hr />
+<h2 id="1-timeouts-dont-wait-forever"><a class="header" href="#1-timeouts-dont-wait-forever">1️⃣ Timeouts: Don't Wait Forever</a></h2>
+<h3 id="-problem"><a class="header" href="#-problem">❌ Problem:</a></h3>
+<pre><code class="language-js">const res = await fetch('http://payment-service/process'); // Waits... forever?
+</code></pre>
+<p>If <code>payment-service</code> hangs, your service also hangs → <strong>cascading failure</strong>.</p>
+<h3 id="-solution-set-a-timeout"><a class="header" href="#-solution-set-a-timeout">✅ Solution: Set a timeout</a></h3>
+<pre><code class="language-js">const controller = new AbortController();
+const timeoutId = setTimeout(() =&gt; controller.abort(), 5000); // 5 sec
+
+try {
+  const res = await fetch('http://payment-service/process', {
+    method: 'POST',
+    signal: controller.signal
+  });
+} catch (err) {
+  console.log('Payment service slow or down.');
+  return res.status(503).send('Payment temporarily unavailable');
+}
+</code></pre>
+<blockquote>
+<p>✅ <strong>Rule</strong>: Every external call must have a timeout.</p>
+</blockquote>
+<hr />
+<h2 id="2-retries-with-exponential-backoff"><a class="header" href="#2-retries-with-exponential-backoff">2️⃣ Retries with Exponential Backoff</a></h2>
+<p>Sometimes a failure is temporary (network glitch). A <strong>smart retry</strong> can fix it.</p>
+<h3 id="-example-retry-with-backoff"><a class="header" href="#-example-retry-with-backoff">✅ Example: Retry with Backoff</a></h3>
+<pre><code class="language-js">async function callWithRetry(url, maxRetries = 3) {
+  let lastError;
+  for (let i = 0; i &lt;= maxRetries; i++) {
+    try {
+      const res = await fetch(url, { signal: timeoutSignal(5000) });
+      if (res.ok) return await res.json();
+    } catch (err) {
+      lastError = err;
+      if (i &lt; maxRetries) {
+        const delay = Math.pow(2, i) * 1000; // 1s, 2s, 4s
+        await new Promise(r =&gt; setTimeout(r, delay));
+        console.log(`Retry ${i + 1} after ${delay}ms`);
+      }
+    }
+  }
+  throw lastError;
+}
+</code></pre>
+<h4 id="-but-beware"><a class="header" href="#-but-beware">⚠️ But Beware:</a></h4>
+<ul>
+<li>Don't retry on <code>400 Bad Request</code> (user error)</li>
+<li>Do retry on <code>503 Service Unavailable</code></li>
+<li>Use <strong>exponential backoff</strong> to avoid overwhelming the system</li>
+</ul>
+<hr />
+<h2 id="3-circuit-breaker-stop-hammering-a-dead-service"><a class="header" href="#3-circuit-breaker-stop-hammering-a-dead-service">3️⃣ Circuit Breaker: Stop Hammering a Dead Service</a></h2>
+<h3 id="-problem-1"><a class="header" href="#-problem-1">❌ Problem:</a></h3>
+<p>If <code>Payment Service</code> is down, 1000 requests per second keep failing → logs fill up, threads block.</p>
+<h3 id="-solution-circuit-breaker-pattern"><a class="header" href="#-solution-circuit-breaker-pattern">✅ Solution: Circuit Breaker Pattern</a></h3>
+<p>Like a real circuit breaker in your house:</p>
+<ul>
+<li>One short circuit → breaker trips</li>
+<li>No more power → prevents fire</li>
+<li>After timeout, tries to restore</li>
+</ul>
+<p>Same idea.</p>
+<h3 id="-three-states"><a class="header" href="#-three-states">🔄 Three States:</a></h3>
+<pre><code class="language-mermaid">graph LR
+  A[Closed] --&gt;|&quot;Failures &gt;= threshold&quot;| B[Open]
+  B --&gt;|&quot;After resetTimeout&quot;| C[Half-Open]
+  C --&gt;|Success| A
+  C --&gt;|Failure| B
+</code></pre>
+<ul>
+<li><strong>Closed</strong>: Requests go through</li>
+<li><strong>Open</strong>: All requests fail immediately</li>
+<li><strong>Half-Open</strong>: Let 1 request through to test recovery</li>
+</ul>
+<hr />
+<h3 id="-using-opossum-nodejs-circuit-breaker"><a class="header" href="#-using-opossum-nodejs-circuit-breaker">💡 Using Opossum (Node.js Circuit Breaker)</a></h3>
+<pre><code class="language-bash">npm install opossum
+</code></pre>
+<pre><code class="language-js">const circuitBreaker = require('opossum');
+const fetch = require('node-fetch');
+
+async function callPaymentService(orderId) {
+  const res = await fetch(`http://localhost:4000/process/${orderId}`);
+  if (!res.ok) throw new Error('Payment failed');
+  return res.json();
+}
+
+const options = {
+  timeout: 3000,
+  errorThresholdPercentage: 50,
+  resetTimeout: 10000
+};
+
+const breaker = new circuitBreaker(callPaymentService, options);
+
+// Fallback
+breaker.fallback(() =&gt; ({ status: 'failed', reason: 'Service down. Try later.' }));
+
+// Events
+breaker.on('open', () =&gt; console.log('🔴 Circuit opened'));
+breaker.on('halfOpen', () =&gt; console.log('🔧 Testing recovery'));
+breaker.on('close', () =&gt; console.log('✅ Circuit closed'));
+
+// Use it
+app.post('/order', async (req, res) =&gt; {
+  try {
+    const result = await breaker.fire(req.body.orderId);
+    res.json({ status: 'success', data: result });
+  } catch (err) {
+    res.status(503).json({ error: err.message });
+  }
+});
+</code></pre>
+<hr />
+<h2 id="4-fallbacks-have-a-backup-plan"><a class="header" href="#4-fallbacks-have-a-backup-plan">4️⃣ Fallbacks: Have a Backup Plan</a></h2>
+<p>When a service fails, can you still provide <strong>degraded functionality</strong>?</p>
+<h3 id="-example-return-cached-data"><a class="header" href="#-example-return-cached-data">✅ Example: Return Cached Data</a></h3>
+<pre><code class="language-js">async function getUserWithFallback(userId) {
+  try {
+    const res = await fetchWithTimeout(`http://user-service/users/${userId}`, 3000);
+    if (res.ok) return await res.json();
+  } catch (err) {
+    console.log('User service failed, using cache');
+    const cached = await getFromRedis(`user:${userId}`);
+    if (cached) return JSON.parse(cached);
+    return { id: userId, name: 'Unknown (service down)' };
+  }
+}
+</code></pre>
+<h4 id="other-fallback-ideas"><a class="header" href="#other-fallback-ideas">Other Fallback Ideas:</a></h4>
+<ul>
+<li>Show stale data</li>
+<li>Skip non-critical steps (e.g., don't send email now)</li>
+<li>Use a simpler algorithm</li>
+</ul>
+<blockquote>
+<p>✅ Goal: <strong>Keep the user experience alive</strong>, even if limited.</p>
+</blockquote>
+<hr />
+<h2 id="-tools-that-help-1"><a class="header" href="#-tools-that-help-1">🛠️ Tools That Help</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><strong>Opossum</strong></td><td>Circuit breaker for Node.js</td></tr>
+<tr><td><strong>Redis</strong></td><td>Cache fallback data</td></tr>
+<tr><td><strong>Kafka/SQS</strong></td><td>Queue failed work for later</td></tr>
+<tr><td><strong>Sentry/New Relic</strong></td><td>Monitor failures</td></tr>
+<tr><td><strong>Gremlin/Chaos Monkey</strong></td><td>Test resilience by injecting failures</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-resilience-in-practice-order-flow-example"><a class="header" href="#-resilience-in-practice-order-flow-example">🧩 Resilience in Practice: Order Flow Example</a></h2>
+<pre><code class="language-text">User places order
+  ↓
+Call Payment Service (with timeout: 5s)
+  ↓
+If timeout → Retry (3x, exponential backoff)
+  ↓
+If still fails → Open circuit breaker
+  ↓
+Return: &quot;Order saved, payment pending&quot;
+  ↓
+Publish: OrderPaymentFailed → retry later via job
+  ↓
+User can retry payment later
+</code></pre>
+<p>✅ System didn't crash.<br />
+✅ User wasn't blocked.<br />
+✅ Core function (create order) succeeded.</p>
+<p>That's <strong>resilience</strong>.</p>
+<hr />
+<h2 id="-anti-patterns-to-avoid"><a class="header" href="#-anti-patterns-to-avoid">🚫 Anti-Patterns to Avoid</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Mistake</th><th>Why Bad</th></tr></thead><tbody>
+<tr><td>No timeout</td><td>One slow service blocks all others</td></tr>
+<tr><td>Unlimited retries</td><td>DDoS your own system</td></tr>
+<tr><td>No circuit breaker</td><td>Cascading failures</td></tr>
+<tr><td>No fallback</td><td>Entire feature breaks on one failure</td></tr>
+<tr><td>Silent failures</td><td>Can't debug or alert</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-diagram-resilience-patterns-in-action"><a class="header" href="#-diagram-resilience-patterns-in-action">📊 Diagram: Resilience Patterns in Action</a></h2>
+<pre><code class="language-mermaid">graph TD
+  A[Client] --&gt; B[Order Service]
+  B --&gt; C{Call Payment Service}
+  C --&gt;|Success| D[Order Confirmed]
+  C --&gt;|Timeout| E[Retry with Backoff]
+  E --&gt;|&quot;Still Fails&quot;| F[Circuit Breaker Opens]
+  F --&gt; G[&quot;Fallback: Payment Pending&quot;]
+  G --&gt; H[Save Order]
+  H --&gt; I[Publish: Retry Later]
+  I --&gt; J[Kafka Queue]
+  J --&gt; K[Background Job]
+  K --&gt; C
+</code></pre>
+<p>✅ Even when <code>Payment Service</code> is down, the system <strong>keeps working</strong>.</p>
+<hr />
+<h2 id="-what-is-chaos-engineering"><a class="header" href="#-what-is-chaos-engineering">🧠 What Is Chaos Engineering?</a></h2>
+<blockquote>
+<p><strong>Chaos Engineering</strong> = <em>Intentionally breaking your system in production-like environments to learn how it fails — so you can fix it before it matters.</em></p>
+</blockquote>
+<p>It's like <strong>fire drills</strong> for software.</p>
+<h3 id="-examples"><a class="header" href="#-examples">🔬 Examples:</a></h3>
+<ul>
+<li>Kill a service instance</li>
+<li>Inject 2s network delay</li>
+<li>Fill up disk space</li>
+<li>Cut off database</li>
+</ul>
+<h3 id="-why-it-matters"><a class="header" href="#-why-it-matters">✅ Why It Matters:</a></h3>
+<ul>
+<li>Finds hidden dependencies</li>
+<li>Tests your monitoring</li>
+<li>Builds team confidence</li>
+</ul>
+<blockquote>
+<p>💡 Rule: <strong>Test in staging first. Never surprise users.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-what-is-idempotency"><a class="header" href="#-what-is-idempotency">🔤 What Is Idempotency?</a></h2>
+<blockquote>
+<p><strong>Idempotent</strong> = Calling the same operation multiple times has the <strong>same effect</strong> as calling it once.</p>
+</blockquote>
+<h3 id="-example"><a class="header" href="#-example">✅ Example:</a></h3>
+<pre><code class="language-http">DELETE /orders/123 → idempotent
+PUT /users/123 → idempotent
+</code></pre>
+<pre><code class="language-http">POST /orders → not idempotent
+</code></pre>
+<h3 id="-solution-use-idempotency-keys"><a class="header" href="#-solution-use-idempotency-keys">✅ Solution: Use Idempotency Keys</a></h3>
+<pre><code class="language-http">POST /orders
+Idempotency-Key: order_abc123
+</code></pre>
+<p>Server checks if key was used → if yes, returns same result → prevents duplicates.</p>
+<blockquote>
+<p>💡 Critical for payments, orders, retries.</p>
+</blockquote>
+<hr />
+<h2 id="-summary-resilience-checklist"><a class="header" href="#-summary-resilience-checklist">🎯 Summary: Resilience Checklist</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Do</th><th>Example</th></tr></thead><tbody>
+<tr><td>✅ Always use timeouts</td><td><code>fetch(url, { signal: AbortController with 5s })</code></td></tr>
+<tr><td>✅ Retry with backoff</td><td>1s, 2s, 4s — not instantly</td></tr>
+<tr><td>✅ Use circuit breakers</td><td>Stop calling a failing service</td></tr>
+<tr><td>✅ Provide fallbacks</td><td>Cache, default values, async recovery</td></tr>
+<tr><td>✅ Monitor failures</td><td>Log, alert, trace</td></tr>
+<tr><td>✅ Test failure modes</td><td>Chaos engineering</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-references--further-reading-3"><a class="header" href="#-references--further-reading-3">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://martinfowler.com/bliki/CircuitBreaker.html">Martin Fowler: Circuit Breaker</a></li>
+<li><a href="https://netflixtechblog.com/chaos-engineering-4c84b07efc56">Netflix Chaos Engineering</a></li>
+<li><a href="https://github.com/nodeshift/opossum">Opossum Docs</a></li>
+<li><a href="https://www.oreilly.com/library/view/building-microservices/9781491931879/">Building Microservices by Sam Newman</a></li>
+<li><a href="https://sre.google/books/">Google SRE Book</a></li>
+</ul>
+<blockquote>
+<p>🧓 Mentor's Note:<br />
+You can't prevent all failures.<br />
+But you can <strong>design for them</strong> — contain them, recover from them, and keep the system alive.<br />
+That's the mark of a true systems engineer.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="05---api-first-approach"><a class="header" href="#05---api-first-approach">05 - API First Approach</a></h1>
+<blockquote>
+<p>💡 <em>&quot;Design the contract before writing the code.&quot;</em></p>
+</blockquote>
+<p>The <strong>API First Approach</strong> means:</p>
+<blockquote>
+<p>✅ Define your API's structure, endpoints, and data contracts <strong>before</strong> implementing any service logic.</p>
+</blockquote>
+<p>It's the difference between:</p>
+<ul>
+<li>❌ &quot;Let me code first, I'll tell you the API later&quot; → chaos</li>
+<li>✅ &quot;Here's the API spec — agree on it, then we build&quot; → alignment</li>
+</ul>
+<p>This principle ensures <strong>clarity, consistency, and collaboration</strong> across teams.</p>
+<hr />
+<h2 id="-why-api-first-matters"><a class="header" href="#-why-api-first-matters">🧱 Why API First Matters</a></h2>
+<p>In microservices, multiple teams work in parallel:</p>
+<ul>
+<li>Backend builds services</li>
+<li>Frontend builds UI</li>
+<li>QA writes tests</li>
+<li>DevOps sets up gateways</li>
+</ul>
+<p>If there's no agreement on the API, everyone builds against different assumptions.</p>
+<h3 id="-without-api-first"><a class="header" href="#-without-api-first">❌ Without API First</a></h3>
+<pre><code class="language-text">Frontend: &quot;I assumed /users returns 'name'&quot;
+Backend: &quot;I returned 'fullName'&quot;
+QA: &quot;My tests failed&quot;
+DevOps: &quot;The gateway config is wrong&quot;
+</code></pre>
+<p>Wasted time. Re-work. Delayed launch.</p>
+<h3 id="-with-api-first"><a class="header" href="#-with-api-first">✅ With API First</a></h3>
+<pre><code class="language-text">Team agrees on OpenAPI spec
+Frontend mocks API and starts early
+Backend generates server stubs
+QA writes tests from the spec
+DevOps configures gateway in advance
+</code></pre>
+<p>✅ Everyone aligned. Zero surprises.</p>
+<hr />
+<h2 id="-api-first-vs-code-first"><a class="header" href="#-api-first-vs-code-first">🔁 API First vs Code First</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>API First</th><th>Code First</th></tr></thead><tbody>
+<tr><td>Design API spec first (e.g., OpenAPI)</td><td>Write code first</td></tr>
+<tr><td>Get team alignment before coding</td><td>No contract — everyone guesses</td></tr>
+<tr><td>Frontend can mock API and start early</td><td>Frontend waits for backend</td></tr>
+<tr><td>Clear documentation from day one</td><td>Docs written later (if at all)</td></tr>
+<tr><td>Fewer integration bugs</td><td>&quot;It works on my machine&quot; syndrome</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>💡 Think of it like <strong>architectural blueprints</strong> before building a house.</p>
+</blockquote>
+<hr />
+<h2 id="-how-to-do-api-first-step-by-step"><a class="header" href="#-how-to-do-api-first-step-by-step">🛠️ How to Do API First: Step by Step</a></h2>
+<h3 id="step-1-define-the-api-contract-before-coding"><a class="header" href="#step-1-define-the-api-contract-before-coding">Step 1: Define the API Contract (Before Coding)</a></h3>
+<p>Use <strong>OpenAPI 3.0</strong> (formerly Swagger) to define:</p>
+<pre><code class="language-yaml"># openapi.yaml
+openapi: 3.0.3
+info:
+  title: Post Service API
+  version: 1.0.0
+  description: Manages user posts and content
+
+servers:
+  - url: http://localhost:3002
+    description: Local development
+
+paths:
+  /posts:
+    get:
+      summary: Get all posts
+      responses:
+        '200':
+          description: List of posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+    post:
+      summary: Create a new post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePostRequest'
+      responses:
+        '201':
+          description: Post created
+        '400':
+          description: Invalid input
+        '503':
+          description: Service unavailable
+
+components:
+  schemas:
+    Post:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: integer
+        userName:
+          type: string
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    CreatePostRequest:
+      type: object
+      required: [userId, content, idempotencyKey]
+      properties:
+        userId:
+          type: integer
+        content:
+          type: string
+        idempotencyKey:
+          type: string
+</code></pre>
+<blockquote>
+<p>✅ This is <strong>machine-readable documentation</strong> — not a Word doc.</p>
+</blockquote>
+<hr />
+<h3 id="step-2-share--get-agreement"><a class="header" href="#step-2-share--get-agreement">Step 2: Share &amp; Get Agreement</a></h3>
+<p>Use tools to collaborate:</p>
+<ul>
+<li><strong><a href="https://editor.swagger.io">Swagger Editor</a></strong> – Edit and preview OpenAPI</li>
+<li><strong><a href="https://postman.com">Postman</a></strong> – Share collections and mocks</li>
+<li><strong><a href="https://redocly.com">Redoc</a></strong> – Generate beautiful docs</li>
+<li><strong><a href="https://stoplight.io">Stoplight</a></strong> – Full design platform</li>
+</ul>
+<p>👉 Share the spec with:</p>
+<ul>
+<li>Frontend team</li>
+<li>QA</li>
+<li>Product manager</li>
+<li>DevOps</li>
+</ul>
+<p>Get sign-off before coding.</p>
+<hr />
+<h3 id="step-3-generate-mock-server"><a class="header" href="#step-3-generate-mock-server">Step 3: Generate Mock Server</a></h3>
+<p>Use the spec to create a <strong>mock API</strong> so frontend can start working <strong>before backend exists</strong>.</p>
+<h4 id="example-use-postman-mock-server-or-swagger-ui"><a class="header" href="#example-use-postman-mock-server-or-swagger-ui">Example: Use Postman Mock Server or <code>swagger-ui</code></a></h4>
+<pre><code class="language-json">// Mock response for GET /posts
+[
+  {
+    &quot;id&quot;: &quot;60f7b1c12e3a4b001c8b4567&quot;,
+    &quot;userId&quot;: 1,
+    &quot;userName&quot;: &quot;Alice&quot;,
+    &quot;content&quot;: &quot;Hello from mock server!&quot;,
+    &quot;createdAt&quot;: &quot;2025-04-05T10:00:00Z&quot;
+  }
+]
+</code></pre>
+<p>Frontend builds against this → zero backend dependency.</p>
+<hr />
+<h3 id="step-4-generate-server-stub"><a class="header" href="#step-4-generate-server-stub">Step 4: Generate Server Stub</a></h3>
+<p>Use <strong>OpenAPI Generator</strong> to generate boilerplate code:</p>
+<pre><code class="language-bash">npx @openapitools/openapi-generator-cli generate \
+  -i openapi.yaml \
+  -g nodejs-express-server \
+  -o ./generated-server
+</code></pre>
+<p>Now you get:</p>
+<ul>
+<li>Routes already defined</li>
+<li>Request validation</li>
+<li>TypeScript types (if using <code>typescript-node</code>)</li>
+</ul>
+<p>You start coding from a strong foundation.</p>
+<hr />
+<h3 id="step-5-validate-runtime-compliance"><a class="header" href="#step-5-validate-runtime-compliance">Step 5: Validate Runtime Compliance</a></h3>
+<p>Use tools to ensure your running API matches the spec:</p>
+<ul>
+<li><strong>Express OpenAPI Validator</strong></li>
+<li><strong>Dredd</strong> – Test API against spec</li>
+<li><strong>Spectral</strong> – Lint your OpenAPI</li>
+</ul>
+<p>Example: If API returns <code>userName</code> but spec says <code>name</code> → <strong>fail the test</strong></p>
+<hr />
+<h2 id="-diagram-api-first-workflow"><a class="header" href="#-diagram-api-first-workflow">📊 Diagram: API First Workflow</a></h2>
+<pre><code class="language-mermaid">graph TD
+  A[Product: &quot;We need a Post API&quot;] --&gt; B[Design OpenAPI Spec]
+  B --&gt; C[Team Reviews: Frontend, QA, DevOps]
+  C --&gt; D[Agreement Reached]
+  D --&gt; E[Frontend: Use Mock Server]
+  D --&gt; F[Backend: Generate Server Stub]
+  D --&gt; G[QA: Write Tests from Spec]
+  D --&gt; H[DevOps: Configure Gateway]
+  E --&gt; I[Build UI Early]
+  F --&gt; J[Implement Logic]
+  J --&gt; K[Validate at Runtime]
+  K --&gt; L[Launch: Zero Integration Surprises]
+</code></pre>
+<p>✅ Everyone works in parallel.<br />
+✅ No last-minute API changes.<br />
+✅ Faster, safer delivery.</p>
+<hr />
+<h2 id="-real-world-benefits"><a class="header" href="#-real-world-benefits">🧩 Real-World Benefits</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Benefit</th><th>Explanation</th></tr></thead><tbody>
+<tr><td>✅ <strong>Team Autonomy</strong></td><td>Frontend &amp; backend work independently</td></tr>
+<tr><td>✅ <strong>Clear Contracts</strong></td><td>No ambiguity in request/response</td></tr>
+<tr><td>✅ <strong>Easier Testing</strong></td><td>Mocks, stubs, automated validation</td></tr>
+<tr><td>✅ <strong>Better Documentation</strong></td><td>Always up-to-date (source of truth)</td></tr>
+<tr><td>✅ <strong>Safer Evolution</strong></td><td>Detect breaking changes before they break</td></tr>
+<tr><td>✅ <strong>Discoverability</strong></td><td>New devs can explore APIs visually</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-anti-patterns-to-avoid-1"><a class="header" href="#-anti-patterns-to-avoid-1">🚫 Anti-Patterns to Avoid</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Mistake</th><th>Better Approach</th></tr></thead><tbody>
+<tr><td>&quot;We'll document later&quot;</td><td>Design API first</td></tr>
+<tr><td>&quot;Just look at the code&quot;</td><td>Use OpenAPI spec</td></tr>
+<tr><td>&quot;I'll tell you the endpoint&quot;</td><td>Share a link to the spec</td></tr>
+<tr><td>Manual curl testing</td><td>Use Postman collections</td></tr>
+<tr><td>No versioning</td><td>Use <code>/v1/posts</code>, plan <code>/v2</code></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-versioning-your-apis"><a class="header" href="#-versioning-your-apis">✅ Versioning Your APIs</a></h2>
+<p>Never break existing clients.</p>
+<div class="table-wrapper"><table><thead><tr><th>Version</th><th>When to Use</th></tr></thead><tbody>
+<tr><td><code>/v1/posts</code></td><td>Stable, production clients</td></tr>
+<tr><td><code>/v2/posts</code></td><td>New fields, breaking changes</td></tr>
+<tr><td>Deprecate <code>/v1</code></td><td>After migration period</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>💡 Communicate deprecation early.</p>
+</blockquote>
+<hr />
+<h2 id="-example-add-runtime-validation"><a class="header" href="#-example-add-runtime-validation">🧪 Example: Add Runtime Validation</a></h2>
+<p>Install validator:</p>
+<pre><code class="language-bash">npm install express-openapi-validator
+</code></pre>
+<p>Add to your app:</p>
+<pre><code class="language-js">const { OpenApiValidator } = require('express-openapi-validator');
+
+app.use(
+  OpenApiValidator.middleware({
+    apiSpec: './openapi.yaml',
+    validateRequests: true,
+    validateResponses: true,
+  })
+);
+
+// Error handler
+app.use((err, req, res, next) =&gt; {
+  res.status(err.status || 500).json({
+    error: err.message,
+    errors: err.errors,
+  });
+});
+</code></pre>
+<p>Now:</p>
+<ul>
+<li>Invalid request → <code>400</code></li>
+<li>Invalid response → <code>500</code> (catches bugs!)</li>
+</ul>
+<hr />
+<h2 id="-summary-api-first-mindset"><a class="header" href="#-summary-api-first-mindset">🎯 Summary: API First Mindset</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Do</th><th>Don't</th></tr></thead><tbody>
+<tr><td>✅ Design API spec before coding</td><td>❌ Code first, document later</td></tr>
+<tr><td>✅ Use OpenAPI (Swagger)</td><td>❌ Rely on口头 descriptions</td></tr>
+<tr><td>✅ Generate mocks &amp; stubs</td><td>❌ Manually write boilerplate</td></tr>
+<tr><td>✅ Validate at runtime</td><td>❌ Hope the API matches docs</td></tr>
+<tr><td>✅ Treat API as a Product</td><td>❌ Treat API as an implementation detail</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-references--further-reading-4"><a class="header" href="#-references--further-reading-4">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://spec.openapis.org/oas/v3.1.0">OpenAPI Specification</a></li>
+<li><a href="https://editor.swagger.io">Swagger Editor</a></li>
+<li><a href="https://learning.postman.com">Postman Learning Center</a></li>
+<li><a href="https://redocly.com/docs">Redoc Documentation</a></li>
+<li><a href="https://openapi-generator.tech">OpenAPI Generator</a></li>
+</ul>
+<blockquote>
+<p>🧓 Mentor's Note:<br />
+The best APIs are not built — they are <strong>designed</strong>.<br />
+Every great microservice starts with a contract, not a class.<br />
+You're not just building software — you're designing systems.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="06---single-responsibility-principle"><a class="header" href="#06---single-responsibility-principle">06 - Single Responsibility Principle</a></h1>
+<blockquote>
+<p>💡 <em>&quot;A microservice should have only one reason to change.&quot;</em></p>
+</blockquote>
+<p>This principle is the <strong>foundation of clean microservices design</strong>. It's simple to understand but <strong>hard to master</strong> in practice.</p>
+<p>The Single Responsibility Principle (SRP) means:</p>
+<blockquote>
+<p>✅ Each microservice does <strong>one thing</strong> and does it <strong>well</strong>.<br />
+❌ No service should handle multiple, unrelated responsibilities.<br />
+🎯 <strong>One reason to change</strong> = One responsibility.</p>
+</blockquote>
+<p>When you get this right, your services become <strong>focused, maintainable, and independently deployable</strong>.<br />
+When you get it wrong, you end up with <strong>bloated services</strong> that are hard to change and scale.</p>
+<p>Let's dive deep into how to apply SRP correctly in microservices.</p>
+<hr />
+<h2 id="-what-is-the-single-responsibility-principle"><a class="header" href="#-what-is-the-single-responsibility-principle">🎯 What Is the Single Responsibility Principle?</a></h2>
+<blockquote>
+<p><strong>SRP</strong> = A class (or service) should have only <strong>one reason to change</strong>.</p>
+</blockquote>
+<p>In microservices context:</p>
+<blockquote>
+<p><strong>SRP</strong> = A service should handle <strong>one business capability</strong> and have <strong>one reason to change</strong>.</p>
+</blockquote>
+<h3 id="-good-examples-high-cohesion-1"><a class="header" href="#-good-examples-high-cohesion-1">✅ Good Examples (High Cohesion)</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Single Responsibility</th><th>Reason to Change</th></tr></thead><tbody>
+<tr><td><code>User Service</code></td><td>Manage user lifecycle</td><td>User management requirements</td></tr>
+<tr><td><code>Payment Service</code></td><td>Process payments</td><td>Payment processing rules</td></tr>
+<tr><td><code>Notification Service</code></td><td>Send notifications</td><td>Notification delivery methods</td></tr>
+<tr><td><code>Inventory Service</code></td><td>Track stock levels</td><td>Inventory management rules</td></tr>
+</tbody></table>
+</div>
+<p>Each service has <strong>one clear job</strong>.</p>
+<h3 id="-bad-examples-multiple-responsibilities"><a class="header" href="#-bad-examples-multiple-responsibilities">❌ Bad Examples (Multiple Responsibilities)</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Multiple Responsibilities</th><th>Problems</th></tr></thead><tbody>
+<tr><td><code>User Service</code></td><td>Auth + Notifications + Analytics</td><td>3 reasons to change</td></tr>
+<tr><td><code>Order Service</code></td><td>Orders + Payments + Inventory</td><td>Tight coupling</td></tr>
+<tr><td><code>Notification Service</code></td><td>Notifications + User Management</td><td>Violates SRP</td></tr>
+</tbody></table>
+</div>
+<p>📌 <strong>Golden Rule</strong>:</p>
+<blockquote>
+<p>If you can't describe a service's job in <strong>one sentence</strong>, it's doing too much.</p>
+</blockquote>
+<hr />
+<h2 id="-why-srp-matters-in-microservices"><a class="header" href="#-why-srp-matters-in-microservices">🧱 Why SRP Matters in Microservices</a></h2>
+<h3 id="-benefits-of-following-srp"><a class="header" href="#-benefits-of-following-srp">✅ Benefits of Following SRP</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Benefit</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><strong>Independent Deployment</strong></td><td>Change notification logic → only redeploy Notification Service</td></tr>
+<tr><td><strong>Team Autonomy</strong></td><td>Teams can work on their service without coordination</td></tr>
+<tr><td><strong>Easier Testing</strong></td><td>Test one responsibility at a time</td></tr>
+<tr><td><strong>Better Scaling</strong></td><td>Scale notification service independently of user service</td></tr>
+<tr><td><strong>Clearer Ownership</strong></td><td>&quot;Who owns this?&quot; → Clear answer</td></tr>
+</tbody></table>
+</div>
+<h3 id="-problems-of-violating-srp"><a class="header" href="#-problems-of-violating-srp">❌ Problems of Violating SRP</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Impact</th></tr></thead><tbody>
+<tr><td><strong>Cascading Changes</strong></td><td>Change user auth → must update notification service</td></tr>
+<tr><td><strong>Deployment Coupling</strong></td><td>Can't deploy one without the other</td></tr>
+<tr><td><strong>Team Conflicts</strong></td><td>Multiple teams fighting over the same service</td></tr>
+<tr><td><strong>Testing Complexity</strong></td><td>Must test multiple responsibilities together</td></tr>
+<tr><td><strong>Scaling Issues</strong></td><td>Can't scale notification independently of auth</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-how-to-identify-srp-violations"><a class="header" href="#-how-to-identify-srp-violations">🔍 How to Identify SRP Violations</a></h2>
+<p>Ask these questions:</p>
+<h3 id="1-how-many-reasons-does-this-service-have-to-change"><a class="header" href="#1-how-many-reasons-does-this-service-have-to-change">1. <strong>&quot;How many reasons does this service have to change?&quot;</strong></a></h3>
+<pre><code class="language-text">User Service changes when:
+- User registration rules change
+- Authentication methods change  
+- User profile fields change
+- Password policies change
+→ 4 reasons = SRP violation
+</code></pre>
+<h3 id="2-can-i-describe-this-services-job-in-one-sentence"><a class="header" href="#2-can-i-describe-this-services-job-in-one-sentence">2. <strong>&quot;Can I describe this service's job in one sentence?&quot;</strong></a></h3>
+<pre><code class="language-text">❌ &quot;User Service handles authentication, notifications, and analytics&quot;
+✅ &quot;User Service manages user lifecycle and authentication&quot;
+</code></pre>
+<h3 id="3-if-i-change-x-do-i-need-to-change-this-service"><a class="header" href="#3-if-i-change-x-do-i-need-to-change-this-service">3. <strong>&quot;If I change X, do I need to change this service?&quot;</strong></a></h3>
+<pre><code class="language-text">If I change email templates → do I need to change User Service?
+If YES → SRP violation (notifications belong elsewhere)
+</code></pre>
+<hr />
+<h2 id="-how-to-apply-srp-in-practice"><a class="header" href="#-how-to-apply-srp-in-practice">🛠️ How to Apply SRP in Practice</a></h2>
+<h3 id="1-identify-business-capabilities"><a class="header" href="#1-identify-business-capabilities">1. <strong>Identify Business Capabilities</strong></a></h3>
+<p>Start with <strong>Domain-Driven Design (DDD)</strong> concepts:</p>
+<div class="table-wrapper"><table><thead><tr><th>Business Capability</th><th>Service Name</th><th>Responsibility</th></tr></thead><tbody>
+<tr><td>User Management</td><td><code>User Service</code></td><td>User lifecycle, profiles</td></tr>
+<tr><td>Authentication</td><td><code>Auth Service</code></td><td>Login, tokens, permissions</td></tr>
+<tr><td>Order Processing</td><td><code>Order Service</code></td><td>Order creation, status</td></tr>
+<tr><td>Payment Processing</td><td><code>Payment Service</code></td><td>Payment methods, processing</td></tr>
+<tr><td>Notification Delivery</td><td><code>Notification Service</code></td><td>Email, SMS, push notifications</td></tr>
+</tbody></table>
+</div>
+<h3 id="2-use-the-one-reason-to-change-test"><a class="header" href="#2-use-the-one-reason-to-change-test">2. <strong>Use the &quot;One Reason to Change&quot; Test</strong></a></h3>
+<p>For each service, ask: <strong>&quot;What would cause this service to change?&quot;</strong></p>
+<pre><code class="language-text">✅ Good: Payment Service
+- Changes when: Payment processing rules change
+- One reason = One responsibility
+
+❌ Bad: User Service  
+- Changes when: User rules change
+- Changes when: Notification rules change  
+- Changes when: Analytics rules change
+- Multiple reasons = Multiple responsibilities
+</code></pre>
+<h3 id="3-split-services-by-responsibility"><a class="header" href="#3-split-services-by-responsibility">3. <strong>Split Services by Responsibility</strong></a></h3>
+<p>When you find SRP violations, split the service:</p>
+<pre><code class="language-text">❌ Before: User Service
+- User management
+- Authentication  
+- Notifications
+- Analytics
+
+✅ After: Split into 4 services
+- User Service (user management)
+- Auth Service (authentication)
+- Notification Service (notifications)  
+- Analytics Service (user analytics)
+</code></pre>
+<hr />
+<h2 id="-real-world-example-e-commerce-platform"><a class="header" href="#-real-world-example-e-commerce-platform">🧩 Real-World Example: E-Commerce Platform</a></h2>
+<h3 id="-srp-violation-monolithic-user-service"><a class="header" href="#-srp-violation-monolithic-user-service">❌ SRP Violation: Monolithic User Service</a></h3>
+<pre><code class="language-text">User Service handles:
+├── User registration/login
+├── Password management
+├── Email notifications
+├── SMS notifications  
+├── Push notifications
+├── User analytics
+├── Profile management
+└── User preferences
+</code></pre>
+<p><strong>Problems:</strong></p>
+<ul>
+<li>8 different reasons to change</li>
+<li>Email team can't deploy without coordinating with analytics team</li>
+<li>Can't scale notifications independently</li>
+<li>Testing is complex (must test all features together)</li>
+</ul>
+<h3 id="-srp-applied-split-services"><a class="header" href="#-srp-applied-split-services">✅ SRP Applied: Split Services</a></h3>
+<pre><code class="language-text">User Service (Core)
+├── User registration
+├── Profile management
+└── User preferences
+
+Auth Service (Security)
+├── Login/logout
+├── Password management
+└── Token management
+
+Notification Service (Communication)
+├── Email notifications
+├── SMS notifications
+└── Push notifications
+
+Analytics Service (Insights)
+├── User behavior tracking
+├── User metrics
+└── User reports
+</code></pre>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Each service has one reason to change</li>
+<li>Teams can work independently</li>
+<li>Can scale and deploy independently</li>
+<li>Easier to test and maintain</li>
+</ul>
+<hr />
+<h2 id="-diagram-srp-in-action"><a class="header" href="#-diagram-srp-in-action">📊 Diagram: SRP in Action</a></h2>
+<pre><code class="language-mermaid">graph TD
+  A[Client] --&gt; B[API Gateway]
+  
+  B --&gt; C[User Service]
+  B --&gt; D[Auth Service]  
+  B --&gt; E[Notification Service]
+  B --&gt; F[Analytics Service]
+  
+  C --&gt; G[User DB]
+  D --&gt; H[Auth DB]
+  E --&gt; I[Notification DB]
+  F --&gt; J[Analytics DB]
+  
+  C --&gt;|UserCreated| K[Event Bus]
+  D --&gt;|UserLoggedIn| K
+  E --&gt;|NotificationSent| K
+  F --&gt;|AnalyticsUpdated| K
+</code></pre>
+<p>✅ Each service:</p>
+<ul>
+<li>Has its own database</li>
+<li>Handles one responsibility</li>
+<li>Can be deployed independently</li>
+<li>Communicates via events</li>
+</ul>
+<hr />
+<h2 id="-how-services-communicate-while-maintaining-srp"><a class="header" href="#-how-services-communicate-while-maintaining-srp">🔗 How Services Communicate (While Maintaining SRP)</a></h2>
+<h3 id="-option-1-api-calls"><a class="header" href="#-option-1-api-calls">✅ Option 1: API Calls</a></h3>
+<pre><code class="language-js">// User Service calls Auth Service
+const authResult = await fetch('http://auth-service/validate-token', {
+  method: 'POST',
+  body: JSON.stringify({ token: userToken })
+});
+</code></pre>
+<h3 id="-option-2-event-driven"><a class="header" href="#-option-2-event-driven">✅ Option 2: Event-Driven</a></h3>
+<pre><code class="language-js">// User Service publishes event
+await eventBus.publish('UserCreated', {
+  userId: user.id,
+  email: user.email,
+  name: user.name
+});
+
+// Notification Service listens
+eventBus.subscribe('UserCreated', async (event) =&gt; {
+  await sendWelcomeEmail(event.email, event.name);
+});
+</code></pre>
+<h3 id="-option-3-saga-pattern-for-complex-workflows"><a class="header" href="#-option-3-saga-pattern-for-complex-workflows">✅ Option 3: Saga Pattern (for Complex Workflows)</a></h3>
+<pre><code class="language-js">// Order Service orchestrates multiple services
+const saga = new OrderSaga();
+await saga.execute({
+  createOrder: () =&gt; orderService.create(orderData),
+  reserveInventory: () =&gt; inventoryService.reserve(orderData.items),
+  processPayment: () =&gt; paymentService.process(orderData.payment),
+  sendNotification: () =&gt; notificationService.sendOrderConfirmation(orderData.userId)
+});
+</code></pre>
+<hr />
+<h2 id="-common-srp-anti-patterns"><a class="header" href="#-common-srp-anti-patterns">🚫 Common SRP Anti-Patterns</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Anti-Pattern</th><th>Why It's Bad</th><th>Solution</th></tr></thead><tbody>
+<tr><td><strong>God Service</strong></td><td>One service does everything</td><td>Split by business capability</td></tr>
+<tr><td><strong>Shared Database</strong></td><td>Services share data tables</td><td>Each service owns its data</td></tr>
+<tr><td><strong>Cross-Service Dependencies</strong></td><td>Service A directly calls Service B's database</td><td>Use APIs or events</td></tr>
+<tr><td><strong>Mixed Concerns</strong></td><td>Business logic mixed with infrastructure</td><td>Separate concerns</td></tr>
+<tr><td><strong>Fat Service</strong></td><td>Service grows beyond its purpose</td><td>Extract new services</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-mentors-insight-the-change-test"><a class="header" href="#-mentors-insight-the-change-test">🧠 Mentor's Insight: The &quot;Change Test&quot;</a></h2>
+<p>The best way to identify SRP violations:</p>
+<blockquote>
+<p><strong>&quot;If I change [business requirement], how many services must I change?&quot;</strong></p>
+</blockquote>
+<h3 id="-good-srp-followed"><a class="header" href="#-good-srp-followed">✅ Good (SRP Followed):</a></h3>
+<pre><code class="language-text">Change: &quot;Add two-factor authentication&quot;
+Result: Only Auth Service needs to change
+→ SRP is followed
+</code></pre>
+<h3 id="-bad-srp-violated"><a class="header" href="#-bad-srp-violated">❌ Bad (SRP Violated):</a></h3>
+<pre><code class="language-text">Change: &quot;Add email notifications for new users&quot;  
+Result: Must change User Service, Notification Service, and Email Service
+→ SRP is violated (User Service doing too much)
+</code></pre>
+<hr />
+<h2 id="-tools-that-help-with-srp"><a class="header" href="#-tools-that-help-with-srp">🛠️ Tools That Help with SRP</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><strong>Domain-Driven Design</strong></td><td>Identify business boundaries</td></tr>
+<tr><td><strong>Event Storming</strong></td><td>Map business processes</td></tr>
+<tr><td><strong>API Gateway</strong></td><td>Route requests to appropriate services</td></tr>
+<tr><td><strong>Event Bus</strong></td><td>Decouple services via events</td></tr>
+<tr><td><strong>Service Mesh</strong></td><td>Handle cross-cutting concerns</td></tr>
+<tr><td><strong>Monitoring</strong></td><td>Track service responsibilities</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-migration-strategy-from-monolith-to-srp"><a class="header" href="#-migration-strategy-from-monolith-to-srp">🔁 Migration Strategy: From Monolith to SRP</a></h2>
+<p>If you're starting with a monolith:</p>
+<h3 id="1-identify-bounded-contexts"><a class="header" href="#1-identify-bounded-contexts">1. <strong>Identify Bounded Contexts</strong></a></h3>
+<pre><code class="language-text">Monolith contains:
+- User management
+- Order processing  
+- Payment handling
+- Notifications
+- Analytics
+</code></pre>
+<h3 id="2-extract-services-one-by-one"><a class="header" href="#2-extract-services-one-by-one">2. <strong>Extract Services One by One</strong></a></h3>
+<pre><code class="language-text">Step 1: Extract Notification Service
+Step 2: Extract Auth Service  
+Step 3: Extract Payment Service
+Step 4: Extract Analytics Service
+</code></pre>
+<h3 id="3-use-strangler-pattern"><a class="header" href="#3-use-strangler-pattern">3. <strong>Use Strangler Pattern</strong></a></h3>
+<pre><code class="language-text">Route new requests → New services
+Keep old requests → Monolith
+Gradually migrate → All to new services
+</code></pre>
+<hr />
+<h2 id="-benefits-of-following-srp-1"><a class="header" href="#-benefits-of-following-srp-1">✅ Benefits of Following SRP</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Benefit</th><th>Impact</th></tr></thead><tbody>
+<tr><td><strong>Independent Development</strong></td><td>Teams work in parallel</td></tr>
+<tr><td><strong>Independent Deployment</strong></td><td>Deploy without coordination</td></tr>
+<tr><td><strong>Independent Scaling</strong></td><td>Scale based on actual need</td></tr>
+<tr><td><strong>Easier Testing</strong></td><td>Test one responsibility</td></tr>
+<tr><td><strong>Better Monitoring</strong></td><td>Clear service boundaries</td></tr>
+<tr><td><strong>Faster Development</strong></td><td>Smaller, focused codebases</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-when-srp-might-be-overkill"><a class="header" href="#-when-srp-might-be-overkill">🚫 When SRP Might Be Overkill</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Scenario</th><th>Recommendation</th></tr></thead><tbody>
+<tr><td><strong>Early-stage startup</strong></td><td>Start with fewer services, split later</td></tr>
+<tr><td><strong>Simple application</strong></td><td>Don't over-engineer</td></tr>
+<tr><td><strong>Small team</strong></td><td>Fewer services = less complexity</td></tr>
+<tr><td><strong>Low traffic</strong></td><td>Monolith might be fine</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>🟡 Rule: <strong>Start simple, but design for SRP from the beginning.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-summary-single-responsibility-principle"><a class="header" href="#-summary-single-responsibility-principle">🎯 Summary: Single Responsibility Principle</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Do</th><th>Don't</th></tr></thead><tbody>
+<tr><td>✅ One service, one responsibility</td><td>❌ One service, multiple jobs</td></tr>
+<tr><td>✅ One reason to change</td><td>❌ Multiple reasons to change</td></tr>
+<tr><td>✅ Clear service boundaries</td><td>❌ Blurred responsibilities</td></tr>
+<tr><td>✅ Independent deployment</td><td>❌ Coupled deployments</td></tr>
+<tr><td>✅ Focused testing</td><td>❌ Complex integration tests</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ SRP enables <strong>independent development, deployment, and scaling</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="-references--further-reading-5"><a class="header" href="#-references--further-reading-5">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://www.oreilly.com/library/view/clean-code/9780136083238/">Clean Code by Robert Martin</a></li>
+<li><a href="https://domainlanguage.com/ddd/">Domain-Driven Design by Eric Evans</a></li>
+<li><a href="https://www.oreilly.com/library/view/building-microservices/9781491931879/">Building Microservices by Sam Newman</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Single-responsibility_principle">Single Responsibility Principle - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SOLID">SOLID Principles</a></li>
+</ul>
+<blockquote>
+<p>🧓 Mentor's Note:<br />
+SRP is the foundation of good microservices design.<br />
+Every time you add a feature, ask:<br />
+<em>&quot;Does this belong here, or should it be in another service?&quot;</em><br />
+Discipline in SRP today saves complexity tomorrow.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="07---define-the-scope-properly"><a class="header" href="#07---define-the-scope-properly">07 - Define the Scope Properly</a></h1>
+<blockquote>
+<p>💡 <em>&quot;Clearly defining the boundaries of each microservice is critical. Overlapping responsibilities lead to tight coupling, confusion, and chaos.&quot;</em></p>
+</blockquote>
+<p>This principle is <strong>closely related to SRP</strong>, but it's about <strong>enforcement and clarity</strong> — not just design.</p>
+<p>In microservices, <strong>unclear boundaries</strong> lead to:</p>
+<ul>
+<li>&quot;I thought that service handled it&quot;</li>
+<li>&quot;We'll just add it here&quot;</li>
+<li>&quot;Why is this service calling that one?&quot;</li>
+<li><strong>Tight coupling</strong>, even if services are technically separate</li>
+</ul>
+<blockquote>
+<p>❌ You end up with a <strong>distributed monolith</strong> — many services, but they can't evolve independently.</p>
+</blockquote>
+<p>✅ Proper scoping ensures:</p>
+<ul>
+<li>Clear ownership</li>
+<li>Minimal overlap</li>
+<li>Independent development</li>
+<li>Easier debugging and scaling</li>
+</ul>
+<p>Let's dive deep into how to define and maintain proper service scope.</p>
+<hr />
+<h2 id="-what-does-scope-mean"><a class="header" href="#-what-does-scope-mean">🔍 What Does &quot;Scope&quot; Mean?</a></h2>
+<blockquote>
+<p><strong>Scope = The clear boundary of what a service owns and what it doesn't.</strong></p>
+</blockquote>
+<p>It answers:</p>
+<ul>
+<li>What data does it own?</li>
+<li>What business capability does it handle?</li>
+<li>What events does it emit?</li>
+<li>What APIs does it expose?</li>
+<li>What problems is it responsible for solving?</li>
+</ul>
+<h3 id="-scope-vs-srp-vs-high-cohesion"><a class="header" href="#-scope-vs-srp-vs-high-cohesion">🆚 Scope vs SRP vs High Cohesion</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Focus</th><th>Question It Answers</th></tr></thead><tbody>
+<tr><td><strong>Scope</strong></td><td><strong>Boundaries</strong></td><td><em>&quot;What does this service own — and what does it not?&quot;</em></td></tr>
+<tr><td><strong>SRP</strong></td><td><strong>Change</strong></td><td><em>&quot;Why would this service need to be changed?&quot;</em></td></tr>
+<tr><td><strong>High Cohesion</strong></td><td><strong>Internal Focus</strong></td><td><em>&quot;Are all its parts working toward the same goal?&quot;</em></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-why-scope-definition-matters"><a class="header" href="#-why-scope-definition-matters">🧱 Why Scope Definition Matters</a></h2>
+<h3 id="-benefits-of-well-defined-scope"><a class="header" href="#-benefits-of-well-defined-scope">✅ Benefits of Well-Defined Scope</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Benefit</th><th>Impact</th></tr></thead><tbody>
+<tr><td><strong>Clear Ownership</strong></td><td>&quot;Who owns this?&quot; → Clear answer</td></tr>
+<tr><td><strong>Independent Development</strong></td><td>Teams work without coordination</td></tr>
+<tr><td><strong>Easier Debugging</strong></td><td>Know exactly where to look</td></tr>
+<tr><td><strong>Better Scaling</strong></td><td>Scale based on actual responsibility</td></tr>
+<tr><td><strong>Reduced Conflicts</strong></td><td>No more &quot;I thought you handled that&quot;</td></tr>
+</tbody></table>
+</div>
+<h3 id="-problems-of-poor-scope"><a class="header" href="#-problems-of-poor-scope">❌ Problems of Poor Scope</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Impact</th></tr></thead><tbody>
+<tr><td><strong>Scope Creep</strong></td><td>Service grows beyond its purpose</td></tr>
+<tr><td><strong>Tight Coupling</strong></td><td>Services can't evolve independently</td></tr>
+<tr><td><strong>Team Conflicts</strong></td><td>Multiple teams fighting over same service</td></tr>
+<tr><td><strong>Deployment Bottlenecks</strong></td><td>Must coordinate changes across teams</td></tr>
+<tr><td><strong>Confusion</strong></td><td>&quot;Where does this logic belong?&quot;</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-real-world-example-video-streaming-platform"><a class="header" href="#-real-world-example-video-streaming-platform">🧩 Real-World Example: Video Streaming Platform</a></h2>
+<h3 id="-bad-unclear-scope"><a class="header" href="#-bad-unclear-scope">❌ Bad: Unclear Scope</a></h3>
+<pre><code class="language-text">Content Service handles:
+├── Upload videos
+├── Encode videos
+├── Serve videos
+├── Handle user subscriptions
+├── Send notifications
+├── Track analytics
+└── Manage user preferences
+</code></pre>
+<p><strong>Problems:</strong></p>
+<ul>
+<li>Subscription logic changes → must redeploy Content Service</li>
+<li>Encoding pipeline changes → must redeploy</li>
+<li>Notification template changes → must redeploy</li>
+<li>Analytics requirements change → must redeploy</li>
+</ul>
+<p>🚫 <strong>One service, many reasons to change</strong> → violates scope.</p>
+<h3 id="-good-well-defined-scope"><a class="header" href="#-good-well-defined-scope">✅ Good: Well-Defined Scope</a></h3>
+<pre><code class="language-text">Content Service:
+├── Upload videos
+├── Encode videos
+└── Serve videos
+
+Subscription Service:
+├── Manage user plans
+├── Handle billing
+└── Track subscription status
+
+Notification Service:
+├── Send emails
+├── Send SMS
+└── Send push notifications
+
+Analytics Service:
+├── Track user behavior
+├── Generate reports
+└── Provide insights
+
+Recommendation Service:
+├── Analyze user preferences
+├── Suggest content
+└── Personalize experience
+</code></pre>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Change encoding? → Only <code>Content Service</code></li>
+<li>Update subscription price? → Only <code>Subscription Service</code></li>
+<li>Change recommendation algorithm? → Only <code>Recommendation Service</code></li>
+</ul>
+<p>✅ Each service has a <strong>clear, unambiguous scope</strong>.</p>
+<hr />
+<h2 id="-diagram-well-defined-service-boundaries"><a class="header" href="#-diagram-well-defined-service-boundaries">📊 Diagram: Well-Defined Service Boundaries</a></h2>
+<pre><code class="language-mermaid">graph TD
+  A[Client] --&gt; B[API Gateway]
+  B --&gt; C[Content Service]
+  B --&gt; D[Subscription Service]
+  B --&gt; E[Notification Service]
+  B --&gt; F[Recommendation Service]
+
+  C --&gt;|Event: VideoUploaded| F
+  D --&gt;|Event: SubscriptionStarted| E
+  C --&gt;|Event: VideoProcessed| E
+  F --&gt;|Event: RecommendationGenerated| E
+
+  C --&gt; G[Content DB]
+  D --&gt; H[Subscription DB]
+  E --&gt; I[Notification DB]
+  F --&gt; J[Analytics DB]
+
+  style C fill:#2196F3,stroke:#1976D2
+  style D fill:#4CAF50,stroke:#388E3C
+  style E fill:#FF9800,stroke:#F57C00
+  style F fill:#9C27B0,stroke:#7B1FA2
+</code></pre>
+<p>✅ Each service:</p>
+<ul>
+<li>Owns its domain</li>
+<li>Communicates via events</li>
+<li>Can be developed, deployed, scaled independently</li>
+</ul>
+<hr />
+<h2 id="-how-to-define-scope-5-practical-steps"><a class="header" href="#-how-to-define-scope-5-practical-steps">🛠️ How to Define Scope: 5 Practical Steps</a></h2>
+<h3 id="-step-1-use-domain-driven-design-ddd-concepts"><a class="header" href="#-step-1-use-domain-driven-design-ddd-concepts">✅ Step 1: Use Domain-Driven Design (DDD) Concepts</a></h3>
+<p>Identify <strong>Bounded Contexts</strong> — areas of the business with clear rules.</p>
+<div class="table-wrapper"><table><thead><tr><th>Bounded Context</th><th>Service</th><th>Responsibility</th></tr></thead><tbody>
+<tr><td>User Management</td><td><code>User Service</code></td><td>User lifecycle, profiles</td></tr>
+<tr><td>Order Processing</td><td><code>Order Service</code></td><td>Order creation, status</td></tr>
+<tr><td>Payment Processing</td><td><code>Payment Service</code></td><td>Payment methods, processing</td></tr>
+<tr><td>Content Management</td><td><code>Content Service</code></td><td>Content creation, serving</td></tr>
+<tr><td>Notifications</td><td><code>Notification Service</code></td><td>Message delivery</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>💡 A bounded context defines <strong>what the service owns</strong> — not just code, but <strong>language, rules, and data</strong>.</p>
+</blockquote>
+<h3 id="-step-2-write-a-service-charter"><a class="header" href="#-step-2-write-a-service-charter">✅ Step 2: Write a &quot;Service Charter&quot;</a></h3>
+<p>For each service, write a <strong>one-paragraph mission statement</strong>.</p>
+<h4 id="example-order-service-charter"><a class="header" href="#example-order-service-charter">Example: <code>Order Service</code> Charter</a></h4>
+<blockquote>
+<p>&quot;The Order Service is responsible for managing the lifecycle of customer orders, from creation to fulfillment. It validates orders, assigns order IDs, tracks status (pending, shipped, canceled), and emits events for downstream services like Payment and Inventory. It does not handle payment processing, email notifications, or inventory updates — those are handled by dedicated services.&quot;</p>
+</blockquote>
+<p><strong>Now everyone knows:</strong></p>
+<ul>
+<li>✅ What it does</li>
+<li>❌ What it doesn't do</li>
+</ul>
+<blockquote>
+<p>💡 This is your <strong>source of truth</strong>.</p>
+</blockquote>
+<h3 id="-step-3-define-ownership-data--logic"><a class="header" href="#-step-3-define-ownership-data--logic">✅ Step 3: Define Ownership (Data + Logic)</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Owns This Data</th><th>Can Other Services Read?</th><th>Can They Write?</th></tr></thead><tbody>
+<tr><td><code>User Service</code></td><td>Users, profiles</td><td>Yes (via API)</td><td>❌ No</td></tr>
+<tr><td><code>Order Service</code></td><td>Orders, line items</td><td>Yes (via API or events)</td><td>❌ No</td></tr>
+<tr><td><code>Inventory Service</code></td><td>Stock levels</td><td>Yes</td><td>❌ No</td></tr>
+<tr><td><code>Payment Service</code></td><td>Payment methods, transactions</td><td>Yes (via API)</td><td>❌ No</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ Only one service should <strong>own (CRUD)</strong> a data entity.</p>
+</blockquote>
+<h3 id="-step-4-avoid-scope-creep"><a class="header" href="#-step-4-avoid-scope-creep">✅ Step 4: Avoid &quot;Scope Creep&quot;</a></h3>
+<p>This is the <strong>silent killer</strong> of microservices.</p>
+<div class="table-wrapper"><table><thead><tr><th>Anti-Pattern</th><th>Why It Happens</th><th>Fix</th></tr></thead><tbody>
+<tr><td>&quot;We'll just add reporting to this service&quot;</td><td>Fast shortcut</td><td>Create <code>Analytics Service</code></td></tr>
+<tr><td>&quot;Let's add email here&quot;</td><td>Seems easy</td><td>Use <code>Notification Service</code></td></tr>
+<tr><td>&quot;We need caching&quot;</td><td>Performance hack</td><td>Use Redis + sidecar</td></tr>
+<tr><td>&quot;Let's call 5 services in one endpoint&quot;</td><td>Orchestration need</td><td>Use API Gateway or events</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>🚫 <strong>&quot;Just one more thing&quot;</strong> → leads to god services.</p>
+</blockquote>
+<h3 id="-step-5-use-events-to-enforce-boundaries"><a class="header" href="#-step-5-use-events-to-enforce-boundaries">✅ Step 5: Use Events to Enforce Boundaries</a></h3>
+<p>When a service emits an event, it <strong>hands off responsibility</strong>.</p>
+<h4 id="example-order-service-scope"><a class="header" href="#example-order-service-scope">Example: <code>Order Service</code> Scope</a></h4>
+<pre><code class="language-js">app.post('/orders', async (req, res) =&gt; {
+  const order = await createOrder(req.body);
+  
+  // ✅ Done. Now tell others
+  eventBus.publish('OrderPlaced', {
+    orderId: order.id,
+    userId: order.userId,
+    items: order.items,
+    total: order.total
+  });
+  
+  res.status(201).json(order);
+});
+</code></pre>
+<p><strong>Now:</strong></p>
+<ul>
+<li><code>Payment Service</code> → processes payment</li>
+<li><code>Inventory Service</code> → reduces stock</li>
+<li><code>Notification Service</code> → sends email</li>
+</ul>
+<p>✅ <code>Order Service</code> doesn't care — its job is done.</p>
+<blockquote>
+<p>✅ Events enforce scope: &quot;I emit, you react.&quot;</p>
+</blockquote>
+<hr />
+<h2 id="-common-anti-patterns-2"><a class="header" href="#-common-anti-patterns-2">🚫 Common Anti-Patterns</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Anti-Pattern</th><th>Why It's Bad</th><th>Solution</th></tr></thead><tbody>
+<tr><td><strong>God Service</strong></td><td>One service does everything</td><td>Split by business capability</td></tr>
+<tr><td><strong>Shared Database</strong></td><td>Services share data tables</td><td>Each service owns its data</td></tr>
+<tr><td><strong>Cross-Service Dependencies</strong></td><td>Service A directly calls Service B's database</td><td>Use APIs or events</td></tr>
+<tr><td><strong>Mixed Concerns</strong></td><td>Business logic mixed with infrastructure</td><td>Separate concerns</td></tr>
+<tr><td><strong>Fat Service</strong></td><td>Service grows beyond its purpose</td><td>Extract new services</td></tr>
+<tr><td><strong>No Service Charter</strong></td><td>Ambiguity leads to confusion</td><td>Write clear documentation</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-mentors-insight-the-change-test-1"><a class="header" href="#-mentors-insight-the-change-test-1">🧠 Mentor's Insight: The &quot;Change Test&quot;</a></h2>
+<p>The best way to identify scope violations:</p>
+<blockquote>
+<p><strong>&quot;If I change [business requirement], how many services must I change?&quot;</strong></p>
+</blockquote>
+<h3 id="-good-scope-well-defined"><a class="header" href="#-good-scope-well-defined">✅ Good (Scope Well-Defined):</a></h3>
+<pre><code class="language-text">Change: &quot;Add two-factor authentication&quot;
+Result: Only Auth Service needs to change
+→ Scope is well-defined
+</code></pre>
+<h3 id="-bad-scope-violated"><a class="header" href="#-bad-scope-violated">❌ Bad (Scope Violated):</a></h3>
+<pre><code class="language-text">Change: &quot;Add email notifications for new users&quot;  
+Result: Must change User Service, Notification Service, and Email Service
+→ Scope is violated (User Service doing too much)
+</code></pre>
+<h3 id="-how-to-spot-scope-issues"><a class="header" href="#-how-to-spot-scope-issues">🔍 How to Spot Scope Issues</a></h3>
+<p>Ask these questions:</p>
+<ol>
+<li>
+<p><strong>&quot;Can I explain this service's job in one sentence?&quot;</strong><br />
+→ No? Scope is too broad.</p>
+</li>
+<li>
+<p><strong>&quot;Would a change in marketing, legal, or ops require a redeploy?&quot;</strong><br />
+→ Yes? It's doing someone else's job.</p>
+</li>
+<li>
+<p><strong>&quot;Do multiple teams need to coordinate to change this service?&quot;</strong><br />
+→ Yes? It's a bottleneck.</p>
+</li>
+<li>
+<p><strong>&quot;Is this service calling more than 2–3 other services?&quot;</strong><br />
+→ Likely an orchestrator — which is a different responsibility.</p>
+</li>
+</ol>
+<blockquote>
+<p>✅ A well-scoped service is <strong>focused, owned, and independent</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="-summary-define-scope-properly"><a class="header" href="#-summary-define-scope-properly">🎯 Summary: Define Scope Properly</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Do</th><th>Don't</th></tr></thead><tbody>
+<tr><td>✅ Write a service charter</td><td>❌ Assume everyone knows</td></tr>
+<tr><td>✅ Define data ownership</td><td>❌ Share databases</td></tr>
+<tr><td>✅ Use events to hand off work</td><td>❌ Synchronously call other services for side effects</td></tr>
+<tr><td>✅ Resist scope creep</td><td>❌ Add &quot;just one more feature&quot;</td></tr>
+<tr><td>✅ Align with bounded contexts</td><td>❌ Split by technical layers</td></tr>
+<tr><td>✅ Document boundaries clearly</td><td>❌ Leave scope ambiguous</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ Clear scope = clear ownership = faster, safer evolution.</p>
+</blockquote>
+<hr />
+<h2 id="-references--further-reading-6"><a class="header" href="#-references--further-reading-6">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://domainlanguage.com/ddd/">Domain-Driven Design by Eric Evans</a></li>
+<li><a href="https://www.oreilly.com/library/view/building-microservices/9781491931879/">Building Microservices by Sam Newman</a></li>
+<li><a href="https://martinfowler.com/bliki/BoundedContext.html">Martin Fowler: Bounded Context</a></li>
+<li><a href="https://12factor.net/admin-processes">12-Factor App: Admin Processes</a></li>
+<li><a href="https://www.eventstorming.com/">Event Storming</a></li>
+</ul>
+<blockquote>
+<p>🧓 Mentor's Note:<br />
+The best systems aren't built with perfect code — they're built with <strong>perfect clarity</strong>.<br />
+Every service should have a <strong>charter</strong>, a <strong>boundary</strong>, and a <strong>purpose</strong>.<br />
+When in doubt: <strong>less is more</strong>.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="08---event-driven-communication"><a class="header" href="#08---event-driven-communication">08 - Event-Driven Communication</a></h1>
+<blockquote>
+<p>💡 <em>&quot;Microservices should communicate asynchronously whenever possible to avoid direct dependencies between services.&quot;</em></p>
+</blockquote>
+<p>This is where microservices <strong>shift from fragile chains to resilient networks</strong>.</p>
+<p>In synchronous communication (REST), services are <strong>chained</strong>:</p>
+<pre><code class="language-text">Order Service → waits for → Payment Service → waits for → Inventory Service
+</code></pre>
+<p>➡️ <strong>Tight coupling</strong><br />
+➡️ <strong>Failure propagation</strong><br />
+➡️ <strong>Slow performance</strong></p>
+<p>But with <strong>event-driven communication</strong>, services <strong>react independently</strong>:</p>
+<pre><code class="language-text">Order Service → publishes → &quot;OrderPlaced&quot;
+                             ↓
+               Payment Service (listens)
+                             ↓
+           Inventory Service (listens)
+</code></pre>
+<p>✅ No waiting<br />
+✅ No direct dependency<br />
+✅ One failure doesn't block others</p>
+<p>Let's dive deep into event-driven communication patterns and best practices.</p>
+<hr />
+<h2 id="-why-event-driven-communication"><a class="header" href="#-why-event-driven-communication">🔁 Why Event-Driven Communication?</a></h2>
+<h3 id="-benefits-of-event-driven-systems"><a class="header" href="#-benefits-of-event-driven-systems">✅ Benefits of Event-Driven Systems</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Benefit</th><th>Impact</th></tr></thead><tbody>
+<tr><td><strong>Loose Coupling</strong></td><td>Services don't know about each other</td></tr>
+<tr><td><strong>Resilience</strong></td><td>One service failure doesn't cascade</td></tr>
+<tr><td><strong>Scalability</strong></td><td>Services can scale independently</td></tr>
+<tr><td><strong>Flexibility</strong></td><td>Easy to add new consumers</td></tr>
+<tr><td><strong>Audit Trail</strong></td><td>All events are logged and replayable</td></tr>
+<tr><td><strong>Eventual Consistency</strong></td><td>Data syncs across services over time</td></tr>
+</tbody></table>
+</div>
+<h3 id="-problems-of-synchronous-communication"><a class="header" href="#-problems-of-synchronous-communication">❌ Problems of Synchronous Communication</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Impact</th></tr></thead><tbody>
+<tr><td><strong>Tight Coupling</strong></td><td>Services depend on each other directly</td></tr>
+<tr><td><strong>Failure Propagation</strong></td><td>One slow service blocks all others</td></tr>
+<tr><td><strong>Performance Bottlenecks</strong></td><td>Chain of calls = sum of all latencies</td></tr>
+<tr><td><strong>Deployment Coupling</strong></td><td>Must coordinate changes across services</td></tr>
+<tr><td><strong>Difficult Scaling</strong></td><td>Can't scale services independently</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-core-concept-events-over-requests"><a class="header" href="#-core-concept-events-over-requests">🧱 Core Concept: Events Over Requests</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Request-Driven (REST)</th><th>Event-Driven</th></tr></thead><tbody>
+<tr><td>&quot;Do this now and tell me the result&quot;</td><td>&quot;Something happened — react if you care&quot;</td></tr>
+<tr><td>Synchronous</td><td>Asynchronous</td></tr>
+<tr><td>Tight coupling</td><td>Loose coupling</td></tr>
+<tr><td>Blocking</td><td>Non-blocking</td></tr>
+<tr><td>Immediate failure</td><td>Eventually consistent</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>💡 Think:</p>
+<ul>
+<li><strong>REST</strong> = Phone call: &quot;Can you do X?&quot; → wait for answer</li>
+<li><strong>Events</strong> = Email: &quot;I did X&quot; → others react when ready</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="-diagram-event-driven-flow"><a class="header" href="#-diagram-event-driven-flow">📊 Diagram: Event-Driven Flow</a></h2>
+<pre><code class="language-mermaid">graph LR
+  A[User Service] --&gt;|publishes| B[UserCreated]
+  C[Order Service] --&gt;|publishes| D[OrderPlaced]
+  D --&gt; E[Payment Service]
+  D --&gt; F[Inventory Service]
+  D --&gt; G[Notification Service]
+  B --&gt; G
+  B --&gt; H[Analytics Service]
+
+  style A,C fill:#2196F3,stroke:#1976D2
+  style B,D fill:#FF9800,stroke:#F57C00
+  style E,F,G,H fill:#4CAF50,stroke:#388E3C
+</code></pre>
+<p>✅ Each service:</p>
+<ul>
+<li>Publishes events when <strong>something important happens</strong></li>
+<li>Other services <strong>subscribe</strong> if they care</li>
+<li>No direct calls → <strong>loose coupling</strong></li>
+</ul>
+<hr />
+<h2 id="-when-to-use-event-driven-communication"><a class="header" href="#-when-to-use-event-driven-communication">✅ When to Use Event-Driven Communication</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Use Case</th><th>Example</th></tr></thead><tbody>
+<tr><td><strong>Decouple services</strong></td><td><code>Order Service</code> doesn't call <code>Payment Service</code> directly</td></tr>
+<tr><td><strong>Handle side effects</strong></td><td>On user signup → send email, create profile</td></tr>
+<tr><td><strong>Scale independently</strong></td><td><code>Analytics Service</code> can process events slower</td></tr>
+<tr><td><strong>Ensure reliability</strong></td><td>Event survives if consumer is down</td></tr>
+<tr><td><strong>Enable audit trails</strong></td><td>All events logged → replayable history</td></tr>
+<tr><td><strong>Support eventual consistency</strong></td><td>Data sync across services</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ <strong>Golden Rule</strong>: Use events when <strong>&quot;something happened&quot;</strong> and others need to react.</p>
+</blockquote>
+<hr />
+<h2 id="-key-components-of-event-driven-systems"><a class="header" href="#-key-components-of-event-driven-systems">🔧 Key Components of Event-Driven Systems</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Component</th><th>Purpose</th><th>Tools</th></tr></thead><tbody>
+<tr><td><strong>Event</strong></td><td>A fact that something happened</td><td><code>{ &quot;type&quot;: &quot;OrderPlaced&quot;, &quot;data&quot;: { ... } }</code></td></tr>
+<tr><td><strong>Producer</strong></td><td>Service that publishes the event</td><td><code>Order Service</code></td></tr>
+<tr><td><strong>Consumer</strong></td><td>Service that reacts to the event</td><td><code>Payment Service</code></td></tr>
+<tr><td><strong>Message Broker</strong></td><td>Transport layer for events</td><td>Kafka, RabbitMQ, AWS SNS/SQS</td></tr>
+<tr><td><strong>Event Schema</strong></td><td>Contract for event structure</td><td>JSON Schema, Avro, Protobuf</td></tr>
+<tr><td><strong>Dead Letter Queue (DLQ)</strong></td><td>Catch failed messages</td><td>For debugging</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-real-world-example-e-commerce-order-flow"><a class="header" href="#-real-world-example-e-commerce-order-flow">🛠️ Real-World Example: E-Commerce Order Flow</a></h2>
+<pre><code class="language-text">User places order
+       ↓
+Order Service → saves order → publishes → OrderPlaced event
+       ↓
+[ Kafka / RabbitMQ ]
+       ↓─────────────┐
+                     ↓                             ↓
+         Payment Service (processes payment)    Inventory Service (reduces stock)
+                     ↓                             ↓
+           Notification Service (sends email)   Analytics Service (tracks sales)
+</code></pre>
+<p>✅ Now:</p>
+<ul>
+<li>If <code>Payment Service</code> is down → event waits in queue → retry later</li>
+<li>If <code>Inventory Service</code> is slow → no impact on order creation</li>
+<li>Can add <code>Fraud Detection Service</code> later — just listen to <code>OrderPlaced</code></li>
+</ul>
+<blockquote>
+<p>✅ <strong>Loose coupling, resilience, scalability</strong></p>
+</blockquote>
+<hr />
+<h2 id="-event-patterns-youll-see"><a class="header" href="#-event-patterns-youll-see">🧩 Event Patterns You'll See</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Pattern</th><th>Description</th><th>Use Case</th></tr></thead><tbody>
+<tr><td><strong>Pub/Sub</strong></td><td>One-to-many: publish event → many subscribers</td><td>Notifications, analytics</td></tr>
+<tr><td><strong>Event Sourcing</strong></td><td>Store every change as event → rebuild state later</td><td>Audit trails, time travel</td></tr>
+<tr><td><strong>CQRS</strong></td><td>Use events to build read-optimized views</td><td>Complex queries</td></tr>
+<tr><td><strong>Saga Pattern</strong></td><td>Manage distributed transactions via events</td><td>Multi-step workflows</td></tr>
+<tr><td><strong>Outbox Pattern</strong></td><td>Ensure event is sent only after DB commit</td><td>Data consistency</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-example-outbox-pattern-avoid-data-loss"><a class="header" href="#-example-outbox-pattern-avoid-data-loss">💡 Example: Outbox Pattern (Avoid Data Loss)</a></h2>
+<p><strong>Problem:</strong></p>
+<ul>
+<li>Save order to DB → success</li>
+<li>Publish <code>OrderPlaced</code> → fails → inconsistency</li>
+</ul>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Insert order into <code>orders</code> table</li>
+<li>Insert event into <code>outbox</code> table (same transaction)</li>
+<li>Background process reads <code>outbox</code> → publishes event → deletes record</li>
+</ol>
+<p>✅ Now: Event is <strong>not lost</strong> if publish fails.</p>
+<h3 id="-code-outbox-pattern-implementation"><a class="header" href="#-code-outbox-pattern-implementation">📦 Code: Outbox Pattern Implementation</a></h3>
+<pre><code class="language-js">// order-service.js
+app.post('/orders', async (req, res) =&gt; {
+  const order = req.body;
+  
+  // Start transaction
+  await db.transaction(async (trx) =&gt; {
+    // Save order
+    const savedOrder = await trx('orders').insert(order).returning('*');
+    
+    // Save event to outbox (same transaction)
+    await trx('outbox').insert({
+      event_type: 'OrderPlaced',
+      payload: JSON.stringify(savedOrder[0]),
+      created_at: new Date()
+    });
+  });
+  
+  res.status(201).json({ message: 'Order created' });
+});
+
+// outbox-processor.js (background job)
+setInterval(async () =&gt; {
+  const events = await db('outbox').select('*').limit(100);
+  
+  for (const event of events) {
+    try {
+      await eventBus.publish(event.event_type, JSON.parse(event.payload));
+      await db('outbox').where('id', event.id).del();
+    } catch (error) {
+      console.error('Failed to publish event:', error);
+    }
+  }
+}, 5000);
+</code></pre>
+<hr />
+<h2 id="-code-simple-event-publishing-nodejs--eventemitter"><a class="header" href="#-code-simple-event-publishing-nodejs--eventemitter">📦 Code: Simple Event Publishing (Node.js + EventEmitter)</a></h2>
+<blockquote>
+<p>⚠️ For production, use <strong>Kafka</strong> or <strong>RabbitMQ</strong> — but this shows the concept.</p>
+</blockquote>
+<pre><code class="language-js">// event-bus.js
+const EventEmitter = require('events');
+module.exports = new EventEmitter();
+
+// order-service.js
+const eventBus = require('./event-bus');
+
+app.post('/orders', async (req, res) =&gt; {
+  const order = await saveOrder(req.body);
+  
+  // Publish event
+  eventBus.emit('OrderPlaced', order);
+  
+  res.status(201).json(order);
+});
+
+// payment-service.js
+const eventBus = require('./event-bus');
+
+eventBus.on('OrderPlaced', async (order) =&gt; {
+  console.log('Processing payment for:', order.id);
+  await processPayment(order);
+});
+
+// inventory-service.js
+eventBus.on('OrderPlaced', async (order) =&gt; {
+  console.log('Reducing stock for:', order.productId);
+  await reduceStock(order.productId, order.qty);
+});
+</code></pre>
+<p>✅ Services don't know each other — they just react to events.</p>
+<hr />
+<h2 id="-event-driven-vs-rest-when-to-use-which"><a class="header" href="#-event-driven-vs-rest-when-to-use-which">🔄 Event-Driven vs REST: When to Use Which?</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Scenario</th><th>Best Fit</th><th>Reason</th></tr></thead><tbody>
+<tr><td>User submits form → need immediate response</td><td>✅ REST</td><td>User waits for result</td></tr>
+<tr><td>Background work (send email, update inventory)</td><td>✅ Events</td><td>Don't block user</td></tr>
+<tr><td>One service depends on another's result</td><td>✅ REST</td><td>Need immediate data</td></tr>
+<tr><td>Multiple services react to one action</td><td>✅ Events</td><td>Decouple consumers</td></tr>
+<tr><td>High throughput, decoupling</td><td>✅ Events</td><td>Scale independently</td></tr>
+<tr><td>Simple CRUD app</td><td>✅ REST</td><td>Don't over-engineer</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ <strong>Hybrid Approach</strong>:</p>
+<ul>
+<li>Use <strong>REST</strong> for user-facing actions</li>
+<li>Use <strong>Events</strong> for background workflows</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="-deep-dive-dead-letter-queue-dlq"><a class="header" href="#-deep-dive-dead-letter-queue-dlq">📬 Deep Dive: Dead Letter Queue (DLQ)</a></h2>
+<blockquote>
+<p>💡 <strong>DLQ = Dead Letter Queue</strong> — the &quot;safety net&quot; of event-driven systems.</p>
+</blockquote>
+<p>A DLQ is a <strong>special queue (or topic) where failed messages are moved so they don't block the main system</strong>.</p>
+<p>Think of it like the <strong>&quot;undeliverable mail&quot;</strong> department at a post office:</p>
+<ul>
+<li>You send a letter</li>
+<li>If it can't be delivered (wrong address, recipient gone), it goes to <strong>&quot;Dead Letters&quot;</strong></li>
+<li>It doesn't keep being re-sent every minute</li>
+<li>Someone can review it later</li>
+</ul>
+<p>Same idea in software.</p>
+<h3 id="-why-do-we-need-a-dlq"><a class="header" href="#-why-do-we-need-a-dlq">🧩 Why Do We Need a DLQ?</a></h3>
+<p>In event-driven systems, a <strong>consumer</strong> (service) reads messages from a <strong>queue</strong> (like Kafka or RabbitMQ).</p>
+<p>But sometimes, it <strong>fails to process</strong> a message:</p>
+<ul>
+<li>Invalid data</li>
+<li>Temporary DB outage</li>
+<li>Bug in code</li>
+<li>Network failure</li>
+</ul>
+<p>If we just <strong>leave the message in the queue</strong>, two bad things happen:</p>
+<ol>
+<li><strong>The consumer keeps retrying</strong> → fills logs, wastes resources</li>
+<li><strong>The queue gets stuck</strong> → new messages pile up behind it → <strong>system stops working</strong></li>
+</ol>
+<p>💥 This is called <strong>&quot;poison pill&quot;</strong> — one bad message brings down the whole system.</p>
+<h3 id="-how-dlq-solves-this"><a class="header" href="#-how-dlq-solves-this">✅ How DLQ Solves This</a></h3>
+<pre><code class="language-text">[Main Queue: OrderEvents]
+         ↓
+   [Order Service]
+         ↓
+     Success → message removed
+         ↓
+     Failure → after 3 retries → move to → [DLQ: FailedOrders]
+</code></pre>
+<p>Now:</p>
+<ul>
+<li>Main queue keeps flowing</li>
+<li>Other messages are processed normally</li>
+<li>The bad message is <strong>isolated</strong> in DLQ</li>
+<li>Engineers can <strong>inspect, fix, and replay</strong> it later</li>
+</ul>
+<p>✅ System stays alive.<br />
+✅ No cascading failure.</p>
+<h3 id="-real-world-example"><a class="header" href="#-real-world-example">📊 Real-World Example</a></h3>
+<p>Imagine this event:</p>
+<pre><code class="language-json">{
+  &quot;eventType&quot;: &quot;OrderPlaced&quot;,
+  &quot;orderId&quot;: &quot;123&quot;,
+  &quot;userId&quot;: &quot;456&quot;,
+  &quot;amount&quot;: 99.99
+}
+</code></pre>
+<p>But the <code>userId = &quot;456&quot;</code> doesn't exist in the database.</p>
+<h4 id="without-dlq"><a class="header" href="#without-dlq">Without DLQ:</a></h4>
+<ul>
+<li><code>Payment Service</code> fails to process</li>
+<li>Retries every 1s → fails again</li>
+<li>Queue stops → no other orders processed</li>
+<li>Entire payment system <strong>down</strong></li>
+</ul>
+<h4 id="with-dlq"><a class="header" href="#with-dlq">With DLQ:</a></h4>
+<ul>
+<li>After 3 retries → move to DLQ</li>
+<li>Next order (<code>orderId=124</code>) is processed normally</li>
+<li>Engineer checks DLQ → sees bad <code>userId</code></li>
+<li>Fixes data → replays message</li>
+</ul>
+<p>✅ Only one order failed — not the whole system.</p>
+<h3 id="-how-dlq-works-under-the-hood"><a class="header" href="#-how-dlq-works-under-the-hood">🛠️ How DLQ Works (Under the Hood)</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Step</th><th>What Happens</th></tr></thead><tbody>
+<tr><td>1</td><td>Consumer pulls message from main queue</td></tr>
+<tr><td>2</td><td>Processing fails (exception thrown)</td></tr>
+<tr><td>3</td><td>Message is <strong>retried</strong> (1–3 times, with delay)</td></tr>
+<tr><td>4</td><td>If still fails → <strong>moved to DLQ</strong></td></tr>
+<tr><td>5</td><td>Original message is <strong>acknowledged</strong> (removed from main queue)</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ The main queue is now <strong>unblocked</strong>.</p>
+</blockquote>
+<h3 id="-where-is-the-dlq"><a class="header" href="#-where-is-the-dlq">🔧 Where Is the DLQ?</a></h3>
+<p>It depends on your message broker:</p>
+<div class="table-wrapper"><table><thead><tr><th>Broker</th><th>DLQ Setup</th></tr></thead><tbody>
+<tr><td><strong>RabbitMQ</strong></td><td>Create a separate queue, configure <code>dead-letter-exchange</code></td></tr>
+<tr><td><strong>Kafka</strong></td><td>Use a separate topic (e.g., <code>orders.failed</code>)</td></tr>
+<tr><td><strong>AWS SQS</strong></td><td>Built-in: set <code>Redrive Policy</code> to send to DLQ</td></tr>
+<tr><td><strong>Google Pub/Sub</strong></td><td>Use a dead-letter topic</td></tr>
+</tbody></table>
+</div>
+<h3 id="-example-dlq-in-rabbitmq"><a class="header" href="#-example-dlq-in-rabbitmq">💡 Example: DLQ in RabbitMQ</a></h3>
+<pre><code class="language-js">// Define main queue with DLQ
+channel.assertQueue('orders', {
+  deadLetterExchange: 'dlx', // Send failed messages here
+  messageTtl: 60000         // Retry for 60s
+});
+
+// Define DLQ
+channel.assertQueue('orders.dlq', {
+  durable: true
+});
+
+// Bind DLQ to exchange
+channel.bindQueue('orders.dlq', 'dlx', '');
+</code></pre>
+<p>Now, if a message fails 3 times, it goes to <code>orders.dlq</code>.</p>
+<h3 id="-how-to-handle-messages-in-dlq"><a class="header" href="#-how-to-handle-messages-in-dlq">🧪 How to Handle Messages in DLQ</a></h3>
+<p>You don't ignore the DLQ — you <strong>monitor and act</strong> on it.</p>
+<h4 id="common-strategies"><a class="header" href="#common-strategies">Common Strategies:</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>Action</th><th>When to Use</th></tr></thead><tbody>
+<tr><td><strong>Manual Review</strong></td><td>Look at failed message, fix root cause</td></tr>
+<tr><td><strong>Replay After Fix</strong></td><td>Fix code → reprocess message</td></tr>
+<tr><td><strong>Auto-Recovery</strong></td><td>If transient error (e.g., DB down), retry later</td></tr>
+<tr><td><strong>Discard</strong></td><td>If message is invalid and can't be fixed</td></tr>
+<tr><td><strong>Alert</strong></td><td>Send Slack/Email alert when DLQ grows</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>🚨 Rule: <strong>DLQ size should be near zero in production.</strong><br />
+If it's growing → something is broken.</p>
+</blockquote>
+<h3 id="-monitoring-the-dlq"><a class="header" href="#-monitoring-the-dlq">📈 Monitoring the DLQ</a></h3>
+<p>Track these metrics:</p>
+<div class="table-wrapper"><table><thead><tr><th>Metric</th><th>Tool</th><th>Goal</th></tr></thead><tbody>
+<tr><td><strong>DLQ Size</strong></td><td>Prometheus, Grafana</td><td>Should be 0 or very low</td></tr>
+<tr><td><strong>Growth Rate</strong></td><td>Alert if &gt; 5 messages/min</td><td></td></tr>
+<tr><td><strong>Average Age</strong></td><td>How old are messages?</td><td></td></tr>
+<tr><td><strong>Top Error Types</strong></td><td>Group by error message</td><td></td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>💡 Set up alert:<br />
+<em>&quot;If DLQ size &gt; 10 for 5 mins → page on-call engineer&quot;</em></p>
+</blockquote>
+<h3 id="-mentors-insight-dlq-is-a-canary"><a class="header" href="#-mentors-insight-dlq-is-a-canary">🧠 Mentor's Insight: DLQ Is a Canary</a></h3>
+<blockquote>
+<p>💡 The DLQ is not just a dump — it's your <strong>early warning system</strong>.</p>
+</blockquote>
+<p>When messages appear in DLQ:</p>
+<ul>
+<li>They tell you <strong>what's broken</strong></li>
+<li>They help you <strong>find edge cases</strong></li>
+<li>They show you <strong>data quality issues</strong></li>
+</ul>
+<p>Treat your DLQ like a <strong>bug tracker for events</strong>.</p>
+<hr />
+<h2 id="-anti-patterns-to-avoid-2"><a class="header" href="#-anti-patterns-to-avoid-2">🚫 Anti-Patterns to Avoid</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Mistake</th><th>Why Bad</th><th>Solution</th></tr></thead><tbody>
+<tr><td>Direct service calls instead of events</td><td>Tight coupling</td><td>Use events for side effects</td></tr>
+<tr><td>No retry mechanism</td><td>Lost events</td><td>Implement exponential backoff</td></tr>
+<tr><td>No schema versioning</td><td>Breaking changes</td><td>Use Avro/Protobuf with registry</td></tr>
+<tr><td>Processing events synchronously</td><td>Blocks the queue</td><td>Use async processing</td></tr>
+<tr><td>No DLQ</td><td>Can't debug failed messages</td><td>Implement dead letter queue</td></tr>
+<tr><td>Ignoring ordering</td><td>Events processed out of order → corrupted state</td><td>Use partitioning by key</td></tr>
+<tr><td><strong>No DLQ</strong></td><td>One bad message blocks the whole system</td><td>Always configure DLQ for critical queues</td></tr>
+<tr><td><strong>Ignore DLQ</strong></td><td>Bugs go unnoticed</td><td>Monitor and alert on DLQ growth</td></tr>
+<tr><td><strong>No monitoring</strong></td><td>You won't know it's growing</td><td>Set up alerts and dashboards</td></tr>
+<tr><td><strong>DLQ too big</strong></td><td>Hard to debug which message failed</td><td>Keep DLQ size small, process regularly</td></tr>
+<tr><td><strong>No retry limits</strong></td><td>Infinite retry → resource exhaustion</td><td>Set reasonable retry limits (3-5 attempts)</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-mentors-insight-events-are-facts-not-commands"><a class="header" href="#-mentors-insight-events-are-facts-not-commands">🧠 Mentor's Insight: Events Are Facts, Not Commands</a></h2>
+<blockquote>
+<p>❌ Don't emit: <code>&quot;ProcessPayment&quot;</code> → it's a <strong>command</strong> (tight coupling)<br />
+✅ Do emit: <code>&quot;OrderPlaced&quot;</code> → it's a <strong>fact</strong> (loose coupling)</p>
+</blockquote>
+<p>Facts are <strong>immutable</strong> and <strong>broadcast</strong> — anyone can react.</p>
+<blockquote>
+<p>💡 Think: &quot;A sale happened&quot; → not &quot;Go process this sale&quot;</p>
+</blockquote>
+<h3 id="-good-event-names-facts"><a class="header" href="#-good-event-names-facts">✅ Good Event Names (Facts)</a></h3>
+<ul>
+<li><code>UserCreated</code></li>
+<li><code>OrderPlaced</code></li>
+<li><code>PaymentProcessed</code></li>
+<li><code>InventoryReserved</code></li>
+</ul>
+<h3 id="-bad-event-names-commands"><a class="header" href="#-bad-event-names-commands">❌ Bad Event Names (Commands)</a></h3>
+<ul>
+<li><code>CreateUser</code></li>
+<li><code>ProcessOrder</code></li>
+<li><code>SendPayment</code></li>
+<li><code>ReserveInventory</code></li>
+</ul>
+<hr />
+<h2 id="-summary-event-driven-communication"><a class="header" href="#-summary-event-driven-communication">🎯 Summary: Event-Driven Communication</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Do</th><th>Don't</th></tr></thead><tbody>
+<tr><td>✅ Use events for side effects</td><td>❌ Synchronously call other services</td></tr>
+<tr><td>✅ Emit facts (OrderPlaced), not commands</td><td>❌ Say &quot;do this&quot;</td></tr>
+<tr><td>✅ Use message brokers (Kafka/RabbitMQ)</td><td>❌ Rely on in-memory events in prod</td></tr>
+<tr><td>✅ Handle failures with retries + DLQ</td><td>❌ Let events vanish on error</td></tr>
+<tr><td>✅ Version your event schemas</td><td>❌ Change fields without warning</td></tr>
+<tr><td>✅ Monitor event lag and processing rates</td><td>❌ Ignore observability</td></tr>
+<tr><td>✅ <strong>Always configure DLQ for critical queues</strong></td><td>❌ Assume all messages will succeed</td></tr>
+<tr><td>✅ <strong>Monitor DLQ size and growth</strong></td><td>❌ Ignore it</td></tr>
+<tr><td>✅ <strong>Set retry limits (3–5 attempts)</strong></td><td>❌ Retry forever</td></tr>
+<tr><td>✅ <strong>Alert on DLQ growth</strong></td><td>❌ Wait for user report</td></tr>
+<tr><td>✅ <strong>Design a way to replay messages</strong></td><td>❌ Lose failed data</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ Event-driven systems are <strong>resilient, scalable, and evolvable</strong> — but harder to debug.<br />
+The trade-off is worth it.</p>
+</blockquote>
+<hr />
+<h2 id="-references--further-reading-7"><a class="header" href="#-references--further-reading-7">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://martinfowler.com/articles/201701-event-driven.html">Martin Fowler: Event-Driven Architecture</a></li>
+<li><a href="https://www.confluent.io/resources/kafka-the-definitive-guide/">Kafka: The Definitive Guide</a></li>
+<li><a href="https://www.manning.com/books/building-event-driven-microservices">Building Event-Driven Microservices by Adam Bellemare</a></li>
+<li><a href="https://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing by Martin Fowler</a></li>
+<li><a href="https://12factor.net/admin-processes">12-Factor App: Admin Processes</a></li>
+</ul>
+<blockquote>
+<p>🧓 Mentor's Note:<br />
+You're not just learning events — you're learning how <strong>modern systems scale</strong>.<br />
+Every time you're tempted to call another service directly, ask:<br />
+<em>&quot;Could this be an event instead?&quot;</em><br />
+That question will save you from chaos later.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="8-secure-each-service-individually"><a class="header" href="#8-secure-each-service-individually">8. Secure Each Service Individually</a></h1>
+<h3 id="principle-explained"><a class="header" href="#principle-explained">Principle Explained</a></h3>
+<p>Individual microservices must be secured with their own authentication and authorization mechanisms. Technologies like OAuth 2.0 or JWT tokens are commonly used to ensure that only authenticated and authorized requests are processed, with each service verifying the token before executing any action.</p>
+<h3 id="example-use-case"><a class="header" href="#example-use-case">Example Use Case</a></h3>
+<p>In a banking application, both the account service and the transaction service would independently require token validation. A user must possess the correct permissions, as dictated by their token, before any account or transaction data can be accessed or modified.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="9-scalability-and-independence"><a class="header" href="#9-scalability-and-independence">9. Scalability and Independence</a></h1>
+<h3 id="principle-explained-1"><a class="header" href="#principle-explained-1">Principle Explained</a></h3>
+<p>A primary advantage of microservices is their ability to scale independently based on demand. Services requiring more resources, such as an e-commerce platform's search service, can be scaled up or down without impacting other services.</p>
+<h3 id="example-use-case-1"><a class="header" href="#example-use-case-1">Example Use Case</a></h3>
+<p>An online gaming platform might need to significantly scale its matchmaking service during peak hours, while its profile management service may not require the same level of scaling at that time, demonstrating independent scalability.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="10-automate-testing-and-continuous-deployment-cicd"><a class="header" href="#10-automate-testing-and-continuous-deployment-cicd">10. Automate Testing and Continuous Deployment (CI/CD)</a></h1>
+<h3 id="principle-explained-2"><a class="header" href="#principle-explained-2">Principle Explained</a></h3>
+<p>Microservices demand robust automated testing (unit, integration, end-to-end) to ensure each service functions correctly both in isolation and in integration. Combined with Continuous Integration/Continuous Deployment (CI/CD) pipelines, this enables frequent, reliable updates and prevents changes in one service from breaking others.</p>
+<h3 id="example-use-case-2"><a class="header" href="#example-use-case-2">Example Use Case</a></h3>
+<p>In a ride-sharing application, a developer updating fare calculation logic would trigger an automated test suite. This suite would immediately verify the update's impact on dependent services (e.g., payments, trip-scheduling), ensuring issues are detected and resolved pre-deployment.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="11-manage-traffic"><a class="header" href="#11-manage-traffic">11. Manage Traffic</a></h1>
+<h3 id="principle-explained-3"><a class="header" href="#principle-explained-3">Principle Explained</a></h3>
+<p>Efficient traffic management is crucial in a microservices architecture. Techniques such as rate limiting, load balancing, and circuit breakers prevent individual services from being overwhelmed by high traffic, ensuring system stability and performance.</p>
+<h3 id="example-use-case-3"><a class="header" href="#example-use-case-3">Example Use Case</a></h3>
+<p>During breaking news, a news website experiencing traffic spikes can use load balancing to distribute requests evenly across multiple instances of its Content</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lesson-2-system-design-framework"><a class="header" href="#lesson-2-system-design-framework">Lesson 2: System Design Framework</a></h1>
+<blockquote>
+<p><strong>Target Date:</strong> Nov 02, 2024 | <strong>Status:</strong> 🚧 Coming Soon</p>
+</blockquote>
+<p>A comprehensive framework for approaching system design problems, from requirements gathering to scalability considerations.</p>
+<h2 id="-topics-in-this-lesson"><a class="header" href="#-topics-in-this-lesson">📚 Topics in This Lesson</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 1: Requirements Gathering</strong> - Understanding functional and non-functional requirements</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 2: Capacity Estimation</strong> - Back-of-the-envelope calculations for scale</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 3: System APIs</strong> - Designing clean, scalable interfaces</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 4: Database Design</strong> - Data modeling and storage strategies</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 5: High-Level Design</strong> - Creating system architecture diagrams</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 6: Detailed Design</strong> - Deep dive into components and interactions</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 7: Identifying Bottlenecks</strong> - Performance analysis and optimization</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 8: Load Balancing</strong> - Distributing traffic across servers</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 9: Caching Strategies</strong> - Improving performance with smart caching</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 10: Database Scaling</strong> - Horizontal and vertical scaling approaches</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 11: CDN and Edge Computing</strong> - Global content delivery</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 12: Security and Privacy</strong> - Protecting data and users</li>
+</ul>
+<h2 id="-learning-objectives"><a class="header" href="#-learning-objectives">🎯 Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Apply a structured approach to system design problems</li>
+<li>Estimate capacity and performance requirements</li>
+<li>Design scalable and maintainable systems</li>
+<li>Identify and resolve common bottlenecks</li>
+<li>Make informed technology choices</li>
+</ul>
+<h2 id="-prerequisites"><a class="header" href="#-prerequisites">🔗 Prerequisites</a></h2>
+<ul>
+<li><a href="lessons/lesson-02-system-design-framework/../lesson-01-microservices-design-principles/README.html">Lesson 1: Microservices Design Principles</a></li>
+<li>Basic understanding of distributed systems</li>
+<li>Familiarity with common technologies (databases, APIs, etc.)</li>
+</ul>
+<hr />
+<p><em>This lesson builds upon microservices principles to provide a comprehensive framework for designing large-scale systems.</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lesson-3-domain-driven-design--microservices-style"><a class="header" href="#lesson-3-domain-driven-design--microservices-style">Lesson 3: Domain-Driven Design – Microservices Style</a></h1>
+<blockquote>
+<p><strong>Target Date:</strong> Dec 13, 2024 | <strong>Status:</strong> 🚧 Coming Soon</p>
+</blockquote>
+<p>Applying Domain-Driven Design principles to microservices architecture for better business alignment and service boundaries.</p>
+<h2 id="-topics-in-this-lesson-1"><a class="header" href="#-topics-in-this-lesson-1">📚 Topics in This Lesson</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 1: Domain Modeling Fundamentals</strong> - Understanding business domains</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 2: Bounded Contexts</strong> - Defining service boundaries</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 3: Aggregates and Entities</strong> - Modeling business objects</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 4: Value Objects</strong> - Immutable business concepts</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 5: Domain Events</strong> - Capturing business occurrences</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 6: Context Mapping</strong> - Relationships between bounded contexts</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 7: Anti-Corruption Layers</strong> - Protecting domain integrity</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 8: Event Sourcing</strong> - Storing state changes as events</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 9: CQRS Pattern</strong> - Separating read and write models</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 10: Saga Pattern</strong> - Managing distributed transactions</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 11: Domain Services</strong> - Business logic that doesn't fit entities</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 12: Refactoring to Microservices</strong> - Breaking down monoliths</li>
+</ul>
+<h2 id="-learning-objectives-1"><a class="header" href="#-learning-objectives-1">🎯 Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Apply DDD principles to microservices design</li>
+<li>Identify proper service boundaries using bounded contexts</li>
+<li>Design domain models that reflect business reality</li>
+<li>Implement patterns for distributed domain logic</li>
+<li>Refactor monolithic applications using DDD</li>
+</ul>
+<h2 id="-prerequisites-1"><a class="header" href="#-prerequisites-1">🔗 Prerequisites</a></h2>
+<ul>
+<li><a href="lessons/lesson-03-ddd-microservices/../lesson-01-microservices-design-principles/README.html">Lesson 1: Microservices Design Principles</a></li>
+<li><a href="lessons/lesson-03-ddd-microservices/../lesson-02-system-design-framework/README.html">Lesson 2: System Design Framework</a></li>
+<li>Understanding of object-oriented design principles</li>
+</ul>
+<hr />
+<p><em>This lesson bridges the gap between business understanding and technical implementation in microservices.</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lesson-4-event-driven-architecture-essentials"><a class="header" href="#lesson-4-event-driven-architecture-essentials">Lesson 4: Event-Driven Architecture Essentials</a></h1>
+<blockquote>
+<p><strong>Target Date:</strong> Jan 02, 2025 | <strong>Status:</strong> 🚧 Coming Soon</p>
+</blockquote>
+<p>Master event-driven architecture patterns for building responsive, scalable microservices systems.</p>
+<h2 id="-topics-in-this-lesson-2"><a class="header" href="#-topics-in-this-lesson-2">📚 Topics in This Lesson</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 1: Event-Driven Fundamentals</strong> - Understanding events, messages, and asynchronous communication</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 2: Event Sourcing</strong> - Storing state changes as a sequence of events</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 3: CQRS Pattern</strong> - Command Query Responsibility Segregation</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 4: Event Streaming</strong> - Real-time data processing with streams</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 5: Message Brokers</strong> - Apache Kafka, RabbitMQ, AWS SQS/SNS</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 6: Event Store Design</strong> - Designing reliable event storage</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 7: Event Versioning</strong> - Managing schema evolution</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 8: Saga Pattern</strong> - Managing distributed transactions</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 9: Event Replay</strong> - Rebuilding state from events</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 10: Event Monitoring</strong> - Observability in event-driven systems</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 11: Event Security</strong> - Securing event-driven communications</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 12: Migration Strategies</strong> - Moving from request-response to events</li>
+</ul>
+<h2 id="-learning-objectives-2"><a class="header" href="#-learning-objectives-2">🎯 Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Design event-driven microservices architectures</li>
+<li>Implement event sourcing and CQRS patterns</li>
+<li>Choose appropriate message brokers and streaming platforms</li>
+<li>Handle event versioning and schema evolution</li>
+<li>Monitor and debug event-driven systems</li>
+</ul>
+<h2 id="-prerequisites-2"><a class="header" href="#-prerequisites-2">🔗 Prerequisites</a></h2>
+<ul>
+<li><a href="lessons/lesson-04-event-driven-architecture/../lesson-01-microservices-design-principles/README.html">Lesson 1: Microservices Design Principles</a></li>
+<li><a href="lessons/lesson-04-event-driven-architecture/../lesson-02-system-design-framework/README.html">Lesson 2: System Design Framework</a></li>
+<li><a href="lessons/lesson-04-event-driven-architecture/../lesson-03-ddd-microservices/README.html">Lesson 3: Domain-Driven Design</a></li>
+<li>Understanding of asynchronous programming concepts</li>
+</ul>
+<hr />
+<p><em>This lesson focuses on building responsive, loosely-coupled systems using event-driven patterns.</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lesson-5-api-gateway-and-service-mesh-essentials"><a class="header" href="#lesson-5-api-gateway-and-service-mesh-essentials">Lesson 5: API Gateway and Service Mesh Essentials</a></h1>
+<blockquote>
+<p><strong>Target Date:</strong> Jan 19, 2025 | <strong>Status:</strong> 🚧 Coming Soon</p>
+</blockquote>
+<p>Learn how to manage microservices communication and traffic with API gateways and service meshes.</p>
+<h2 id="-topics-in-this-lesson-3"><a class="header" href="#-topics-in-this-lesson-3">📚 Topics in This Lesson</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 1: API Gateway Fundamentals</strong> - Centralized API management</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 2: Service Mesh Architecture</strong> - Istio, Linkerd, Consul Connect</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 3: Traffic Management</strong> - Load balancing, routing, and failover</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 4: Security Policies</strong> - mTLS, authentication, and authorization</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 5: Observability</strong> - Metrics, logging, and tracing</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 6: Rate Limiting</strong> - Throttling and quota management</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 7: Circuit Breakers</strong> - Fault tolerance and resilience</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 8: Service Discovery</strong> - Dynamic service registration</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 9: Configuration Management</strong> - Centralized config distribution</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 10: Canary Deployments</strong> - Gradual traffic shifting</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 11: Multi-Cloud Strategies</strong> - Cross-cloud service mesh</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Topic 12: Performance Optimization</strong> - Caching and compression</li>
+</ul>
+<h2 id="-learning-objectives-3"><a class="header" href="#-learning-objectives-3">🎯 Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Design and implement API gateway solutions</li>
+<li>Deploy and manage service mesh infrastructure</li>
+<li>Implement advanced traffic management patterns</li>
+<li>Secure microservices communication</li>
+<li>Monitor and optimize service mesh performance</li>
+</ul>
+<h2 id="-prerequisites-3"><a class="header" href="#-prerequisites-3">🔗 Prerequisites</a></h2>
+<ul>
+<li><a href="lessons/lesson-05-api-gateway-service-mesh/../lesson-01-microservices-design-principles/README.html">Lesson 1: Microservices Design Principles</a></li>
+<li><a href="lessons/lesson-05-api-gateway-service-mesh/../lesson-02-system-design-framework/README.html">Lesson 2: System Design Framework</a></li>
+<li><a href="lessons/lesson-05-api-gateway-service-mesh/../lesson-04-event-driven-architecture/README.html">Lesson 4: Event-Driven Architecture</a></li>
+<li>Understanding of networking and load balancing concepts</li>
+</ul>
+<hr />
+<p><em>This lesson covers the infrastructure layer that enables microservices to communicate securely and efficiently.</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="overview-1"><a class="header" href="#overview-1">Overview</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="overview-2"><a class="header" href="#overview-2">Overview</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="overview-3"><a class="header" href="#overview-3">Overview</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="overview-4"><a class="header" href="#overview-4">Overview</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="overview-5"><a class="header" href="#overview-5">Overview</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="overview-6"><a class="header" href="#overview-6">Overview</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="overview-7"><a class="header" href="#overview-7">Overview</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="overview-8"><a class="header" href="#overview-8">Overview</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="aws-certified-cloud-practitioner-clf-c02"><a class="header" href="#aws-certified-cloud-practitioner-clf-c02">AWS Certified Cloud Practitioner (CLF-C02)</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="editor.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="src/assets/js/custom.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

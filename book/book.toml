@@ -16,8 +16,8 @@ preferred-dark-theme = "navy"
 git-repository-url = "https://github.com/nik132-eng/CodeToArchitecture"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/nik132-eng/CodeToArchitecture/edit/main/book/src/{path}"
-additional-css = ["assets/css/custom.css"]
-additional-js = ["assets/js/custom.js"]
+additional-css = ["src/assets/css/custom.css"]
+additional-js = ["src/assets/js/custom.js"]
 
 [output.html.search]
 enable = true
@@ -38,8 +38,8 @@ runnable = true
 line-numbers = true
 runnable-js = true
 
-[output.html.redirect]
-"/" = "introduction.html"
+# [output.html.redirect]
+# "/" = "introduction.html"
 
 [output.html.link-checker]
 follow-web-links = false

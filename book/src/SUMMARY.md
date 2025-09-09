@@ -1,6 +1,7 @@
 # Summary
 
 - [Introduction](./introduction.md)
+- [Progress Tracker](./PROGRESS.md)
 
 # 🏗️ System Design Lessons
 
@@ -20,55 +21,42 @@
 
 ## Lesson 2: System Design Framework
 - [Overview](./lessons/lesson-02-system-design-framework/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 3: Domain-Driven Design – Microservices Style
 - [Overview](./lessons/lesson-03-ddd-microservices/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 4: Event-Driven Architecture Essentials
 - [Overview](./lessons/lesson-04-event-driven-architecture/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 5: API Gateway and Service Mesh Essentials
 - [Overview](./lessons/lesson-05-api-gateway-service-mesh/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 6: Resilient Architecture Patterns for Microservices
 - [Overview](./lessons/lesson-06-resilient-architecture/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 7: Cloud and Software Architecture for IoT Systems
 - [Overview](./lessons/lesson-07-cloud-iot-architecture/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 8: Scalability Patterns for Cloud-Native Applications
 - [Overview](./lessons/lesson-08-scalability-patterns/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 9: Multi-Tenant Architecture – Designing Scalable and Secure SaaS Applications
 - [Overview](./lessons/lesson-09-multi-tenant-architecture/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 10: Data Management Strategies for Modern Applications
 - [Overview](./lessons/lesson-10-data-management/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 11: Observability and Monitoring in Distributed Systems
 - [Overview](./lessons/lesson-11-observability-monitoring/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 12: Security Architecture Fundamentals for Modern Applications
 - [Overview](./lessons/lesson-12-security-architecture/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 13: Platform Engineering and Internal Developer Platforms
 - [Overview](./lessons/lesson-13-platform-engineering/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 ## Lesson 14: Architectural Decision Records (ADRs)
 - [Overview](./lessons/lesson-14-adr/README.md)
-- [🚧 Coming Soon - Topics will be added as content is developed]
 
 # ☁️ AWS Certification Track
-- [AWS Certified Cloud Practitioner (CLF-C02)](../certifications/aws-clf-c02/README.md)
+- [AWS Certified Cloud Practitioner (CLF-C02)](./certifications/aws-clf-c02/README.md)

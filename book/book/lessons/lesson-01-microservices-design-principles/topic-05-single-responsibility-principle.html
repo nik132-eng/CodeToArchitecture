@@ -1,0 +1,581 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>5. Single Responsibility Principle - CodeToArchitecture</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="System Design Practice and AWS Certification Preparation">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../src/assets/css/custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../PROGRESS.html"><strong aria-hidden="true">2.</strong> Progress Tracker</a></li><li class="chapter-item expanded affix "><li class="part-title">🏗️ System Design Lessons</li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/index.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-01-high-cohesion-low-coupling.html"><strong aria-hidden="true">4.</strong> 1. High Cohesion & Low Coupling</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-02-decentralize-data-management.html"><strong aria-hidden="true">5.</strong> 2. Decentralize Data Management</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-03-design-for-failure-and-resilience.html"><strong aria-hidden="true">6.</strong> 3. Design for Failure & Resilience</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-04-api-first-approach.html"><strong aria-hidden="true">7.</strong> 4. API First Approach</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-05-single-responsibility-principle.html" class="active"><strong aria-hidden="true">8.</strong> 5. Single Responsibility Principle</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-06-define-scope-properly.html"><strong aria-hidden="true">9.</strong> 6. Define the Scope Properly</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-07-event-driven-communication.html"><strong aria-hidden="true">10.</strong> 7. Event-Driven Communication</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-08-secure-each-service.html"><strong aria-hidden="true">11.</strong> 8. Secure Each Service</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-09-scalability-and-independence.html"><strong aria-hidden="true">12.</strong> 9. Scalability & Independence</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-10-automate-testing-and-cicd.html"><strong aria-hidden="true">13.</strong> 10. Automate Testing & CI/CD</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-11-manage-traffic.html"><strong aria-hidden="true">14.</strong> 11. Manage Traffic</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-02-system-design-framework/index.html"><strong aria-hidden="true">15.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-03-ddd-microservices/index.html"><strong aria-hidden="true">16.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-04-event-driven-architecture/index.html"><strong aria-hidden="true">17.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-05-api-gateway-service-mesh/index.html"><strong aria-hidden="true">18.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-06-resilient-architecture/index.html"><strong aria-hidden="true">19.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-07-cloud-iot-architecture/index.html"><strong aria-hidden="true">20.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-08-scalability-patterns/index.html"><strong aria-hidden="true">21.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-09-multi-tenant-architecture/index.html"><strong aria-hidden="true">22.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-10-data-management/index.html"><strong aria-hidden="true">23.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-11-observability-monitoring/index.html"><strong aria-hidden="true">24.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-12-security-architecture/index.html"><strong aria-hidden="true">25.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-13-platform-engineering/index.html"><strong aria-hidden="true">26.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-14-adr/index.html"><strong aria-hidden="true">27.</strong> Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">☁️ AWS Certification Track</li><li class="chapter-item expanded "><a href="../../certifications/aws-clf-c02/index.html"><strong aria-hidden="true">28.</strong> AWS Certified Cloud Practitioner (CLF-C02)</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CodeToArchitecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nik132-eng/CodeToArchitecture" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/nik132-eng/CodeToArchitecture/edit/main/book/src/src/lessons/lesson-01-microservices-design-principles/topic-05-single-responsibility-principle.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="06---single-responsibility-principle"><a class="header" href="#06---single-responsibility-principle">06 - Single Responsibility Principle</a></h1>
+<blockquote>
+<p>💡 <em>&quot;A microservice should have only one reason to change.&quot;</em></p>
+</blockquote>
+<p>This principle is the <strong>foundation of clean microservices design</strong>. It's simple to understand but <strong>hard to master</strong> in practice.</p>
+<p>The Single Responsibility Principle (SRP) means:</p>
+<blockquote>
+<p>✅ Each microservice does <strong>one thing</strong> and does it <strong>well</strong>.<br />
+❌ No service should handle multiple, unrelated responsibilities.<br />
+🎯 <strong>One reason to change</strong> = One responsibility.</p>
+</blockquote>
+<p>When you get this right, your services become <strong>focused, maintainable, and independently deployable</strong>.<br />
+When you get it wrong, you end up with <strong>bloated services</strong> that are hard to change and scale.</p>
+<p>Let's dive deep into how to apply SRP correctly in microservices.</p>
+<hr />
+<h2 id="-what-is-the-single-responsibility-principle"><a class="header" href="#-what-is-the-single-responsibility-principle">🎯 What Is the Single Responsibility Principle?</a></h2>
+<blockquote>
+<p><strong>SRP</strong> = A class (or service) should have only <strong>one reason to change</strong>.</p>
+</blockquote>
+<p>In microservices context:</p>
+<blockquote>
+<p><strong>SRP</strong> = A service should handle <strong>one business capability</strong> and have <strong>one reason to change</strong>.</p>
+</blockquote>
+<h3 id="-good-examples-high-cohesion"><a class="header" href="#-good-examples-high-cohesion">✅ Good Examples (High Cohesion)</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Single Responsibility</th><th>Reason to Change</th></tr></thead><tbody>
+<tr><td><code>User Service</code></td><td>Manage user lifecycle</td><td>User management requirements</td></tr>
+<tr><td><code>Payment Service</code></td><td>Process payments</td><td>Payment processing rules</td></tr>
+<tr><td><code>Notification Service</code></td><td>Send notifications</td><td>Notification delivery methods</td></tr>
+<tr><td><code>Inventory Service</code></td><td>Track stock levels</td><td>Inventory management rules</td></tr>
+</tbody></table>
+</div>
+<p>Each service has <strong>one clear job</strong>.</p>
+<h3 id="-bad-examples-multiple-responsibilities"><a class="header" href="#-bad-examples-multiple-responsibilities">❌ Bad Examples (Multiple Responsibilities)</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Multiple Responsibilities</th><th>Problems</th></tr></thead><tbody>
+<tr><td><code>User Service</code></td><td>Auth + Notifications + Analytics</td><td>3 reasons to change</td></tr>
+<tr><td><code>Order Service</code></td><td>Orders + Payments + Inventory</td><td>Tight coupling</td></tr>
+<tr><td><code>Notification Service</code></td><td>Notifications + User Management</td><td>Violates SRP</td></tr>
+</tbody></table>
+</div>
+<p>📌 <strong>Golden Rule</strong>:</p>
+<blockquote>
+<p>If you can't describe a service's job in <strong>one sentence</strong>, it's doing too much.</p>
+</blockquote>
+<hr />
+<h2 id="-why-srp-matters-in-microservices"><a class="header" href="#-why-srp-matters-in-microservices">🧱 Why SRP Matters in Microservices</a></h2>
+<h3 id="-benefits-of-following-srp"><a class="header" href="#-benefits-of-following-srp">✅ Benefits of Following SRP</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Benefit</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><strong>Independent Deployment</strong></td><td>Change notification logic → only redeploy Notification Service</td></tr>
+<tr><td><strong>Team Autonomy</strong></td><td>Teams can work on their service without coordination</td></tr>
+<tr><td><strong>Easier Testing</strong></td><td>Test one responsibility at a time</td></tr>
+<tr><td><strong>Better Scaling</strong></td><td>Scale notification service independently of user service</td></tr>
+<tr><td><strong>Clearer Ownership</strong></td><td>&quot;Who owns this?&quot; → Clear answer</td></tr>
+</tbody></table>
+</div>
+<h3 id="-problems-of-violating-srp"><a class="header" href="#-problems-of-violating-srp">❌ Problems of Violating SRP</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Impact</th></tr></thead><tbody>
+<tr><td><strong>Cascading Changes</strong></td><td>Change user auth → must update notification service</td></tr>
+<tr><td><strong>Deployment Coupling</strong></td><td>Can't deploy one without the other</td></tr>
+<tr><td><strong>Team Conflicts</strong></td><td>Multiple teams fighting over the same service</td></tr>
+<tr><td><strong>Testing Complexity</strong></td><td>Must test multiple responsibilities together</td></tr>
+<tr><td><strong>Scaling Issues</strong></td><td>Can't scale notification independently of auth</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-how-to-identify-srp-violations"><a class="header" href="#-how-to-identify-srp-violations">🔍 How to Identify SRP Violations</a></h2>
+<p>Ask these questions:</p>
+<h3 id="1-how-many-reasons-does-this-service-have-to-change"><a class="header" href="#1-how-many-reasons-does-this-service-have-to-change">1. <strong>&quot;How many reasons does this service have to change?&quot;</strong></a></h3>
+<pre><code class="language-text">User Service changes when:
+- User registration rules change
+- Authentication methods change  
+- User profile fields change
+- Password policies change
+→ 4 reasons = SRP violation
+</code></pre>
+<h3 id="2-can-i-describe-this-services-job-in-one-sentence"><a class="header" href="#2-can-i-describe-this-services-job-in-one-sentence">2. <strong>&quot;Can I describe this service's job in one sentence?&quot;</strong></a></h3>
+<pre><code class="language-text">❌ &quot;User Service handles authentication, notifications, and analytics&quot;
+✅ &quot;User Service manages user lifecycle and authentication&quot;
+</code></pre>
+<h3 id="3-if-i-change-x-do-i-need-to-change-this-service"><a class="header" href="#3-if-i-change-x-do-i-need-to-change-this-service">3. <strong>&quot;If I change X, do I need to change this service?&quot;</strong></a></h3>
+<pre><code class="language-text">If I change email templates → do I need to change User Service?
+If YES → SRP violation (notifications belong elsewhere)
+</code></pre>
+<hr />
+<h2 id="-how-to-apply-srp-in-practice"><a class="header" href="#-how-to-apply-srp-in-practice">🛠️ How to Apply SRP in Practice</a></h2>
+<h3 id="1-identify-business-capabilities"><a class="header" href="#1-identify-business-capabilities">1. <strong>Identify Business Capabilities</strong></a></h3>
+<p>Start with <strong>Domain-Driven Design (DDD)</strong> concepts:</p>
+<div class="table-wrapper"><table><thead><tr><th>Business Capability</th><th>Service Name</th><th>Responsibility</th></tr></thead><tbody>
+<tr><td>User Management</td><td><code>User Service</code></td><td>User lifecycle, profiles</td></tr>
+<tr><td>Authentication</td><td><code>Auth Service</code></td><td>Login, tokens, permissions</td></tr>
+<tr><td>Order Processing</td><td><code>Order Service</code></td><td>Order creation, status</td></tr>
+<tr><td>Payment Processing</td><td><code>Payment Service</code></td><td>Payment methods, processing</td></tr>
+<tr><td>Notification Delivery</td><td><code>Notification Service</code></td><td>Email, SMS, push notifications</td></tr>
+</tbody></table>
+</div>
+<h3 id="2-use-the-one-reason-to-change-test"><a class="header" href="#2-use-the-one-reason-to-change-test">2. <strong>Use the &quot;One Reason to Change&quot; Test</strong></a></h3>
+<p>For each service, ask: <strong>&quot;What would cause this service to change?&quot;</strong></p>
+<pre><code class="language-text">✅ Good: Payment Service
+- Changes when: Payment processing rules change
+- One reason = One responsibility
+
+❌ Bad: User Service  
+- Changes when: User rules change
+- Changes when: Notification rules change  
+- Changes when: Analytics rules change
+- Multiple reasons = Multiple responsibilities
+</code></pre>
+<h3 id="3-split-services-by-responsibility"><a class="header" href="#3-split-services-by-responsibility">3. <strong>Split Services by Responsibility</strong></a></h3>
+<p>When you find SRP violations, split the service:</p>
+<pre><code class="language-text">❌ Before: User Service
+- User management
+- Authentication  
+- Notifications
+- Analytics
+
+✅ After: Split into 4 services
+- User Service (user management)
+- Auth Service (authentication)
+- Notification Service (notifications)  
+- Analytics Service (user analytics)
+</code></pre>
+<hr />
+<h2 id="-real-world-example-e-commerce-platform"><a class="header" href="#-real-world-example-e-commerce-platform">🧩 Real-World Example: E-Commerce Platform</a></h2>
+<h3 id="-srp-violation-monolithic-user-service"><a class="header" href="#-srp-violation-monolithic-user-service">❌ SRP Violation: Monolithic User Service</a></h3>
+<pre><code class="language-text">User Service handles:
+├── User registration/login
+├── Password management
+├── Email notifications
+├── SMS notifications  
+├── Push notifications
+├── User analytics
+├── Profile management
+└── User preferences
+</code></pre>
+<p><strong>Problems:</strong></p>
+<ul>
+<li>8 different reasons to change</li>
+<li>Email team can't deploy without coordinating with analytics team</li>
+<li>Can't scale notifications independently</li>
+<li>Testing is complex (must test all features together)</li>
+</ul>
+<h3 id="-srp-applied-split-services"><a class="header" href="#-srp-applied-split-services">✅ SRP Applied: Split Services</a></h3>
+<pre><code class="language-text">User Service (Core)
+├── User registration
+├── Profile management
+└── User preferences
+
+Auth Service (Security)
+├── Login/logout
+├── Password management
+└── Token management
+
+Notification Service (Communication)
+├── Email notifications
+├── SMS notifications
+└── Push notifications
+
+Analytics Service (Insights)
+├── User behavior tracking
+├── User metrics
+└── User reports
+</code></pre>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Each service has one reason to change</li>
+<li>Teams can work independently</li>
+<li>Can scale and deploy independently</li>
+<li>Easier to test and maintain</li>
+</ul>
+<hr />
+<h2 id="-diagram-srp-in-action"><a class="header" href="#-diagram-srp-in-action">📊 Diagram: SRP in Action</a></h2>
+<pre><code class="language-mermaid">graph TD
+  A[Client] --&gt; B[API Gateway]
+  
+  B --&gt; C[User Service]
+  B --&gt; D[Auth Service]  
+  B --&gt; E[Notification Service]
+  B --&gt; F[Analytics Service]
+  
+  C --&gt; G[User DB]
+  D --&gt; H[Auth DB]
+  E --&gt; I[Notification DB]
+  F --&gt; J[Analytics DB]
+  
+  C --&gt;|UserCreated| K[Event Bus]
+  D --&gt;|UserLoggedIn| K
+  E --&gt;|NotificationSent| K
+  F --&gt;|AnalyticsUpdated| K
+</code></pre>
+<p>✅ Each service:</p>
+<ul>
+<li>Has its own database</li>
+<li>Handles one responsibility</li>
+<li>Can be deployed independently</li>
+<li>Communicates via events</li>
+</ul>
+<hr />
+<h2 id="-how-services-communicate-while-maintaining-srp"><a class="header" href="#-how-services-communicate-while-maintaining-srp">🔗 How Services Communicate (While Maintaining SRP)</a></h2>
+<h3 id="-option-1-api-calls"><a class="header" href="#-option-1-api-calls">✅ Option 1: API Calls</a></h3>
+<pre><code class="language-js">// User Service calls Auth Service
+const authResult = await fetch('http://auth-service/validate-token', {
+  method: 'POST',
+  body: JSON.stringify({ token: userToken })
+});
+</code></pre>
+<h3 id="-option-2-event-driven"><a class="header" href="#-option-2-event-driven">✅ Option 2: Event-Driven</a></h3>
+<pre><code class="language-js">// User Service publishes event
+await eventBus.publish('UserCreated', {
+  userId: user.id,
+  email: user.email,
+  name: user.name
+});
+
+// Notification Service listens
+eventBus.subscribe('UserCreated', async (event) =&gt; {
+  await sendWelcomeEmail(event.email, event.name);
+});
+</code></pre>
+<h3 id="-option-3-saga-pattern-for-complex-workflows"><a class="header" href="#-option-3-saga-pattern-for-complex-workflows">✅ Option 3: Saga Pattern (for Complex Workflows)</a></h3>
+<pre><code class="language-js">// Order Service orchestrates multiple services
+const saga = new OrderSaga();
+await saga.execute({
+  createOrder: () =&gt; orderService.create(orderData),
+  reserveInventory: () =&gt; inventoryService.reserve(orderData.items),
+  processPayment: () =&gt; paymentService.process(orderData.payment),
+  sendNotification: () =&gt; notificationService.sendOrderConfirmation(orderData.userId)
+});
+</code></pre>
+<hr />
+<h2 id="-common-srp-anti-patterns"><a class="header" href="#-common-srp-anti-patterns">🚫 Common SRP Anti-Patterns</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Anti-Pattern</th><th>Why It's Bad</th><th>Solution</th></tr></thead><tbody>
+<tr><td><strong>God Service</strong></td><td>One service does everything</td><td>Split by business capability</td></tr>
+<tr><td><strong>Shared Database</strong></td><td>Services share data tables</td><td>Each service owns its data</td></tr>
+<tr><td><strong>Cross-Service Dependencies</strong></td><td>Service A directly calls Service B's database</td><td>Use APIs or events</td></tr>
+<tr><td><strong>Mixed Concerns</strong></td><td>Business logic mixed with infrastructure</td><td>Separate concerns</td></tr>
+<tr><td><strong>Fat Service</strong></td><td>Service grows beyond its purpose</td><td>Extract new services</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-mentors-insight-the-change-test"><a class="header" href="#-mentors-insight-the-change-test">🧠 Mentor's Insight: The &quot;Change Test&quot;</a></h2>
+<p>The best way to identify SRP violations:</p>
+<blockquote>
+<p><strong>&quot;If I change [business requirement], how many services must I change?&quot;</strong></p>
+</blockquote>
+<h3 id="-good-srp-followed"><a class="header" href="#-good-srp-followed">✅ Good (SRP Followed):</a></h3>
+<pre><code class="language-text">Change: &quot;Add two-factor authentication&quot;
+Result: Only Auth Service needs to change
+→ SRP is followed
+</code></pre>
+<h3 id="-bad-srp-violated"><a class="header" href="#-bad-srp-violated">❌ Bad (SRP Violated):</a></h3>
+<pre><code class="language-text">Change: &quot;Add email notifications for new users&quot;  
+Result: Must change User Service, Notification Service, and Email Service
+→ SRP is violated (User Service doing too much)
+</code></pre>
+<hr />
+<h2 id="-tools-that-help-with-srp"><a class="header" href="#-tools-that-help-with-srp">🛠️ Tools That Help with SRP</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><strong>Domain-Driven Design</strong></td><td>Identify business boundaries</td></tr>
+<tr><td><strong>Event Storming</strong></td><td>Map business processes</td></tr>
+<tr><td><strong>API Gateway</strong></td><td>Route requests to appropriate services</td></tr>
+<tr><td><strong>Event Bus</strong></td><td>Decouple services via events</td></tr>
+<tr><td><strong>Service Mesh</strong></td><td>Handle cross-cutting concerns</td></tr>
+<tr><td><strong>Monitoring</strong></td><td>Track service responsibilities</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-migration-strategy-from-monolith-to-srp"><a class="header" href="#-migration-strategy-from-monolith-to-srp">🔁 Migration Strategy: From Monolith to SRP</a></h2>
+<p>If you're starting with a monolith:</p>
+<h3 id="1-identify-bounded-contexts"><a class="header" href="#1-identify-bounded-contexts">1. <strong>Identify Bounded Contexts</strong></a></h3>
+<pre><code class="language-text">Monolith contains:
+- User management
+- Order processing  
+- Payment handling
+- Notifications
+- Analytics
+</code></pre>
+<h3 id="2-extract-services-one-by-one"><a class="header" href="#2-extract-services-one-by-one">2. <strong>Extract Services One by One</strong></a></h3>
+<pre><code class="language-text">Step 1: Extract Notification Service
+Step 2: Extract Auth Service  
+Step 3: Extract Payment Service
+Step 4: Extract Analytics Service
+</code></pre>
+<h3 id="3-use-strangler-pattern"><a class="header" href="#3-use-strangler-pattern">3. <strong>Use Strangler Pattern</strong></a></h3>
+<pre><code class="language-text">Route new requests → New services
+Keep old requests → Monolith
+Gradually migrate → All to new services
+</code></pre>
+<hr />
+<h2 id="-benefits-of-following-srp-1"><a class="header" href="#-benefits-of-following-srp-1">✅ Benefits of Following SRP</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Benefit</th><th>Impact</th></tr></thead><tbody>
+<tr><td><strong>Independent Development</strong></td><td>Teams work in parallel</td></tr>
+<tr><td><strong>Independent Deployment</strong></td><td>Deploy without coordination</td></tr>
+<tr><td><strong>Independent Scaling</strong></td><td>Scale based on actual need</td></tr>
+<tr><td><strong>Easier Testing</strong></td><td>Test one responsibility</td></tr>
+<tr><td><strong>Better Monitoring</strong></td><td>Clear service boundaries</td></tr>
+<tr><td><strong>Faster Development</strong></td><td>Smaller, focused codebases</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-when-srp-might-be-overkill"><a class="header" href="#-when-srp-might-be-overkill">🚫 When SRP Might Be Overkill</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Scenario</th><th>Recommendation</th></tr></thead><tbody>
+<tr><td><strong>Early-stage startup</strong></td><td>Start with fewer services, split later</td></tr>
+<tr><td><strong>Simple application</strong></td><td>Don't over-engineer</td></tr>
+<tr><td><strong>Small team</strong></td><td>Fewer services = less complexity</td></tr>
+<tr><td><strong>Low traffic</strong></td><td>Monolith might be fine</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>🟡 Rule: <strong>Start simple, but design for SRP from the beginning.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-summary-single-responsibility-principle"><a class="header" href="#-summary-single-responsibility-principle">🎯 Summary: Single Responsibility Principle</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Do</th><th>Don't</th></tr></thead><tbody>
+<tr><td>✅ One service, one responsibility</td><td>❌ One service, multiple jobs</td></tr>
+<tr><td>✅ One reason to change</td><td>❌ Multiple reasons to change</td></tr>
+<tr><td>✅ Clear service boundaries</td><td>❌ Blurred responsibilities</td></tr>
+<tr><td>✅ Independent deployment</td><td>❌ Coupled deployments</td></tr>
+<tr><td>✅ Focused testing</td><td>❌ Complex integration tests</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>✅ SRP enables <strong>independent development, deployment, and scaling</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="-references--further-reading"><a class="header" href="#-references--further-reading">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://www.oreilly.com/library/view/clean-code/9780136083238/">Clean Code by Robert Martin</a></li>
+<li><a href="https://domainlanguage.com/ddd/">Domain-Driven Design by Eric Evans</a></li>
+<li><a href="https://www.oreilly.com/library/view/building-microservices/9781491931879/">Building Microservices by Sam Newman</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Single-responsibility_principle">Single Responsibility Principle - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SOLID">SOLID Principles</a></li>
+</ul>
+<blockquote>
+<p>🧓 Mentor's Note:<br />
+SRP is the foundation of good microservices design.<br />
+Every time you add a feature, ask:<br />
+<em>&quot;Does this belong here, or should it be in another service?&quot;</em><br />
+Discipline in SRP today saves complexity tomorrow.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../lessons/lesson-01-microservices-design-principles/topic-04-api-first-approach.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../lessons/lesson-01-microservices-design-principles/topic-06-define-scope-properly.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../lessons/lesson-01-microservices-design-principles/topic-04-api-first-approach.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../lessons/lesson-01-microservices-design-principles/topic-06-define-scope-properly.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../src/assets/js/custom.js"></script>
+
+
+    </div>
+    </body>
+</html>

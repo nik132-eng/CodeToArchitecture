@@ -1,0 +1,569 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>3. Design for Failure &amp; Resilience - CodeToArchitecture</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="System Design Practice and AWS Certification Preparation">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../src/assets/css/custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../PROGRESS.html"><strong aria-hidden="true">2.</strong> Progress Tracker</a></li><li class="chapter-item expanded affix "><li class="part-title">🏗️ System Design Lessons</li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/index.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-01-high-cohesion-low-coupling.html"><strong aria-hidden="true">4.</strong> 1. High Cohesion & Low Coupling</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-02-decentralize-data-management.html"><strong aria-hidden="true">5.</strong> 2. Decentralize Data Management</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-03-design-for-failure-and-resilience.html" class="active"><strong aria-hidden="true">6.</strong> 3. Design for Failure & Resilience</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-04-api-first-approach.html"><strong aria-hidden="true">7.</strong> 4. API First Approach</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-05-single-responsibility-principle.html"><strong aria-hidden="true">8.</strong> 5. Single Responsibility Principle</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-06-define-scope-properly.html"><strong aria-hidden="true">9.</strong> 6. Define the Scope Properly</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-07-event-driven-communication.html"><strong aria-hidden="true">10.</strong> 7. Event-Driven Communication</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-08-secure-each-service.html"><strong aria-hidden="true">11.</strong> 8. Secure Each Service</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-09-scalability-and-independence.html"><strong aria-hidden="true">12.</strong> 9. Scalability & Independence</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-10-automate-testing-and-cicd.html"><strong aria-hidden="true">13.</strong> 10. Automate Testing & CI/CD</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-01-microservices-design-principles/topic-11-manage-traffic.html"><strong aria-hidden="true">14.</strong> 11. Manage Traffic</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-02-system-design-framework/index.html"><strong aria-hidden="true">15.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-03-ddd-microservices/index.html"><strong aria-hidden="true">16.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-04-event-driven-architecture/index.html"><strong aria-hidden="true">17.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-05-api-gateway-service-mesh/index.html"><strong aria-hidden="true">18.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-06-resilient-architecture/index.html"><strong aria-hidden="true">19.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-07-cloud-iot-architecture/index.html"><strong aria-hidden="true">20.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-08-scalability-patterns/index.html"><strong aria-hidden="true">21.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-09-multi-tenant-architecture/index.html"><strong aria-hidden="true">22.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-10-data-management/index.html"><strong aria-hidden="true">23.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-11-observability-monitoring/index.html"><strong aria-hidden="true">24.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-12-security-architecture/index.html"><strong aria-hidden="true">25.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-13-platform-engineering/index.html"><strong aria-hidden="true">26.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../lessons/lesson-14-adr/index.html"><strong aria-hidden="true">27.</strong> Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">☁️ AWS Certification Track</li><li class="chapter-item expanded "><a href="../../certifications/aws-clf-c02/index.html"><strong aria-hidden="true">28.</strong> AWS Certified Cloud Practitioner (CLF-C02)</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CodeToArchitecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/nik132-eng/CodeToArchitecture" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/nik132-eng/CodeToArchitecture/edit/main/book/src/src/lessons/lesson-01-microservices-design-principles/topic-03-design-for-failure-and-resilience.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="04---design-for-failure-and-resilience"><a class="header" href="#04---design-for-failure-and-resilience">04 - Design for Failure and Resilience</a></h1>
+<blockquote>
+<p>💡 <em>&quot;In distributed systems, failure is not a bug — it's a feature of reality.&quot;</em></p>
+</blockquote>
+<p>This principle is the <strong>mindset shift</strong> that separates junior engineers from senior system designers.</p>
+<p>Microservices run across networks, containers, databases, and cloud providers. At scale, <strong>something is always failing</strong> — a service crashes, the network slows, a database times out.</p>
+<p>If your system assumes &quot;everything works&quot;, it will fail <strong>catastrophically</strong>.</p>
+<p>But if you <strong>design for failure</strong>, your system becomes <strong>resilient</strong> — it survives, degrades gracefully, and recovers.</p>
+<p>Let's go deep.</p>
+<hr />
+<h2 id="-what-is-catastrophic-failure"><a class="header" href="#-what-is-catastrophic-failure">💥 What Is &quot;Catastrophic Failure&quot;?</a></h2>
+<blockquote>
+<p>❌ <strong>Catastrophic failure</strong> = A small problem triggers a <strong>chain reaction</strong> that brings down the <strong>entire system</strong>, even parts that could have kept working.</p>
+</blockquote>
+<p>It's not just &quot;a service is down.&quot;<br />
+It's:<br />
+➡️ One service fails →<br />
+➡️ Others wait for it →<br />
+➡️ Their threads fill up →<br />
+➡️ They start failing →<br />
+➡️ The <strong>whole app becomes unresponsive</strong> —<br />
+➡️ Even for features that had <strong>nothing to do</strong> with the original failure.</p>
+<p>This is called <strong>cascading failure</strong>.</p>
+<hr />
+<h3 id="-real-world-example-e-commerce-on-black-friday"><a class="header" href="#-real-world-example-e-commerce-on-black-friday">🔥 Real-World Example: E-Commerce on Black Friday</a></h3>
+<pre><code class="language-text">User → Clicks &quot;Place Order&quot;
+       ↓
+Order Service → Calls → Payment Service
+                         ↑
+                  Payment Service is slow (due to bug)
+                         ↑
+Order Service waits... and waits... (no timeout!)
+                         ↑
+10,000 users placing orders → 10,000 pending requests
+                         ↑
+Order Service runs out of threads → becomes unresponsive
+                         ↑
+Now even &quot;View Cart&quot; fails — even though it doesn't need Payment Service!
+</code></pre>
+<p>🎯 Result:<br />
+❌ The <strong>entire site is down</strong><br />
+❌ Because of <strong>one slow service</strong><br />
+❌ And <strong>no resilience</strong> (no timeout, no fallback)</p>
+<p>That's <strong>catastrophic failure</strong>.</p>
+<hr />
+<h2 id="-why-this-happens"><a class="header" href="#-why-this-happens">🧱 Why This Happens</a></h2>
+<p>In microservices, services talk over the <strong>network</strong> — which is <strong>unreliable by nature</strong>.</p>
+<div class="table-wrapper"><table><thead><tr><th>Wrong Assumption</th><th>Reality</th></tr></thead><tbody>
+<tr><td>&quot;The network is reliable&quot;</td><td>❌ Packets get lost, delayed, dropped</td></tr>
+<tr><td>&quot;Services always respond fast&quot;</td><td>❌ Services can be slow or crash</td></tr>
+<tr><td>&quot;One failure only affects one feature&quot;</td><td>❌ Without safeguards, it spreads</td></tr>
+</tbody></table>
+</div>
+<p>When you <strong>don't design for failure</strong>, you're building a house on sand.</p>
+<hr />
+<h2 id="-the-4-pillars-of-resilience"><a class="header" href="#-the-4-pillars-of-resilience">✅ The 4 Pillars of Resilience</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Pattern</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><strong>Timeouts</strong></td><td>Don't wait forever</td></tr>
+<tr><td><strong>Retries (with backoff)</strong></td><td>Try again, but wisely</td></tr>
+<tr><td><strong>Circuit Breaker</strong></td><td>Stop hammering a dead service</td></tr>
+<tr><td><strong>Fallbacks</strong></td><td>Keep working with degraded functionality</td></tr>
+</tbody></table>
+</div>
+<p>Let's explore each.</p>
+<hr />
+<h2 id="1-timeouts-dont-wait-forever"><a class="header" href="#1-timeouts-dont-wait-forever">1️⃣ Timeouts: Don't Wait Forever</a></h2>
+<h3 id="-problem"><a class="header" href="#-problem">❌ Problem:</a></h3>
+<pre><code class="language-js">const res = await fetch('http://payment-service/process'); // Waits... forever?
+</code></pre>
+<p>If <code>payment-service</code> hangs, your service also hangs → <strong>cascading failure</strong>.</p>
+<h3 id="-solution-set-a-timeout"><a class="header" href="#-solution-set-a-timeout">✅ Solution: Set a timeout</a></h3>
+<pre><code class="language-js">const controller = new AbortController();
+const timeoutId = setTimeout(() =&gt; controller.abort(), 5000); // 5 sec
+
+try {
+  const res = await fetch('http://payment-service/process', {
+    method: 'POST',
+    signal: controller.signal
+  });
+} catch (err) {
+  console.log('Payment service slow or down.');
+  return res.status(503).send('Payment temporarily unavailable');
+}
+</code></pre>
+<blockquote>
+<p>✅ <strong>Rule</strong>: Every external call must have a timeout.</p>
+</blockquote>
+<hr />
+<h2 id="2-retries-with-exponential-backoff"><a class="header" href="#2-retries-with-exponential-backoff">2️⃣ Retries with Exponential Backoff</a></h2>
+<p>Sometimes a failure is temporary (network glitch). A <strong>smart retry</strong> can fix it.</p>
+<h3 id="-example-retry-with-backoff"><a class="header" href="#-example-retry-with-backoff">✅ Example: Retry with Backoff</a></h3>
+<pre><code class="language-js">async function callWithRetry(url, maxRetries = 3) {
+  let lastError;
+  for (let i = 0; i &lt;= maxRetries; i++) {
+    try {
+      const res = await fetch(url, { signal: timeoutSignal(5000) });
+      if (res.ok) return await res.json();
+    } catch (err) {
+      lastError = err;
+      if (i &lt; maxRetries) {
+        const delay = Math.pow(2, i) * 1000; // 1s, 2s, 4s
+        await new Promise(r =&gt; setTimeout(r, delay));
+        console.log(`Retry ${i + 1} after ${delay}ms`);
+      }
+    }
+  }
+  throw lastError;
+}
+</code></pre>
+<h4 id="-but-beware"><a class="header" href="#-but-beware">⚠️ But Beware:</a></h4>
+<ul>
+<li>Don't retry on <code>400 Bad Request</code> (user error)</li>
+<li>Do retry on <code>503 Service Unavailable</code></li>
+<li>Use <strong>exponential backoff</strong> to avoid overwhelming the system</li>
+</ul>
+<hr />
+<h2 id="3-circuit-breaker-stop-hammering-a-dead-service"><a class="header" href="#3-circuit-breaker-stop-hammering-a-dead-service">3️⃣ Circuit Breaker: Stop Hammering a Dead Service</a></h2>
+<h3 id="-problem-1"><a class="header" href="#-problem-1">❌ Problem:</a></h3>
+<p>If <code>Payment Service</code> is down, 1000 requests per second keep failing → logs fill up, threads block.</p>
+<h3 id="-solution-circuit-breaker-pattern"><a class="header" href="#-solution-circuit-breaker-pattern">✅ Solution: Circuit Breaker Pattern</a></h3>
+<p>Like a real circuit breaker in your house:</p>
+<ul>
+<li>One short circuit → breaker trips</li>
+<li>No more power → prevents fire</li>
+<li>After timeout, tries to restore</li>
+</ul>
+<p>Same idea.</p>
+<h3 id="-three-states"><a class="header" href="#-three-states">🔄 Three States:</a></h3>
+<pre><code class="language-mermaid">graph LR
+  A[Closed] --&gt;|&quot;Failures &gt;= threshold&quot;| B[Open]
+  B --&gt;|&quot;After resetTimeout&quot;| C[Half-Open]
+  C --&gt;|Success| A
+  C --&gt;|Failure| B
+</code></pre>
+<ul>
+<li><strong>Closed</strong>: Requests go through</li>
+<li><strong>Open</strong>: All requests fail immediately</li>
+<li><strong>Half-Open</strong>: Let 1 request through to test recovery</li>
+</ul>
+<hr />
+<h3 id="-using-opossum-nodejs-circuit-breaker"><a class="header" href="#-using-opossum-nodejs-circuit-breaker">💡 Using Opossum (Node.js Circuit Breaker)</a></h3>
+<pre><code class="language-bash">npm install opossum
+</code></pre>
+<pre><code class="language-js">const circuitBreaker = require('opossum');
+const fetch = require('node-fetch');
+
+async function callPaymentService(orderId) {
+  const res = await fetch(`http://localhost:4000/process/${orderId}`);
+  if (!res.ok) throw new Error('Payment failed');
+  return res.json();
+}
+
+const options = {
+  timeout: 3000,
+  errorThresholdPercentage: 50,
+  resetTimeout: 10000
+};
+
+const breaker = new circuitBreaker(callPaymentService, options);
+
+// Fallback
+breaker.fallback(() =&gt; ({ status: 'failed', reason: 'Service down. Try later.' }));
+
+// Events
+breaker.on('open', () =&gt; console.log('🔴 Circuit opened'));
+breaker.on('halfOpen', () =&gt; console.log('🔧 Testing recovery'));
+breaker.on('close', () =&gt; console.log('✅ Circuit closed'));
+
+// Use it
+app.post('/order', async (req, res) =&gt; {
+  try {
+    const result = await breaker.fire(req.body.orderId);
+    res.json({ status: 'success', data: result });
+  } catch (err) {
+    res.status(503).json({ error: err.message });
+  }
+});
+</code></pre>
+<hr />
+<h2 id="4-fallbacks-have-a-backup-plan"><a class="header" href="#4-fallbacks-have-a-backup-plan">4️⃣ Fallbacks: Have a Backup Plan</a></h2>
+<p>When a service fails, can you still provide <strong>degraded functionality</strong>?</p>
+<h3 id="-example-return-cached-data"><a class="header" href="#-example-return-cached-data">✅ Example: Return Cached Data</a></h3>
+<pre><code class="language-js">async function getUserWithFallback(userId) {
+  try {
+    const res = await fetchWithTimeout(`http://user-service/users/${userId}`, 3000);
+    if (res.ok) return await res.json();
+  } catch (err) {
+    console.log('User service failed, using cache');
+    const cached = await getFromRedis(`user:${userId}`);
+    if (cached) return JSON.parse(cached);
+    return { id: userId, name: 'Unknown (service down)' };
+  }
+}
+</code></pre>
+<h4 id="other-fallback-ideas"><a class="header" href="#other-fallback-ideas">Other Fallback Ideas:</a></h4>
+<ul>
+<li>Show stale data</li>
+<li>Skip non-critical steps (e.g., don't send email now)</li>
+<li>Use a simpler algorithm</li>
+</ul>
+<blockquote>
+<p>✅ Goal: <strong>Keep the user experience alive</strong>, even if limited.</p>
+</blockquote>
+<hr />
+<h2 id="-tools-that-help"><a class="header" href="#-tools-that-help">🛠️ Tools That Help</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><strong>Opossum</strong></td><td>Circuit breaker for Node.js</td></tr>
+<tr><td><strong>Redis</strong></td><td>Cache fallback data</td></tr>
+<tr><td><strong>Kafka/SQS</strong></td><td>Queue failed work for later</td></tr>
+<tr><td><strong>Sentry/New Relic</strong></td><td>Monitor failures</td></tr>
+<tr><td><strong>Gremlin/Chaos Monkey</strong></td><td>Test resilience by injecting failures</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-resilience-in-practice-order-flow-example"><a class="header" href="#-resilience-in-practice-order-flow-example">🧩 Resilience in Practice: Order Flow Example</a></h2>
+<pre><code class="language-text">User places order
+  ↓
+Call Payment Service (with timeout: 5s)
+  ↓
+If timeout → Retry (3x, exponential backoff)
+  ↓
+If still fails → Open circuit breaker
+  ↓
+Return: &quot;Order saved, payment pending&quot;
+  ↓
+Publish: OrderPaymentFailed → retry later via job
+  ↓
+User can retry payment later
+</code></pre>
+<p>✅ System didn't crash.<br />
+✅ User wasn't blocked.<br />
+✅ Core function (create order) succeeded.</p>
+<p>That's <strong>resilience</strong>.</p>
+<hr />
+<h2 id="-anti-patterns-to-avoid"><a class="header" href="#-anti-patterns-to-avoid">🚫 Anti-Patterns to Avoid</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Mistake</th><th>Why Bad</th></tr></thead><tbody>
+<tr><td>No timeout</td><td>One slow service blocks all others</td></tr>
+<tr><td>Unlimited retries</td><td>DDoS your own system</td></tr>
+<tr><td>No circuit breaker</td><td>Cascading failures</td></tr>
+<tr><td>No fallback</td><td>Entire feature breaks on one failure</td></tr>
+<tr><td>Silent failures</td><td>Can't debug or alert</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-diagram-resilience-patterns-in-action"><a class="header" href="#-diagram-resilience-patterns-in-action">📊 Diagram: Resilience Patterns in Action</a></h2>
+<pre><code class="language-mermaid">graph TD
+  A[Client] --&gt; B[Order Service]
+  B --&gt; C{Call Payment Service}
+  C --&gt;|Success| D[Order Confirmed]
+  C --&gt;|Timeout| E[Retry with Backoff]
+  E --&gt;|&quot;Still Fails&quot;| F[Circuit Breaker Opens]
+  F --&gt; G[&quot;Fallback: Payment Pending&quot;]
+  G --&gt; H[Save Order]
+  H --&gt; I[Publish: Retry Later]
+  I --&gt; J[Kafka Queue]
+  J --&gt; K[Background Job]
+  K --&gt; C
+</code></pre>
+<p>✅ Even when <code>Payment Service</code> is down, the system <strong>keeps working</strong>.</p>
+<hr />
+<h2 id="-what-is-chaos-engineering"><a class="header" href="#-what-is-chaos-engineering">🧠 What Is Chaos Engineering?</a></h2>
+<blockquote>
+<p><strong>Chaos Engineering</strong> = <em>Intentionally breaking your system in production-like environments to learn how it fails — so you can fix it before it matters.</em></p>
+</blockquote>
+<p>It's like <strong>fire drills</strong> for software.</p>
+<h3 id="-examples"><a class="header" href="#-examples">🔬 Examples:</a></h3>
+<ul>
+<li>Kill a service instance</li>
+<li>Inject 2s network delay</li>
+<li>Fill up disk space</li>
+<li>Cut off database</li>
+</ul>
+<h3 id="-why-it-matters"><a class="header" href="#-why-it-matters">✅ Why It Matters:</a></h3>
+<ul>
+<li>Finds hidden dependencies</li>
+<li>Tests your monitoring</li>
+<li>Builds team confidence</li>
+</ul>
+<blockquote>
+<p>💡 Rule: <strong>Test in staging first. Never surprise users.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-what-is-idempotency"><a class="header" href="#-what-is-idempotency">🔤 What Is Idempotency?</a></h2>
+<blockquote>
+<p><strong>Idempotent</strong> = Calling the same operation multiple times has the <strong>same effect</strong> as calling it once.</p>
+</blockquote>
+<h3 id="-example"><a class="header" href="#-example">✅ Example:</a></h3>
+<pre><code class="language-http">DELETE /orders/123 → idempotent
+PUT /users/123 → idempotent
+</code></pre>
+<pre><code class="language-http">POST /orders → not idempotent
+</code></pre>
+<h3 id="-solution-use-idempotency-keys"><a class="header" href="#-solution-use-idempotency-keys">✅ Solution: Use Idempotency Keys</a></h3>
+<pre><code class="language-http">POST /orders
+Idempotency-Key: order_abc123
+</code></pre>
+<p>Server checks if key was used → if yes, returns same result → prevents duplicates.</p>
+<blockquote>
+<p>💡 Critical for payments, orders, retries.</p>
+</blockquote>
+<hr />
+<h2 id="-summary-resilience-checklist"><a class="header" href="#-summary-resilience-checklist">🎯 Summary: Resilience Checklist</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Do</th><th>Example</th></tr></thead><tbody>
+<tr><td>✅ Always use timeouts</td><td><code>fetch(url, { signal: AbortController with 5s })</code></td></tr>
+<tr><td>✅ Retry with backoff</td><td>1s, 2s, 4s — not instantly</td></tr>
+<tr><td>✅ Use circuit breakers</td><td>Stop calling a failing service</td></tr>
+<tr><td>✅ Provide fallbacks</td><td>Cache, default values, async recovery</td></tr>
+<tr><td>✅ Monitor failures</td><td>Log, alert, trace</td></tr>
+<tr><td>✅ Test failure modes</td><td>Chaos engineering</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-references--further-reading"><a class="header" href="#-references--further-reading">📚 References &amp; Further Reading</a></h2>
+<ul>
+<li><a href="https://martinfowler.com/bliki/CircuitBreaker.html">Martin Fowler: Circuit Breaker</a></li>
+<li><a href="https://netflixtechblog.com/chaos-engineering-4c84b07efc56">Netflix Chaos Engineering</a></li>
+<li><a href="https://github.com/nodeshift/opossum">Opossum Docs</a></li>
+<li><a href="https://www.oreilly.com/library/view/building-microservices/9781491931879/">Building Microservices by Sam Newman</a></li>
+<li><a href="https://sre.google/books/">Google SRE Book</a></li>
+</ul>
+<blockquote>
+<p>🧓 Mentor's Note:<br />
+You can't prevent all failures.<br />
+But you can <strong>design for them</strong> — contain them, recover from them, and keep the system alive.<br />
+That's the mark of a true systems engineer.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../lessons/lesson-01-microservices-design-principles/topic-02-decentralize-data-management.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../lessons/lesson-01-microservices-design-principles/topic-04-api-first-approach.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../lessons/lesson-01-microservices-design-principles/topic-02-decentralize-data-management.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../lessons/lesson-01-microservices-design-principles/topic-04-api-first-approach.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../src/assets/js/custom.js"></script>
+
+
+    </div>
+    </body>
+</html>
