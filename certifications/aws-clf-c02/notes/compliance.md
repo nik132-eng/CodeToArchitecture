@@ -1,28 +1,25 @@
-# Cloud Computing Fundamentals
+# Compliance & Governance
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 2: Domain 2: Security and Compliance (30%)** | **Topic 4** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
-- [ ] Define the benefits of the AWS Cloud
-- [ ] Identify design principles of the AWS Cloud
-- [ ] Understand migration strategies to AWS
-- [ ] Understand cloud economics
+- [ ] Understand shared responsibility model
+- [ ] Security, governance, and compliance concepts
+- [ ] Access management capabilities
+- [ ] Security services and features
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### SOC, HIPAA, GDPR, PCI-DSS
 
-### On-premises vs cloud
+### AWS Artifact for reports
 
-### Elasticity, scalability, agility
-
-### Global infrastructure (Regions, AZs, Edge)
+### Audit Manager, Config, CloudTrail
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: Security, Governance
 
 ## 🔗 Related Services
 
@@ -32,7 +29,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "Compliance & Governance"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +73,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [SOC, HIPAA, GDPR, PCI-DSS](./README.md)*

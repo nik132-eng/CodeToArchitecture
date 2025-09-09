@@ -1,28 +1,26 @@
-# Cloud Computing Fundamentals
+# Storage Services
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 3: Domain 3: Cloud Technology and Services (34%)** | **Topic 3** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
-- [ ] Define the benefits of the AWS Cloud
-- [ ] Identify design principles of the AWS Cloud
-- [ ] Understand migration strategies to AWS
-- [ ] Understand cloud economics
+- [ ] Deploy and operate in AWS
+- [ ] Identify AWS global infrastructure
+- [ ] Compute, storage, database, networking services
+- [ ] AI/ML and developer tools
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### S3 (Standard, IA, Glacier)
 
-### On-premises vs cloud
+### EBS, EFS, Storage Gateway
 
-### Elasticity, scalability, agility
-
-### Global infrastructure (Regions, AZs, Edge)
+### Lifecycle policies, versioning
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: Storage
+- freeCodeCamp: 2:30:00–3:00:00
 
 ## 🔗 Related Services
 
@@ -32,7 +30,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "Storage Services"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +74,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [S3 (Standard, IA, Glacier)](./databases.md)*

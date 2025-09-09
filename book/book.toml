@@ -1,0 +1,85 @@
+[book]
+title = "CodeToArchitecture"
+description = "System Design Practice and AWS Certification Preparation"
+authors = ["Nikunj Champakbhai Rohit"]
+language = "en"
+multilingual = false
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = true
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/nik132-eng/CodeToArchitecture"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/nik132-eng/CodeToArchitecture/edit/main/book/src/{path}"
+additional-css = ["assets/css/custom.css"]
+additional-js = ["assets/js/custom.js"]
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-level = 3
+
+[output.html.playground]
+editable = true
+copyable = true
+copyable-js = true
+runnable = true
+line-numbers = true
+runnable-js = true
+
+[output.html.redirect]
+"/" = "introduction.html"
+
+[output.html.link-checker]
+follow-web-links = false
+traverse-parent-directories = false
+
+[output.html.print]
+enable = true
+enable-by-default = false
+
+[output.html.fold]
+enable = false
+level = 0
+
+[output.html.anchors]
+level = 1
+position = "left"
+scroll-offset = 0
+
+[output.html.source]
+edit-url = "https://github.com/nik132-eng/CodeToArchitecture/edit/main/book/src/{path}"
+line-numbers = true
+git-repository-icon = "fa-github"
+
+[output.html.git]
+enable = true
+repo-url = "https://github.com/nik132-eng/CodeToArchitecture"
+edit-url-template = "https://github.com/nik132-eng/CodeToArchitecture/edit/main/book/src/{path}"
+history-url-template = "https://github.com/nik132-eng/CodeToArchitecture/commits/main/book/src/{path}"
+blob-url-template = "https://github.com/nik132-eng/CodeToArchitecture/blob/main/book/src/{path}"
+
+[output.html.robots]
+allow = ["*"]
+
+[output.html.math]
+enable = true
+use-katex = false
+katex-css = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css"
+katex-js = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"
+katex-auto-render = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/contrib/auto-render.min.js"
+
+[output.html.markdown]
+enable = true
+render = ["html", "mdbook-html"]

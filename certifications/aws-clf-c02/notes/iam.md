@@ -1,28 +1,28 @@
-# Cloud Computing Fundamentals
+# IAM & Access Management
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 2: Domain 2: Security and Compliance (30%)** | **Topic 2** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
-- [ ] Define the benefits of the AWS Cloud
-- [ ] Identify design principles of the AWS Cloud
-- [ ] Understand migration strategies to AWS
-- [ ] Understand cloud economics
+- [ ] Understand shared responsibility model
+- [ ] Security, governance, and compliance concepts
+- [ ] Access management capabilities
+- [ ] Security services and features
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### IAM Users, Groups, Roles
 
-### On-premises vs cloud
+### Principle of least privilege
 
-### Elasticity, scalability, agility
+### MFA, root user protection
 
-### Global infrastructure (Regions, AZs, Edge)
+### AWS IAM Identity Center (SSO)
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: Identity
+- freeCodeCamp: 3:30:00–4:00:00
 
 ## 🔗 Related Services
 
@@ -32,7 +32,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "IAM & Access Management"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +76,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [IAM Users, Groups, Roles](./security-services.md)*

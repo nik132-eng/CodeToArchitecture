@@ -1,28 +1,27 @@
-# Cloud Computing Fundamentals
+# Support & Account Management
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 4: Domain 4: Billing, Pricing, and Support (12%)** | **Topic 3** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
-- [ ] Define the benefits of the AWS Cloud
-- [ ] Identify design principles of the AWS Cloud
-- [ ] Understand migration strategies to AWS
-- [ ] Understand cloud economics
+- [ ] Compare AWS pricing models
+- [ ] Use billing and cost tools
+- [ ] Identify support options
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### AWS Support Plans (Basic to Enterprise)
 
-### On-premises vs cloud
+### Trusted Advisor, Personal Health Dashboard
 
-### Elasticity, scalability, agility
+### AWS Organizations, Consolidated Billing
 
-### Global infrastructure (Regions, AZs, Edge)
+### AWS Marketplace, Partner Network
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: Billing, Pricing and Support
+- freeCodeCamp: 10:00:00–10:30:00
 
 ## 🔗 Related Services
 
@@ -32,7 +31,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "Support & Account Management"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +75,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [AWS Support Plans (Basic to Enterprise)](./README.md)*

@@ -1,6 +1,6 @@
-# Cloud Computing Fundamentals
+# AWS Well-Architected Framework
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 2** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
@@ -11,18 +11,14 @@
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### Five pillars: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization
 
-### On-premises vs cloud
-
-### Elasticity, scalability, agility
-
-### Global infrastructure (Regions, AZs, Edge)
+### Sustainability as a design principle
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: AWS Well-Architected Framework
+- AWS Well-Architected Tool (demo)
 
 ## 🔗 Related Services
 
@@ -32,7 +28,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "AWS Well-Architected Framework"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +72,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [Five pillars: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization](./economics-migration.md)*

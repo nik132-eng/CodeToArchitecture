@@ -1,28 +1,26 @@
-# Cloud Computing Fundamentals
+# Networking
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 3: Domain 3: Cloud Technology and Services (34%)** | **Topic 5** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
-- [ ] Define the benefits of the AWS Cloud
-- [ ] Identify design principles of the AWS Cloud
-- [ ] Understand migration strategies to AWS
-- [ ] Understand cloud economics
+- [ ] Deploy and operate in AWS
+- [ ] Identify AWS global infrastructure
+- [ ] Compute, storage, database, networking services
+- [ ] AI/ML and developer tools
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### VPC, Subnets, Security Groups, NACLs
 
-### On-premises vs cloud
+### Route 53, CloudFront, Direct Connect
 
-### Elasticity, scalability, agility
-
-### Global infrastructure (Regions, AZs, Edge)
+### VPN, AWS Transit Gateway
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: Networking
+- freeCodeCamp: 5:00:00–5:30:00
 
 ## 🔗 Related Services
 
@@ -32,7 +30,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "Networking"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +74,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [VPC, Subnets, Security Groups, NACLs](./developer-ai-tools.md)*

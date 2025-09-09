@@ -31,6 +31,10 @@ Below is the full list of lessons. I’ll work through them sequentially and che
 
 ### ☁️ AWS Certification Track
 - [ ] ☁️ **AWS Certified Cloud Practitioner (CLF-C02)** — Target: TBD
+  - [ ] 🌐 **Cloud Concepts (24%)** — 3 topics
+  - [ ] 🔐 **Security & Compliance (30%)** — 4 topics  
+  - [ ] ⚙️ **Core AWS Services (34%)** — 6 topics
+  - [ ] 💰 **Billing & Support (12%)** — 3 topics
 
 > 📌 *Goal: Complete all 14 lessons with clear notes, diagrams, and practical takeaways, plus AWS certification preparation.*
 

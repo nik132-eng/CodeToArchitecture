@@ -1,28 +1,25 @@
-# Cloud Computing Fundamentals
+# Pricing Models
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 4: Domain 4: Billing, Pricing, and Support (12%)** | **Topic 1** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
-- [ ] Define the benefits of the AWS Cloud
-- [ ] Identify design principles of the AWS Cloud
-- [ ] Understand migration strategies to AWS
-- [ ] Understand cloud economics
+- [ ] Compare AWS pricing models
+- [ ] Use billing and cost tools
+- [ ] Identify support options
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### On-Demand, Reserved Instances, Spot Instances
 
-### On-premises vs cloud
+### Savings Plans, Dedicated Hosts
 
-### Elasticity, scalability, agility
-
-### Global infrastructure (Regions, AZs, Edge)
+### Capacity Reservations
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: EC2 Pricing Models
+- freeCodeCamp: 6:00:00–6:30:00
 
 ## 🔗 Related Services
 
@@ -32,7 +29,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "Pricing Models"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +73,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [On-Demand, Reserved Instances, Spot Instances](./cost-management.md)*

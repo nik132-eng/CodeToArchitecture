@@ -1,28 +1,30 @@
-# Cloud Computing Fundamentals
+# Security Services
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 2: Domain 2: Security and Compliance (30%)** | **Topic 3** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
-- [ ] Define the benefits of the AWS Cloud
-- [ ] Identify design principles of the AWS Cloud
-- [ ] Understand migration strategies to AWS
-- [ ] Understand cloud economics
+- [ ] Understand shared responsibility model
+- [ ] Security, governance, and compliance concepts
+- [ ] Access management capabilities
+- [ ] Security services and features
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### AWS Shield (DDoS protection)
 
-### On-premises vs cloud
+### AWS WAF (web application firewall)
 
-### Elasticity, scalability, agility
+### GuardDuty (threat detection)
 
-### Global infrastructure (Regions, AZs, Edge)
+### Inspector (vulnerability scanning)
+
+### KMS, CloudHSM, ACM
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: Security
+- AWS Artifact, AWS Compliance
 
 ## 🔗 Related Services
 
@@ -32,7 +34,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "Security Services"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +78,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [AWS Shield (DDoS protection)](./compliance.md)*

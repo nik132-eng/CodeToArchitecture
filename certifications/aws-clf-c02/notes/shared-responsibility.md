@@ -1,28 +1,26 @@
-# Cloud Computing Fundamentals
+# Shared Responsibility Model
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 2: Domain 2: Security and Compliance (30%)** | **Topic 1** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
-- [ ] Define the benefits of the AWS Cloud
-- [ ] Identify design principles of the AWS Cloud
-- [ ] Understand migration strategies to AWS
-- [ ] Understand cloud economics
+- [ ] Understand shared responsibility model
+- [ ] Security, governance, and compliance concepts
+- [ ] Access management capabilities
+- [ ] Security services and features
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### AWS vs customer responsibilities
 
-### On-premises vs cloud
+### How it changes by service (EC2 vs RDS vs Lambda)
 
-### Elasticity, scalability, agility
-
-### Global infrastructure (Regions, AZs, Edge)
+### Customer-controlled security (IAM, encryption, logging)
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: Shared Responsibility Model
+- freeCodeCamp: 3:00:00–3:30:00
 
 ## 🔗 Related Services
 
@@ -32,7 +30,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "Shared Responsibility Model"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +74,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [AWS vs customer responsibilities](./iam.md)*

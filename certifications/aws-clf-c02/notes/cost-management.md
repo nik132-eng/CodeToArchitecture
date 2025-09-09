@@ -1,28 +1,25 @@
-# Cloud Computing Fundamentals
+# Cost Management Tools
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 4: Domain 4: Billing, Pricing, and Support (12%)** | **Topic 2** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
-- [ ] Define the benefits of the AWS Cloud
-- [ ] Identify design principles of the AWS Cloud
-- [ ] Understand migration strategies to AWS
-- [ ] Understand cloud economics
+- [ ] Compare AWS pricing models
+- [ ] Use billing and cost tools
+- [ ] Identify support options
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### AWS Budgets, Cost Explorer
 
-### On-premises vs cloud
+### Cost and Usage Reports (CUR)
 
-### Elasticity, scalability, agility
-
-### Global infrastructure (Regions, AZs, Edge)
+### Cost allocation tags
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: Billing, Pricing and Support
+- AWS Pricing Calculator
 
 ## 🔗 Related Services
 
@@ -32,7 +29,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "Cost Management Tools"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +73,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [AWS Budgets, Cost Explorer](./support-organizations.md)*

@@ -1,6 +1,6 @@
-# Cloud Computing Fundamentals
+# Cloud Economics & Migration
 
-> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 1** | **Status:** not_started
+> **Domain 1: Domain 1: Cloud Concepts (24%)** | **Topic 3** | **Status:** not_started
 
 ## 📚 Learning Objectives
 
@@ -11,18 +11,20 @@
 
 ## 🎯 Key Concepts
 
-### Definition of cloud computing
+### TCO vs ROI
 
-### On-premises vs cloud
+### CAPEX vs OPEX
 
-### Elasticity, scalability, agility
+### Fixed vs variable costs
 
-### Global infrastructure (Regions, AZs, Edge)
+### AWS Cloud Adoption Framework (AWS CAF)
+
+### Migration tools: AWS DMS, Snow Family, Migration Evaluator
 
 ## 📖 Study Resources
 
-- ExamPro: Introduction, Cloud Concepts
-- freeCodeCamp: 0:00–30:00
+- ExamPro: TCO and Migration
+- freeCodeCamp: 7:00:00–7:30:00
 
 ## 🔗 Related Services
 
@@ -32,7 +34,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Cloud Computing Fundamentals"
+    subgraph "Cloud Economics & Migration"
         A[Key Concept 1]
         B[Key Concept 2]
         C[Key Concept 3]
@@ -76,4 +78,4 @@ graph TB
 ---
 
 *Last updated: 9/9/2025*
-*Next: [Definition of cloud computing](./well-architected.md)*
+*Next: [TCO vs ROI](./README.md)*
