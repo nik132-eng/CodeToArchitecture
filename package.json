@@ -1,0 +1,15 @@
+{
+  "name": "codetoarchitecture",
+  "version": "1.0.0",
+  "description": "System Design Practice and AWS Certification Preparation",
+  "main": "index.js",
+  "scripts": {
+    "generate-progress": "node scripts/generate-progress.js"
+  },
+  "keywords": ["system-design", "microservices", "aws", "architecture"],
+  "author": "Nikunj Champakbhai Rohit",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
