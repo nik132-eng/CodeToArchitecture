@@ -82,17 +82,17 @@ certifications/aws-clf-c02/
 ## ✅ Progress Tracker (18 Sections)
 
 ### Week 1: Introduction and Cloud Concepts
-- [ ] Section 1: Introduction & Course Overview
-- [ ] Section 2: What is Cloud Computing?
-- [ ] Section 3: What is Amazon Web Services (AWS)?
+- [x] Section 1: Introduction & Course Overview
+- [x] Section 2: What is Cloud Computing?
+- [x] Section 3: What is Amazon Web Services (AWS)?
 
 ### Week 2: Infrastructure and Compute
-- [ ] Section 4: AWS Global Infrastructure
-- [ ] Section 5: Cloud Architecture & Core Concepts
-- [ ] Section 6: AWS Core Services - Compute
+- [x] Section 4: AWS Global Infrastructure
+- [x] Section 5: Cloud Architecture & Core Concepts
+- [x] Section 6: AWS Core Services - Compute
 
 ### Week 3: Storage, Database, and Networking
-- [ ] Section 7: AWS Core Services - Storage
+- [ ] Section 7: AWS Core Services - Storage (in progress)
 - [ ] Section 8: AWS Core Services - Database
 - [ ] Section 9: AWS Core Services - Networking
 

@@ -2,61 +2,61 @@
 
 > **Last Updated:** 2025-01-27  
 > **Total Sections:** 18  
-> **Completed:** 0/18 (0%)  
+> **Completed:** 6/18 (33%)  
 > **Target Exam Date:** _Add here_
 
 ## 📈 Overall Progress
 
 ```
-Progress: [░░░░░░░░░░░░░░░░░░] 0% (0/18 sections)
+Progress: [████████░░░░░░░░░░░░░░] 33% (6/18 sections)
 ```
 
 ## 📚 Section-by-Section Progress
 
 ### Week 1: Introduction and Cloud Concepts
-- [ ] **Section 1:** Introduction & Course Overview (0:00-5:00)
-  - [ ] Watched video
-  - [ ] Completed notes
-  - [ ] Reviewed key concepts
-  - [ ] Status: Not Started
+- [x] **Section 1:** Introduction & Course Overview (0:00-5:00)
+  - [x] Watched video
+  - [x] Completed notes
+  - [x] Reviewed key concepts
+  - [x] Status: Completed
 
-- [ ] **Section 2:** What is Cloud Computing? (5:00-30:00)
-  - [ ] Watched video
-  - [ ] Completed notes
-  - [ ] Reviewed key concepts
-  - [ ] Status: Not Started
+- [x] **Section 2:** What is Cloud Computing? (5:00-30:00)
+  - [x] Watched video
+  - [x] Completed notes
+  - [x] Reviewed key concepts
+  - [x] Status: Completed
 
-- [ ] **Section 3:** What is Amazon Web Services (AWS)? (30:00-60:00)
-  - [ ] Watched video
-  - [ ] Completed notes
-  - [ ] Reviewed key concepts
-  - [ ] Status: Not Started
+- [x] **Section 3:** What is Amazon Web Services (AWS)? (30:00-60:00)
+  - [x] Watched video
+  - [x] Completed notes
+  - [x] Reviewed key concepts
+  - [x] Status: Completed
 
 ### Week 2: Infrastructure and Compute
-- [ ] **Section 4:** AWS Global Infrastructure (60:00-90:00)
-  - [ ] Watched video
-  - [ ] Completed notes
-  - [ ] Reviewed key concepts
-  - [ ] Status: Not Started
+- [x] **Section 4:** AWS Global Infrastructure (60:00-90:00)
+  - [x] Watched video
+  - [x] Completed notes
+  - [x] Reviewed key concepts
+  - [x] Status: Completed
 
-- [ ] **Section 5:** Cloud Architecture & Core Concepts (90:00-120:00)
-  - [ ] Watched video
-  - [ ] Completed notes
-  - [ ] Reviewed key concepts
-  - [ ] Status: Not Started
+- [x] **Section 5:** Cloud Architecture & Core Concepts (90:00-120:00)
+  - [x] Watched video
+  - [x] Completed notes
+  - [x] Reviewed key concepts
+  - [x] Status: Completed
 
-- [ ] **Section 6:** AWS Core Services - Compute (120:00-150:00)
-  - [ ] Watched video
-  - [ ] Completed notes
-  - [ ] Reviewed key concepts
-  - [ ] Status: Not Started
+- [x] **Section 6:** AWS Core Services - Compute (120:00-150:00)
+  - [x] Watched video
+  - [x] Completed notes
+  - [x] Reviewed key concepts
+  - [x] Status: Completed
 
 ### Week 3: Storage, Database, and Networking
 - [ ] **Section 7:** AWS Core Services - Storage (150:00-180:00)
-  - [ ] Watched video
+  - [x] Watched video (in progress)
   - [ ] Completed notes
   - [ ] Reviewed key concepts
-  - [ ] Status: Not Started
+  - [ ] Status: In Progress
 
 - [ ] **Section 8:** AWS Core Services - Database (180:00-210:00)
   - [ ] Watched video
