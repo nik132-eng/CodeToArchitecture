@@ -105,6 +105,37 @@ graph TD
 - Ignoring inter-AZ data transfer costs in design and tests.
 - Picking a Region before confirming service availability.
 
+## Routing policies and global traffic management
+- Simple: one record, one value; no health checks.
+- Weighted: split traffic by percentage (blue/green, canaries).
+- Latency-based: route to the lowest-latency Region per user.
+- Failover: primary/secondary with health checks.
+- Geo/Geo-proximity: steer by user location (compliance, performance).
+
+```mermaid
+flowchart LR
+  Users --> R53[Route 53]
+  R53 -- Latency-based --> ALBA[ALB Region A]
+  R53 -- Latency-based --> ALBB[ALB Region B]
+  ALBA --> SvcA[Services in Region A]
+  ALBB --> SvcB[Services in Region B]
+```
+
+## Inter-Region and hybrid connectivity
+- VPC Peering: simple, point-to-point; no transitive routing.
+- Transit Gateway: hub-and-spoke for many VPCs/on-prem; centralizes routing.
+- Direct Connect: private, consistent network to AWS; combine with TGW.
+
+## Cost awareness (high-level)
+- Inter-AZ data transfer usually billed; design chatty tiers in the same AZ and use HA replicas across AZs.
+- NAT Gateway data processing charges: minimize egress via VPC Endpoints (S3/DynamoDB gateway endpoints).
+- CloudFront egress cheaper than S3 direct; cache aggressively.
+
+## Service availability and limits (practical reminders)
+- Not all services are in every Region; check the Regional Services list before committing.
+- AZ count per Region differs (2–3+); more AZs allow better blast-radius control.
+- Some quotas are regional (e.g., EC2 vCPU-based limits); request increases early.
+
 ---
 
 Next: Cloud Architecture & Core Concepts

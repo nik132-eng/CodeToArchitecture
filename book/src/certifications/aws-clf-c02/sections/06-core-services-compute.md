@@ -7,6 +7,11 @@ Subtitle: EC2, Auto Scaling, Load Balancing, Lambda, and Containers
 - Pricing: On-Demand, Savings Plans/RI, Spot, Dedicated Hosts
 - Storage: EBS (gp3/io2), Instance Store, AMIs, user data
 
+### Placement strategies
+- Spread: maximize AZ/host separation; best for resilience.
+- Partition: group instances across partitions (Hadoop, Kafka).
+- Cluster: same rack for low latency (HPC, tightly-coupled workloads).
+
 ```mermaid
 flowchart LR
   U[Users] --> ALB
@@ -22,10 +27,18 @@ Guidance: Start with t3/t4g burstable for web tiers; right-size using CloudWatch
 - NLB: TCP/UDP (layer 4), extreme performance.
 - Target tracking autoscaling: keep utilization near a target (e.g., 55% CPU).
 
+### Deployment patterns
+- Blue/Green with two target groups; weighted routing via ALB or Route 53.
+- Canary with small traffic slice; roll forward on success.
+
 ## Lambda (Serverless Compute)
 - Event-driven, per-invocation billing, concurrency scaling.
 - Integrations: API Gateway, S3, EventBridge, SQS, DynamoDB Streams.
 - Packaging: container images or zip; keep cold start in mind.
+
+### Concurrency model
+- Regional concurrency limit; reserve/provisioned for critical paths.
+- Event sources and batch size influence concurrency fan-out (SQS, Kinesis).
 
 ```mermaid
 flowchart LR
@@ -39,6 +52,12 @@ flowchart LR
 - EKS: Managed Kubernetes control plane; worker nodes in EC2 or Fargate.
 - Patterns: blue/green deployments, service autoscaling, service discovery.
 
+### Networking modes (ECS)
+- awsvpc (ENI per task), bridge, host; prefer awsvpc for isolation/SG per task.
+
+### EKS considerations
+- Managed node groups vs Fargate profiles; CNI limits and IP planning.
+
 ## Choosing compute (decision guide)
 - Spiky, unpredictable traffic, minimal ops → Lambda
 - Containerized workloads, portability → ECS/EKS (prefer Fargate to start)
@@ -48,6 +67,8 @@ flowchart LR
 - Savings Plans for steady-state compute (EC2, Fargate, Lambda)
 - Spot for non-critical, interrupible jobs; set diversification strategies
 - Right-size instances; schedule off-hours shutdown in dev/test
+
+Tip: Prefer gp3 over gp2; consolidate small volumes; enable instance hibernation for dev.
 
 ## Hands-on
 - Create ALB + Auto Scaling template; verify scale out/in with a load test.

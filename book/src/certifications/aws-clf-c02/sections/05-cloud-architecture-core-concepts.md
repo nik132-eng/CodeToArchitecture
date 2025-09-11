@@ -70,11 +70,27 @@ flowchart LR
 - Use target tracking autoscaling; start with 50–60% targets.
 - Protect databases with connection pooling and backpressure.
 
+### Advanced scaling
+- Request-based scaling: scale on ALB RequestCountPerTarget or custom metrics (RPS, queue depth).
+- Scheduled scaling: match known diurnal patterns.
+- Warm pools for faster instance readiness.
+- For Lambda: provisioned concurrency for consistent latency.
+
 ## Resilience checklist
 - [ ] Two or more AZs for production.
 - [ ] Health checks and circuit breakers.
 - [ ] Graceful degradation (read-only modes, feature flags).
 - [ ] Run chaos experiments (e.g., terminate nodes) in non-prod.
+
+## Trade-offs and anti-patterns
+- Over-failover: frequent, unnecessary Region flips increase instability.
+- Single write-point: avoid placing all writes to one AZ without failover plan.
+- Chatty services across AZs: amplify costs and latency; colocate hot paths.
+
+## Observability for resilience
+- Golden signals: latency, traffic, errors, saturation.
+- SLOs and error budgets to guide release velocity.
+- Tracing (X-Ray) and structured logs to pinpoint failing hops.
 
 ## Hands-on
 - Create an ALB + two EC2 instances across AZs; update health checks and observe failover.
