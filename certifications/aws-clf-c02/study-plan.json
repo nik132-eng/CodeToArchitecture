@@ -1,6 +1,8 @@
 {
-  "exam": "AWS Certified Cloud Practitioner (CLF-C02)",
-  "version": "1.2",
+  "course": "AWS Certified Cloud Practitioner (CLF-C02)",
+  "student": "Your Name Here",
+  "last_updated": "2025-01-27",
+  "version": "2.0",
   "url": "https://aws.amazon.com/certification/certified-cloud-practitioner/",
   "description": "Entry-level AWS certification validating foundational knowledge of cloud concepts, services, security, pricing, and support.",
   "target_candidate": "Individuals with up to 6 months of exposure to AWS. No coding or deep architecture design required.",
@@ -18,312 +20,223 @@
     "aws_well_architected_tool": "https://aws.amazon.com/well-architected-tool/",
     "aws_pricing_calculator": "https://calculator.aws"
   },
-  "domains": [
+  "sections": [
     {
-      "domain": "Domain 1: Cloud Concepts",
-      "weight": "24%",
-      "objectives": [
-        "Define the benefits of the AWS Cloud",
-        "Identify design principles of the AWS Cloud",
-        "Understand migration strategies to AWS",
-        "Understand cloud economics"
-      ],
-      "topics": [
-        {
-          "title": "Cloud Computing Fundamentals",
-          "subtopics": [
-            "Definition of cloud computing",
-            "On-premises vs cloud",
-            "Elasticity, scalability, agility",
-            "Global infrastructure (Regions, AZs, Edge)"
-          ],
-          "study_resources": [
-            "ExamPro: Introduction, Cloud Concepts",
-            "freeCodeCamp: 0:00–30:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/cloud-concepts.md",
-          "diagram": "certifications/aws-clf-c02/diagrams/global-infrastructure.mermaid"
-        },
-        {
-          "title": "AWS Well-Architected Framework",
-          "subtopics": [
-            "Five pillars: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization",
-            "Sustainability as a design principle"
-          ],
-          "study_resources": [
-            "ExamPro: AWS Well-Architected Framework",
-            "AWS Well-Architected Tool (demo)"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/well-architected.md"
-        },
-        {
-          "title": "Cloud Economics & Migration",
-          "subtopics": [
-            "TCO vs ROI",
-            "CAPEX vs OPEX",
-            "Fixed vs variable costs",
-            "AWS Cloud Adoption Framework (AWS CAF)",
-            "Migration tools: AWS DMS, Snow Family, Migration Evaluator"
-          ],
-          "study_resources": [
-            "ExamPro: TCO and Migration",
-            "freeCodeCamp: 7:00:00–7:30:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/economics-migration.md"
-        }
-      ]
+      "section_id": "1",
+      "title": "Introduction & Course Overview",
+      "description": "Overview of the course, instructor, and certification value.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "0:00-5:00",
+      "related_domain": "General",
+      "notes_file": "certifications/aws-clf-c02/notes/course-overview.md"
     },
     {
-      "domain": "Domain 2: Security and Compliance",
-      "weight": "30%",
-      "objectives": [
-        "Understand shared responsibility model",
-        "Security, governance, and compliance concepts",
-        "Access management capabilities",
-        "Security services and features"
-      ],
-      "topics": [
-        {
-          "title": "Shared Responsibility Model",
-          "subtopics": [
-            "AWS vs customer responsibilities",
-            "How it changes by service (EC2 vs RDS vs Lambda)",
-            "Customer-controlled security (IAM, encryption, logging)"
-          ],
-          "study_resources": [
-            "ExamPro: Shared Responsibility Model",
-            "freeCodeCamp: 3:00:00–3:30:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/shared-responsibility.md",
-          "diagram": "certifications/aws-clf-c02/diagrams/shared-responsibility.mermaid"
-        },
-        {
-          "title": "IAM & Access Management",
-          "subtopics": [
-            "IAM Users, Groups, Roles",
-            "Principle of least privilege",
-            "MFA, root user protection",
-            "AWS IAM Identity Center (SSO)"
-          ],
-          "study_resources": [
-            "ExamPro: Identity",
-            "freeCodeCamp: 3:30:00–4:00:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/iam.md"
-        },
-        {
-          "title": "Security Services",
-          "subtopics": [
-            "AWS Shield (DDoS protection)",
-            "AWS WAF (web application firewall)",
-            "GuardDuty (threat detection)",
-            "Inspector (vulnerability scanning)",
-            "KMS, CloudHSM, ACM"
-          ],
-          "study_resources": [
-            "ExamPro: Security",
-            "AWS Artifact, AWS Compliance"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/security-services.md"
-        },
-        {
-          "title": "Compliance & Governance",
-          "subtopics": [
-            "SOC, HIPAA, GDPR, PCI-DSS",
-            "AWS Artifact for reports",
-            "Audit Manager, Config, CloudTrail"
-          ],
-          "study_resources": [
-            "ExamPro: Security, Governance"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/compliance.md"
-        }
-      ]
+      "section_id": "2",
+      "title": "What is Cloud Computing?",
+      "description": "Defines cloud computing, its benefits, and evolution from traditional hosting.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "5:00-30:00",
+      "related_domain": "Domain 1: Cloud Concepts",
+      "notes_file": "certifications/aws-clf-c02/notes/cloud-concepts.md"
     },
     {
-      "domain": "Domain 3: Cloud Technology and Services",
-      "weight": "34%",
-      "objectives": [
-        "Deploy and operate in AWS",
-        "Identify AWS global infrastructure",
-        "Compute, storage, database, networking services",
-        "AI/ML and developer tools"
-      ],
-      "topics": [
-        {
-          "title": "Global Infrastructure",
-          "subtopics": [
-            "Regions, Availability Zones, Edge Locations",
-            "Local Zones, Wavelength, Outposts",
-            "Data residency and sovereignty"
-          ],
-          "study_resources": [
-            "ExamPro: AWS Global Infrastructure",
-            "freeCodeCamp: 1:00:00–1:30:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/global-infrastructure.md"
-        },
-        {
-          "title": "Compute Services",
-          "subtopics": [
-            "EC2, Lambda, ECS, EKS, Fargate",
-            "Instance types and families",
-            "Auto Scaling, Load Balancers"
-          ],
-          "study_resources": [
-            "ExamPro: Compute, EC2",
-            "freeCodeCamp: 2:00:00–2:30:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/compute.md"
-        },
-        {
-          "title": "Storage Services",
-          "subtopics": [
-            "S3 (Standard, IA, Glacier)",
-            "EBS, EFS, Storage Gateway",
-            "Lifecycle policies, versioning"
-          ],
-          "study_resources": [
-            "ExamPro: Storage",
-            "freeCodeCamp: 2:30:00–3:00:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/storage.md"
-        },
-        {
-          "title": "Database Services",
-          "subtopics": [
-            "RDS, Aurora, DynamoDB, ElastiCache",
-            "Data Warehouse (Redshift)",
-            "Database Migration Service (DMS)"
-          ],
-          "study_resources": [
-            "ExamPro: Databases",
-            "freeCodeCamp: 4:30:00–5:00:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/databases.md"
-        },
-        {
-          "title": "Networking",
-          "subtopics": [
-            "VPC, Subnets, Security Groups, NACLs",
-            "Route 53, CloudFront, Direct Connect",
-            "VPN, AWS Transit Gateway"
-          ],
-          "study_resources": [
-            "ExamPro: Networking",
-            "freeCodeCamp: 5:00:00–5:30:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/networking.md"
-        },
-        {
-          "title": "Developer & AI Tools",
-          "subtopics": [
-            "API Gateway, SQS, SNS, EventBridge",
-            "Lambda, Step Functions",
-            "SageMaker, Rekognition, Lex",
-            "CodeBuild, CodePipeline"
-          ],
-          "study_resources": [
-            "ExamPro: Application Integration, ML & AI",
-            "freeCodeCamp: 8:00:00–9:00:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/developer-ai-tools.md"
-        }
-      ]
+      "section_id": "3",
+      "title": "What is Amazon Web Services (AWS)?",
+      "description": "History of AWS, its global infrastructure, and its position as a market leader.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "30:00-60:00",
+      "related_domain": "Domain 1: Cloud Concepts",
+      "notes_file": "certifications/aws-clf-c02/notes/aws-overview.md"
     },
     {
-      "domain": "Domain 4: Billing, Pricing, and Support",
-      "weight": "12%",
-      "objectives": [
-        "Compare AWS pricing models",
-        "Use billing and cost tools",
-        "Identify support options"
-      ],
-      "topics": [
-        {
-          "title": "Pricing Models",
-          "subtopics": [
-            "On-Demand, Reserved Instances, Spot Instances",
-            "Savings Plans, Dedicated Hosts",
-            "Capacity Reservations"
-          ],
-          "study_resources": [
-            "ExamPro: EC2 Pricing Models",
-            "freeCodeCamp: 6:00:00–6:30:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/pricing-models.md"
-        },
-        {
-          "title": "Cost Management Tools",
-          "subtopics": [
-            "AWS Budgets, Cost Explorer",
-            "Cost and Usage Reports (CUR)",
-            "Cost allocation tags"
-          ],
-          "study_resources": [
-            "ExamPro: Billing, Pricing and Support",
-            "AWS Pricing Calculator"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/cost-management.md"
-        },
-        {
-          "title": "Support & Account Management",
-          "subtopics": [
-            "AWS Support Plans (Basic to Enterprise)",
-            "Trusted Advisor, Personal Health Dashboard",
-            "AWS Organizations, Consolidated Billing",
-            "AWS Marketplace, Partner Network"
-          ],
-          "study_resources": [
-            "ExamPro: Billing, Pricing and Support",
-            "freeCodeCamp: 10:00:00–10:30:00"
-          ],
-          "status": "not_started",
-          "notes_file": "certifications/aws-clf-c02/notes/support-organizations.md"
-        }
-      ]
+      "section_id": "4",
+      "title": "AWS Global Infrastructure",
+      "description": "Regions, Availability Zones, Edge Locations, and concepts like data residency and GovCloud.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "60:00-90:00",
+      "related_domain": "Domain 3: Cloud Technology and Services",
+      "notes_file": "certifications/aws-clf-c02/notes/global-infrastructure.md",
+      "diagram": "certifications/aws-clf-c02/diagrams/global-infrastructure.mermaid"
+    },
+    {
+      "section_id": "5",
+      "title": "Cloud Architecture & Core Concepts",
+      "description": "High Availability, Scalability, Elasticity, Fault Tolerance, and Disaster Recovery.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "90:00-120:00",
+      "related_domain": "Domain 1: Cloud Concepts",
+      "notes_file": "certifications/aws-clf-c02/notes/cloud-architecture.md"
+    },
+    {
+      "section_id": "6",
+      "title": "AWS Core Services - Compute",
+      "description": "EC2, Containers (ECS/EKS/Fargate), Serverless (Lambda), and related services.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "120:00-150:00",
+      "related_domain": "Domain 3: Cloud Technology and Services",
+      "notes_file": "certifications/aws-clf-c02/notes/compute.md"
+    },
+    {
+      "section_id": "7",
+      "title": "AWS Core Services - Storage",
+      "description": "S3, EBS, EFS, Glacier, and the Snow Family for data transfer.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "150:00-180:00",
+      "related_domain": "Domain 3: Cloud Technology and Services",
+      "notes_file": "certifications/aws-clf-c02/notes/storage.md"
+    },
+    {
+      "section_id": "8",
+      "title": "AWS Core Services - Database",
+      "description": "RDS, DynamoDB, Redshift, ElastiCache, and Database Migration Service (DMS).",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "180:00-210:00",
+      "related_domain": "Domain 3: Cloud Technology and Services",
+      "notes_file": "certifications/aws-clf-c02/notes/databases.md"
+    },
+    {
+      "section_id": "9",
+      "title": "AWS Core Services - Networking",
+      "description": "VPC, Subnets, Route Tables, Internet Gateway, Security Groups, NACLs, CloudFront, and Direct Connect.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "210:00-240:00",
+      "related_domain": "Domain 3: Cloud Technology and Services",
+      "notes_file": "certifications/aws-clf-c02/notes/networking.md"
+    },
+    {
+      "section_id": "10",
+      "title": "Security & Compliance (Shared Responsibility Model)",
+      "description": "CIA Triad, Shared Responsibility Model, IAM, MFA, KMS, and compliance programs (HIPAA, PCI DSS, etc.).",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "240:00-270:00",
+      "related_domain": "Domain 2: Security and Compliance",
+      "notes_file": "certifications/aws-clf-c02/notes/shared-responsibility.md",
+      "diagram": "certifications/aws-clf-c02/diagrams/shared-responsibility.mermaid"
+    },
+    {
+      "section_id": "11",
+      "title": "Identity & Access Management (IAM)",
+      "description": "Users, Groups, Roles, Policies, Permission Boundaries, and the Root User.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "270:00-300:00",
+      "related_domain": "Domain 2: Security and Compliance",
+      "notes_file": "certifications/aws-clf-c02/notes/iam.md"
+    },
+    {
+      "section_id": "12",
+      "title": "Billing, Pricing, and Support",
+      "description": "Pricing models (On-Demand, Reserved, Spot), Cost Explorer, Budgets, Trusted Advisor, and Support Plans.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "300:00-330:00",
+      "related_domain": "Domain 4: Billing, Pricing, and Support",
+      "notes_file": "certifications/aws-clf-c02/notes/billing-pricing.md"
+    },
+    {
+      "section_id": "13",
+      "title": "Deployment & Management Tools",
+      "description": "CloudFormation, CDK, Elastic Beanstalk, AWS CLI, and SDKs.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "330:00-360:00",
+      "related_domain": "Domain 3: Cloud Technology and Services",
+      "notes_file": "certifications/aws-clf-c02/notes/deployment-tools.md"
+    },
+    {
+      "section_id": "14",
+      "title": "Monitoring & Analytics",
+      "description": "CloudWatch (Metrics, Logs, Alarms), CloudTrail, and AWS X-Ray.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "360:00-390:00",
+      "related_domain": "Domain 3: Cloud Technology and Services",
+      "notes_file": "certifications/aws-clf-c02/notes/monitoring-analytics.md"
+    },
+    {
+      "section_id": "15",
+      "title": "Application Integration",
+      "description": "SQS, SNS, Step Functions, EventBridge, and API Gateway.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "390:00-420:00",
+      "related_domain": "Domain 3: Cloud Technology and Services",
+      "notes_file": "certifications/aws-clf-c02/notes/application-integration.md"
+    },
+    {
+      "section_id": "16",
+      "title": "Migration & Innovation",
+      "description": "Cloud Adoption Framework, Migration strategies, and concepts like Generative AI and Quantum Computing.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "420:00-450:00",
+      "related_domain": "Domain 1: Cloud Concepts",
+      "notes_file": "certifications/aws-clf-c02/notes/migration-innovation.md"
+    },
+    {
+      "section_id": "17",
+      "title": "Well-Architected Framework",
+      "description": "The five pillars: Operational Excellence, Security, Reliability, Performance Efficiency, and Cost Optimization.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "450:00-480:00",
+      "related_domain": "Domain 1: Cloud Concepts",
+      "notes_file": "certifications/aws-clf-c02/notes/well-architected.md",
+      "diagram": "certifications/aws-clf-c02/diagrams/well-architected-framework.md"
+    },
+    {
+      "section_id": "18",
+      "title": "Practice Exams & Final Review",
+      "description": "Taking full-length practice exams to simulate the real test environment.",
+      "status": "not_started",
+      "notes": "",
+      "video_timestamp": "480:00-720:00",
+      "related_domain": "General",
+      "notes_file": "certifications/aws-clf-c02/notes/practice-exams.md"
     }
   ],
   "study_plan": {
-    "weeks": 8,
-    "schedule": "5 days/week, 1.5–2 hours/day",
+    "weeks": 6,
+    "schedule": "3 sections per week, 1.5–2 hours per section",
+    "section_schedule": [
+      { "week": 1, "sections": ["1", "2", "3"], "focus": "Introduction and Cloud Concepts" },
+      { "week": 2, "sections": ["4", "5", "6"], "focus": "Infrastructure and Compute" },
+      { "week": 3, "sections": ["7", "8", "9"], "focus": "Storage, Database, and Networking" },
+      { "week": 4, "sections": ["10", "11", "12"], "focus": "Security, IAM, and Billing" },
+      { "week": 5, "sections": ["13", "14", "15", "16"], "focus": "Tools, Monitoring, Integration, and Migration" },
+      { "week": 6, "sections": ["17", "18"], "focus": "Well-Architected Framework and Practice Exams" }
+    ],
     "milestones": [
-      { "week": 2, "goal": "Complete Domain 1 & 2 basics" },
-      { "week": 4, "goal": "Finish all notes and diagrams" },
-      { "week": 6, "goal": "Complete 3 practice exams" },
-      { "week": 8, "goal": "Final review and exam booking" }
+      { "week": 2, "goal": "Complete sections 1-6 (Infrastructure basics)" },
+      { "week": 4, "goal": "Finish sections 7-12 (Core services and security)" },
+      { "week": 6, "goal": "Complete all sections and practice exams" }
     ],
     "recommended_activities": [
-      "Watch ExamPro videos + follow-alongs",
+      "Watch freeCodeCamp video course with timestamps",
       "Take notes in Markdown with Mermaid diagrams",
-      "Use AWS Free Tier to explore services",
-      "Review flashcards weekly",
-      "Take one practice exam per week after Week 4"
+      "Use AWS Free Tier to explore services hands-on",
+      "Review flashcards after each section",
+      "Take practice exams starting from section 15"
     ]
   },
   "progress_tracking": {
-    "total_topics": 22,
-    "completed_topics": 0,
-    "in_progress_topics": 0,
-    "not_started_topics": 22,
+    "total_sections": 18,
+    "completed_sections": 0,
+    "in_progress_sections": 0,
+    "not_started_sections": 18,
     "last_updated": "2025-01-27",
     "sync_with_readme": true,
-    "readme_tracker_section": "## 📚 AWS CLF-C02 Certification Prep\n\n- [ ] 🌐 Cloud Concepts\n- [ ] 🔐 Security & Compliance\n- [ ] ⚙️ Core AWS Services\n- [ ] 💰 Billing & Support\n\n🎯 **Target Exam Date**: _Add here_"
+    "readme_tracker_section": "## 📚 AWS CLF-C02 Certification Prep (18 Sections)\n\n### Week 1: Introduction and Cloud Concepts\n- [ ] Section 1: Introduction & Course Overview\n- [ ] Section 2: What is Cloud Computing?\n- [ ] Section 3: What is Amazon Web Services (AWS)?\n\n### Week 2: Infrastructure and Compute\n- [ ] Section 4: AWS Global Infrastructure\n- [ ] Section 5: Cloud Architecture & Core Concepts\n- [ ] Section 6: AWS Core Services - Compute\n\n### Week 3: Storage, Database, and Networking\n- [ ] Section 7: AWS Core Services - Storage\n- [ ] Section 8: AWS Core Services - Database\n- [ ] Section 9: AWS Core Services - Networking\n\n### Week 4: Security, IAM, and Billing\n- [ ] Section 10: Security & Compliance (Shared Responsibility Model)\n- [ ] Section 11: Identity & Access Management (IAM)\n- [ ] Section 12: Billing, Pricing, and Support\n\n### Week 5: Tools, Monitoring, Integration, and Migration\n- [ ] Section 13: Deployment & Management Tools\n- [ ] Section 14: Monitoring & Analytics\n- [ ] Section 15: Application Integration\n- [ ] Section 16: Migration & Innovation\n\n### Week 6: Well-Architected Framework and Practice Exams\n- [ ] Section 17: Well-Architected Framework\n- [ ] Section 18: Practice Exams & Final Review\n\n🎯 **Target Exam Date**: _Add here_"
   },
   "rules": [
     "Do not include out-of-scope services (e.g., RoboMaker, MediaConvert)",

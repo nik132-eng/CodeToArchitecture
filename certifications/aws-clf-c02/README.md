@@ -24,18 +24,32 @@ A comprehensive study guide for the AWS Certified Cloud Practitioner (CLF-C02) e
 | **Domain 3: Cloud Technology and Services** | 34% | Compute, Storage, Database, Networking, AI/ML, Developer Tools |
 | **Domain 4: Billing, Pricing, and Support** | 12% | Pricing models, Cost tools, Support plans |
 
-## 🗂️ Study Structure
+## 🗂️ Study Structure (18 Sections)
 
 ```
 certifications/aws-clf-c02/
 ├── README.md                    # This file - progress tracker
-├── study-plan.md               # Detailed study schedule with video timestamps
+├── study-plan.json             # Detailed study schedule with 18 sections
 ├── exam-sim-questions.md       # Practice questions and answers
-├── notes/                      # Domain-specific notes
-│   ├── cloud-concepts.md
-│   ├── security-compliance.md
-│   ├── technology-services.md
-│   └── billing-pricing.md
+├── notes/                      # Section-specific notes
+│   ├── course-overview.md      # Section 1: Introduction & Course Overview
+│   ├── cloud-concepts.md       # Section 2: What is Cloud Computing?
+│   ├── aws-overview.md         # Section 3: What is Amazon Web Services?
+│   ├── global-infrastructure.md # Section 4: AWS Global Infrastructure
+│   ├── cloud-architecture.md   # Section 5: Cloud Architecture & Core Concepts
+│   ├── compute.md              # Section 6: AWS Core Services - Compute
+│   ├── storage.md              # Section 7: AWS Core Services - Storage
+│   ├── databases.md            # Section 8: AWS Core Services - Database
+│   ├── networking.md           # Section 9: AWS Core Services - Networking
+│   ├── shared-responsibility.md # Section 10: Security & Compliance
+│   ├── iam.md                  # Section 11: Identity & Access Management
+│   ├── billing-pricing.md      # Section 12: Billing, Pricing, and Support
+│   ├── deployment-tools.md     # Section 13: Deployment & Management Tools
+│   ├── monitoring-analytics.md # Section 14: Monitoring & Analytics
+│   ├── application-integration.md # Section 15: Application Integration
+│   ├── migration-innovation.md # Section 16: Migration & Innovation
+│   ├── well-architected.md     # Section 17: Well-Architected Framework
+│   └── practice-exams.md       # Section 18: Practice Exams & Final Review
 ├── diagrams/                   # Mermaid diagrams for AWS concepts
 │   ├── aws-architecture.md
 │   ├── shared-responsibility.md
@@ -65,38 +79,43 @@ certifications/aws-clf-c02/
 - [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
 - [AWS Free Tier](https://aws.amazon.com/free/)
 
-## ✅ Progress Tracker
+## ✅ Progress Tracker (18 Sections)
 
-### Domain 1: Cloud Concepts (24%)
-- [ ] 1.1 Define the AWS Cloud and its value proposition
-- [ ] 1.2 Identify aspects of AWS Cloud economics
-- [ ] 1.3 List the different cloud architecture design principles
-- [ ] 1.4 Explain the AWS shared responsibility model
-- [ ] 1.5 Distinguish between different cloud deployment models
-- [ ] 1.6 Compare AWS pricing models
-- [ ] 1.7 Recognize the various account structures in relation to AWS billing and pricing
+### Week 1: Introduction and Cloud Concepts
+- [ ] Section 1: Introduction & Course Overview
+- [ ] Section 2: What is Cloud Computing?
+- [ ] Section 3: What is Amazon Web Services (AWS)?
 
-### Domain 2: Security and Compliance (30%)
-- [ ] 2.1 Define the AWS shared responsibility model
-- [ ] 2.2 Define AWS Cloud security and compliance concepts
-- [ ] 2.3 Identify AWS access management capabilities
-- [ ] 2.4 Identify resources for security support
-- [ ] 2.5 Identify AWS services that are used to interact with the AWS platform
-- [ ] 2.6 Recognize the different account structures in relation to AWS billing and pricing
+### Week 2: Infrastructure and Compute
+- [ ] Section 4: AWS Global Infrastructure
+- [ ] Section 5: Cloud Architecture & Core Concepts
+- [ ] Section 6: AWS Core Services - Compute
 
-### Domain 3: Cloud Technology and Services (34%)
-- [ ] 3.1 Define methods of deploying and operating in the AWS Cloud
-- [ ] 3.2 Define the AWS global infrastructure
-- [ ] 3.3 Identify the core AWS services
-- [ ] 3.4 Identify resources for technology support
-- [ ] 3.5 Recognize the different account structures in relation to AWS billing and pricing
+### Week 3: Storage, Database, and Networking
+- [ ] Section 7: AWS Core Services - Storage
+- [ ] Section 8: AWS Core Services - Database
+- [ ] Section 9: AWS Core Services - Networking
 
-### Domain 4: Billing, Pricing, and Support (12%)
-- [ ] 4.1 Compare and contrast the various pricing models for AWS
-- [ ] 4.2 Recognize the various account structures in relation to AWS billing and pricing
-- [ ] 4.3 Identify resources available for billing support
-- [ ] 4.4 Identify where to find pricing information on AWS services
-- [ ] 4.5 Recognize the various account structures in relation to AWS billing and pricing
+### Week 4: Security, IAM, and Billing
+- [ ] Section 10: Security & Compliance (Shared Responsibility Model)
+- [ ] Section 11: Identity & Access Management (IAM)
+- [ ] Section 12: Billing, Pricing, and Support
+
+### Week 5: Tools, Monitoring, Integration, and Migration
+- [ ] Section 13: Deployment & Management Tools
+- [ ] Section 14: Monitoring & Analytics
+- [ ] Section 15: Application Integration
+- [ ] Section 16: Migration & Innovation
+
+### Week 6: Well-Architected Framework and Practice Exams
+- [ ] Section 17: Well-Architected Framework
+- [ ] Section 18: Practice Exams & Final Review
+
+### Domain Coverage
+- **Domain 1: Cloud Concepts (24%)** - Sections 2, 3, 5, 16, 17
+- **Domain 2: Security and Compliance (30%)** - Sections 10, 11
+- **Domain 3: Cloud Technology and Services (34%)** - Sections 4, 6, 7, 8, 9, 13, 14, 15
+- **Domain 4: Billing, Pricing, and Support (12%)** - Section 12
 
 ## 🔗 Integration with Microservices Learning
 
@@ -109,24 +128,25 @@ This AWS certification directly complements your microservices architecture stud
 - **Monitoring** → CloudWatch, X-Ray for microservices observability
 - **Deployment** → ECS, EKS, Lambda for microservices deployment
 
-## 🎯 Study Schedule
+## 🎯 Study Schedule (6 Weeks, 18 Sections)
 
-| Week | Focus | Activities |
-|------|-------|------------|
-| 1 | Domain 1: Cloud Concepts | Video sections 1-3, notes, quiz |
-| 2 | Domain 2: Security & Compliance | Video sections 4-6, hands-on labs |
-| 3 | Domain 3: Technology & Services | Video sections 7-9, AWS Free Tier practice |
-| 4 | Domain 4: Billing & Support | Video sections 10-12, practice tests |
-| 5 | Review & Practice | Full review, practice exams, weak areas |
-| 6 | Exam Preparation | Final review, exam simulation, exam day |
+| Week | Focus | Sections | Activities |
+|------|-------|----------|------------|
+| 1 | Introduction and Cloud Concepts | 1-3 | Video sections 1-3, notes, basic concepts |
+| 2 | Infrastructure and Compute | 4-6 | Video sections 4-6, hands-on labs, AWS Free Tier |
+| 3 | Storage, Database, and Networking | 7-9 | Video sections 7-9, service exploration |
+| 4 | Security, IAM, and Billing | 10-12 | Video sections 10-12, security practices |
+| 5 | Tools, Monitoring, Integration, and Migration | 13-16 | Video sections 13-16, advanced services |
+| 6 | Well-Architected Framework and Practice Exams | 17-18 | Video sections 17-18, practice exams, final review |
 
 ## 🚀 Getting Started
 
-1. **Start with the video course** - Watch the first 3 sections (Cloud Concepts)
-2. **Take notes** - Use the provided note templates in `notes/`
-3. **Practice hands-on** - Set up AWS Free Tier account
-4. **Take quizzes** - Test your knowledge after each domain
-5. **Review diagrams** - Visualize AWS concepts with Mermaid diagrams
+1. **Start with Section 1** - Introduction & Course Overview (0:00-5:00)
+2. **Follow the 18-section structure** - Each section has video timestamps and notes
+3. **Take notes** - Use the provided note templates in `notes/`
+4. **Practice hands-on** - Set up AWS Free Tier account
+5. **Track progress** - Check off sections as you complete them
+6. **Review diagrams** - Visualize AWS concepts with Mermaid diagrams
 
 ---
 
