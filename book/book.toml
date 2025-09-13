@@ -16,7 +16,7 @@ preferred-dark-theme = "light"
 git-repository-url = "https://github.com/nik132-eng/CodeToArchitecture"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/nik132-eng/CodeToArchitecture/edit/main/book/src/{path}"
-# No custom CSS or JS - using default mdbook styling
+additional-js = ["assets/mermaid.min.js", "assets/mermaid-init.js"]
 
 [output.html.search]
 enable = true
@@ -82,3 +82,8 @@ katex-auto-render = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/contrib
 [output.html.markdown]
 enable = true
 render = ["html", "mdbook-html"]
+
+# Mermaid diagram support
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+renderer = ["html"]
