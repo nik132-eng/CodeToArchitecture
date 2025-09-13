@@ -92,12 +92,12 @@ certifications/aws-clf-c02/
 - [x] Section 6: AWS Core Services - Compute
 
 ### Week 3: Storage, Database, and Networking
-- [ ] Section 7: AWS Core Services - Storage (in progress)
+- [ ] Section 7: AWS Core Services - Storage
 - [ ] Section 8: AWS Core Services - Database
 - [ ] Section 9: AWS Core Services - Networking
 
 ### Week 4: Security, IAM, and Billing
-- [ ] Section 10: Security & Compliance (Shared Responsibility Model)
+- [x] Section 10: Security & Compliance (Shared Responsibility Model)
 - [ ] Section 11: Identity & Access Management (IAM)
 - [ ] Section 12: Billing, Pricing, and Support
 

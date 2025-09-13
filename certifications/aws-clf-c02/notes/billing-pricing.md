@@ -1,266 +1,428 @@
-# Domain 4: Billing, Pricing, and Support (12%)
+# Billing, Pricing, and Support
 
-> **Video Sections:** 10-12 (8:30:00 - 12:00:00) | **Quiz:** `../quizzes/domain-4-quiz.md`
+> **Domain 4: Billing, Pricing, and Support (12%)** | **Section 12** | **Status:** In Progress
 
-## 4.1 Compare and contrast the various pricing models for AWS
+## 📚 Learning Objectives
+
+- [ ] Understand AWS pricing models and philosophy
+- [ ] Learn about different account structures and billing
+- [ ] Understand AWS support plans and resources
+- [ ] Learn about cost optimization strategies
+- [ ] Understand AWS Free Tier and pricing calculators
+- [ ] Learn about cost management tools and services
+- [ ] Understand billing and cost allocation methods
+
+## 🎯 Key Concepts
 
 ### AWS Pricing Philosophy
-- **Pay-as-you-go**: Only pay for what you use
-- **Pay less when you reserve**: Discounts for committed usage
-- **Pay less when you use more**: Volume discounts
-- **Pay even less as AWS grows**: Economies of scale
+
+**Overview**: AWS follows a customer-centric pricing philosophy designed to provide value and flexibility.
+
+**Core Principles**:
+- **Pay-as-you-go**: Only pay for what you use, when you use it
+- **Pay less when you reserve**: Significant discounts for committed usage
+- **Pay less when you use more**: Volume discounts for higher usage
+- **Pay even less as AWS grows**: Economies of scale benefit customers
+
+**Benefits**:
+- **No upfront costs**: Start using services immediately
+- **Flexibility**: Scale up or down as needed
+- **Cost optimization**: Multiple pricing options for different needs
+- **Transparency**: Clear, predictable pricing
 
 ### Compute Pricing Models
 
 #### On-Demand Pricing
-- **Pay per hour/second**: No upfront costs
+**Overview**: Pay for compute capacity by the hour or second with no long-term commitments.
+
+**Features**:
+- **No upfront costs**: Start using immediately
 - **No long-term commitments**: Cancel anytime
-- **Best for**: Variable workloads, testing, development
-- **Pricing**: Full price, no discounts
-- **Use cases**: Unpredictable workloads, short-term projects
+- **Full price**: No discounts applied
+- **Per-second billing**: For Linux instances (minimum 60 seconds)
+
+**Use Cases**:
+- Variable workloads
+- Testing and development
+- Unpredictable applications
+- Short-term projects
+
+**Pricing Example**:
+- **t3.micro**: ~$0.0104/hour (US East)
+- **m5.large**: ~$0.096/hour (US East)
+- **c5.xlarge**: ~$0.17/hour (US East)
 
 #### Reserved Instances (RIs)
-- **1-3 year commitment**: Significant discounts
-- **Up to 75% savings**: Compared to On-Demand
+**Overview**: Significant discounts for committed usage over 1-3 year terms.
+
+**Features**:
+- **1-3 year commitment**: Up to 75% savings
 - **Payment options**: All upfront, partial upfront, no upfront
-- **Best for**: Predictable, steady-state workloads
-- **Use cases**: Production applications, databases
+- **Instance flexibility**: Can change instance types
+- **Regional benefits**: Can be shared across AZs in same region
+
+**RI Types**:
+- **Standard RIs**: Up to 75% savings, most flexible
+- **Convertible RIs**: Up to 54% savings, can change instance family
+- **Scheduled RIs**: For predictable recurring workloads
+
+**Use Cases**:
+- Production applications
+- Databases
+- Steady-state workloads
+- Predictable usage patterns
 
 #### Spot Instances
-- **Bid for unused capacity**: Up to 90% savings
-- **Can be interrupted**: AWS can reclaim instances
-- **Best for**: Fault-tolerant, flexible workloads
-- **Use cases**: Batch processing, data analysis, testing
+**Overview**: Bid for unused EC2 capacity at up to 90% savings.
+
+**Features**:
+- **Up to 90% savings**: Compared to On-Demand pricing
+- **Can be interrupted**: AWS can reclaim instances with 2-minute notice
+- **No commitments**: Use when available
+- **Bid pricing**: Set maximum price you're willing to pay
+
+**Use Cases**:
+- Batch processing
+- Data analysis
+- Fault-tolerant applications
+- Development and testing
+
+**Best Practices**:
+- Design applications for interruptions
+- Use Spot Fleets for better availability
+- Diversify across instance types and AZs
+- Monitor Spot pricing trends
 
 #### Dedicated Hosts
-- **Physical servers**: Dedicated to your use
+**Overview**: Physical servers dedicated to your use with full control over instance placement.
+
+**Features**:
+- **Physical servers**: Dedicated hardware
 - **Full control**: Over instance placement
 - **Compliance**: Meet regulatory requirements
-- **Best for**: Licensing requirements, compliance
-- **Use cases**: Software with per-socket licensing
+- **Licensing**: Use existing server-bound software licenses
+
+**Use Cases**:
+- Software with per-socket licensing
+- Compliance requirements
+- Regulatory requirements
+- Legacy applications
 
 ### Storage Pricing Models
 
 #### Amazon S3 Storage Classes
-| Class | Use Case | Durability | Availability | Cost |
-|-------|----------|------------|--------------|------|
-| **Standard** | Frequently accessed | 99.999999999% | 99.99% | Highest |
-| **IA** | Infrequently accessed | 99.999999999% | 99.9% | Lower |
-| **Glacier** | Archive data | 99.999999999% | 99.99% | Lowest |
-| **Deep Archive** | Long-term archive | 99.999999999% | 99.99% | Lowest |
+| Storage Class | Use Case | Durability | Availability | Cost | Retrieval Time |
+|---------------|----------|------------|--------------|------|----------------|
+| **S3 Standard** | Frequently accessed | 99.999999999% | 99.99% | Highest | Millisecond |
+| **S3 Standard-IA** | Infrequently accessed | 99.999999999% | 99.9% | Lower | Millisecond |
+| **S3 One Zone-IA** | Recreatable data | 99.999999999% | 99.5% | Lower | Millisecond |
+| **S3 Glacier** | Archive data | 99.999999999% | 99.99% | Low | 1-12 hours |
+| **S3 Glacier Deep Archive** | Long-term archive | 99.999999999% | 99.99% | Lowest | 12 hours |
 
 #### Amazon EBS Volume Types
-- **gp3**: General purpose SSD, latest generation
-- **gp2**: General purpose SSD, previous generation
-- **io1/io2**: Provisioned IOPS SSD
-- **st1**: Throughput optimized HDD
-- **sc1**: Cold HDD
+| Volume Type | Use Case | IOPS | Throughput | Cost |
+|-------------|----------|------|------------|------|
+| **gp3** | General purpose | 3,000-16,000 | 125-1,000 MiB/s | Lowest |
+| **gp2** | General purpose | 3-16,000 | 128-250 MiB/s | Low |
+| **io1/io2** | High performance | 100-64,000 | 125-1,000 MiB/s | High |
+| **st1** | Throughput optimized | 40-500 | 125-500 MiB/s | Low |
+| **sc1** | Cold HDD | 12-250 | 125-250 MiB/s | Lowest |
 
 ### Data Transfer Pricing
+
+**Overview**: AWS charges for data transfer out of AWS, but not for data transfer in.
+
+**Pricing Structure**:
 - **Inbound data**: Free (data coming into AWS)
-- **Outbound data**: Charged (data leaving AWS)
-- **CloudFront**: Global content delivery network
-- **Direct Connect**: Dedicated network connection
+- **Outbound data**: Charged based on volume and destination
+- **CloudFront**: Global content delivery with reduced costs
+- **Direct Connect**: Dedicated connection with reduced data transfer costs
 
-## 4.2 Recognize the various account structures in relation to AWS billing and pricing
+**Data Transfer Tiers**:
+- **First 1 GB/month**: Free
+- **Up to 10 TB/month**: $0.09/GB
+- **Next 40 TB/month**: $0.085/GB
+- **Next 100 TB/month**: $0.07/GB
+- **Over 150 TB/month**: $0.05/GB
 
-### Single Account Structure
-- **One AWS account**: All resources in one account
+### AWS Organizations and Billing
+
+#### Single Account Structure
+**Overview**: All resources managed in one AWS account.
+
+**Features**:
 - **Simple billing**: Single bill for all usage
+- **Easy management**: All resources in one place
 - **Limited isolation**: All resources share the same account
-- **Suitable for**: Small organizations, simple projects
-- **Billing**: Direct billing from AWS
+- **Direct billing**: Billed directly by AWS
 
-### Multiple Account Structure
-- **Separate accounts**: Different accounts for different purposes
+**Use Cases**:
+- Small organizations
+- Simple projects
+- Startups
+- Personal use
+
+#### Multiple Account Structure
+**Overview**: Separate accounts for different purposes or departments.
+
+**Features**:
 - **Better isolation**: Resources isolated by account
 - **Complex billing**: Multiple bills to manage
-- **Suitable for**: Large organizations, compliance requirements
-- **Billing**: Each account billed separately
+- **Independent management**: Each account managed separately
+- **Compliance**: Meet regulatory requirements
 
-### AWS Organizations
-- **Centralized management**: Manage multiple accounts
+**Use Cases**:
+- Large organizations
+- Compliance requirements
+- Multi-tenant applications
+- Department separation
+
+#### AWS Organizations
+**Overview**: Centralized management of multiple AWS accounts.
+
+**Features**:
 - **Consolidated billing**: Single bill for all accounts
 - **Account hierarchy**: Organizational units (OUs)
 - **Policy management**: Service Control Policies (SCPs)
 - **Cost allocation**: Track costs by account/OU
+- **Volume discounts**: Aggregate usage across accounts
 
-#### Organizational Units (OUs)
+**Organizational Units (OUs)**:
 - **Logical grouping**: Organize accounts by department/project
 - **Policy inheritance**: Inherit policies from parent OUs
 - **Cost tracking**: Track costs by OU
 - **Flexible structure**: Adapt to organization needs
 
-#### Consolidated Billing
-- **Single bill**: One bill for all accounts
-- **Volume discounts**: Aggregate usage across accounts
-- **Reserved Instance sharing**: Share RIs across accounts
-- **Cost allocation**: Track costs by account/tag
-
-### Billing and Cost Management
-- **Cost Explorer**: Visualize and analyze costs
-- **Budgets**: Set cost and usage budgets
-- **Cost Allocation Tags**: Track costs by resource
-- **Reserved Instance Reporting**: Track RI utilization
-- **Cost and Usage Report**: Detailed billing information
-
-## 4.3 Identify resources available for billing support
-
-### AWS Billing Documentation
-- **Billing and Cost Management User Guide**: Comprehensive billing guide
-- **AWS Pricing Calculator**: Estimate costs for services
-- **AWS Cost Optimization**: Best practices for cost optimization
-- **AWS Well-Architected Cost Optimization Pillar**: Cost optimization principles
-
 ### AWS Support Plans
-- **Basic Support**: Account and billing support only
-- **Developer Support**: Business hours email support
-- **Business Support**: 24/7 phone, email, chat support
-- **Enterprise Support**: 24/7 + Technical Account Manager (TAM)
+
+#### Basic Support (Free)
+**Features**:
+- **Account and billing support**: 24/7 support for account and billing issues
+- **Documentation**: Access to AWS documentation
+- **Community forums**: AWS community support
+- **Service health status**: AWS service health dashboard
+
+**Use Cases**:
+- Development and testing
+- Personal projects
+- Learning AWS
+
+#### Developer Support ($29/month)
+**Features**:
+- **Business hours email support**: 12-24 hour response time
+- **Best practices guidance**: Architecture and implementation guidance
+- **API support**: Support for AWS APIs and SDKs
+- **Cloud support associate**: Technical support
+
+**Use Cases**:
+- Development teams
+- Small businesses
+- Non-production workloads
+
+#### Business Support ($100/month or 10% of usage)
+**Features**:
+- **24/7 phone, email, chat support**: All channels available
+- **1-hour response time**: For production system down
+- **4-hour response time**: For system impaired
+- **12-hour response time**: For general guidance
+- **Trusted Advisor**: Full access to Trusted Advisor
+- **API support**: Support for AWS APIs and SDKs
+
+**Use Cases**:
+- Production workloads
+- Business-critical applications
+- Medium to large businesses
+
+#### Enterprise Support ($15,000/month or 10% of usage)
+**Features**:
+- **24/7 phone, email, chat support**: All channels available
+- **15-minute response time**: For business-critical system down
+- **1-hour response time**: For production system down
+- **4-hour response time**: For system impaired
+- **Technical Account Manager (TAM)**: Dedicated support
+- **Trusted Advisor**: Full access to Trusted Advisor
+- **API support**: Support for AWS APIs and SDKs
+- **Infrastructure event management**: Support for large events
+
+**Use Cases**:
+- Enterprise applications
+- Mission-critical workloads
+- Large organizations
+- Complex architectures
 
 ### Cost Management Tools
-- **AWS Cost Explorer**: Visualize and analyze costs
-- **AWS Budgets**: Set cost and usage budgets
-- **AWS Cost and Usage Report**: Detailed billing information
-- **AWS Cost Anomaly Detection**: Detect unusual spending
-- **AWS Compute Optimizer**: Right-size EC2 instances
 
-### Third-Party Tools
-- **AWS Marketplace**: Cost management tools
-- **Partner Solutions**: Validated cost optimization tools
-- **CloudHealth**: Multi-cloud cost management
-- **Cloudyn**: Cost optimization and governance
-- **Spot by NetApp**: Spot instance management
+#### AWS Cost Explorer
+**Overview**: Visualize and analyze costs and usage over time.
 
-## 4.4 Identify where to find pricing information on AWS services
+**Features**:
+- **Cost visualization**: Charts and graphs of spending
+- **Cost forecasting**: Predict future costs
+- **Reserved Instance recommendations**: Optimize RI purchases
+- **Cost allocation**: Track costs by tags
+- **Custom reports**: Create custom cost reports
 
-### Official AWS Pricing Resources
+#### AWS Budgets
+**Overview**: Set custom cost and usage budgets with alerts.
 
-#### AWS Pricing Page
-- **Service pricing**: Detailed pricing for all services
-- **Regional pricing**: Pricing by region
-- **Pricing models**: On-demand, Reserved, Spot pricing
-- **Free Tier**: Services available in free tier
-- **URL**: https://aws.amazon.com/pricing/
+**Features**:
+- **Cost budgets**: Set spending limits
+- **Usage budgets**: Set usage limits
+- **Alerts**: Get notified when approaching limits
+- **Actions**: Automatically take action when limits exceeded
+- **Multiple budgets**: Set different budgets for different services
 
-#### AWS Pricing Calculator
-- **Cost estimation**: Estimate costs for services
-- **Service selection**: Choose services and configurations
-- **Pricing comparison**: Compare different options
-- **Export options**: Export estimates to Excel/PDF
-- **URL**: https://calculator.aws/
+#### AWS Cost and Usage Report
+**Overview**: Detailed billing information stored in S3.
 
-#### AWS Free Tier
-- **Free services**: Services available for free
-- **Usage limits**: Limits for free tier usage
-- **Duration**: 12 months for some services
-- **Always free**: Some services always free
-- **URL**: https://aws.amazon.com/free/
-
-### Service-Specific Pricing
-- **EC2 Pricing**: Instance types and pricing
-- **S3 Pricing**: Storage classes and pricing
-- **RDS Pricing**: Database instance pricing
-- **Lambda Pricing**: Compute and request pricing
-- **CloudFront Pricing**: Data transfer and request pricing
-
-### Regional Pricing
-- **US East (N. Virginia)**: Often the cheapest region
-- **US West (Oregon)**: West coast pricing
-- **Europe (Ireland)**: European pricing
-- **Asia Pacific (Tokyo)**: Asia pricing
-- **Pricing variations**: Different regions have different prices
-
-## 4.5 Recognize the various account structures in relation to AWS billing and pricing
-
-### Account Hierarchy
-
-#### Root Account
-- **Master account**: Full access to all AWS services
-- **Billing responsibility**: Pays for all usage
-- **Security**: Should not be used for daily operations
-- **MFA**: Should always be enabled
-- **Billing**: Can view all account billing
-
-#### Member Accounts
-- **Child accounts**: Created under root account
-- **Limited access**: Based on permissions
-- **Billing**: Consolidated under root account
-- **Isolation**: Resources isolated by account
-- **Policies**: Can have different policies
-
-#### Organizational Units (OUs)
-- **Logical grouping**: Organize accounts
-- **Policy inheritance**: Inherit policies from parent
-- **Cost allocation**: Track costs by OU
-- **Flexible structure**: Adapt to organization needs
-
-### Billing Models
-
-#### Consolidated Billing
-- **Single bill**: One bill for all accounts
-- **Volume discounts**: Aggregate usage across accounts
-- **Reserved Instance sharing**: Share RIs across accounts
-- **Cost allocation**: Track costs by account/tag
-- **Benefits**: Simplified billing, volume discounts
-
-#### Individual Billing
-- **Separate bills**: Each account billed separately
-- **No volume discounts**: Each account billed individually
-- **No RI sharing**: RIs cannot be shared
-- **Complex management**: Multiple bills to manage
-- **Use cases**: Independent organizations
-
-### Cost Allocation and Tracking
-
-#### Cost Allocation Tags
-- **Resource tagging**: Tag resources for cost tracking
-- **Cost allocation**: Allocate costs by tag
-- **Reporting**: Generate cost reports by tag
-- **Best practices**: Consistent tagging strategy
-- **Use cases**: Project-based billing, department billing
-
-#### Cost and Usage Reports
-- **Detailed billing**: Line-item billing information
+**Features**:
+- **Line-item billing**: Detailed cost breakdown
 - **S3 storage**: Reports stored in S3
-- **Analysis**: Analyze costs with tools
-- **Integration**: Works with third-party tools
-- **Use cases**: Detailed cost analysis, compliance
+- **Analysis**: Analyze costs with third-party tools
+- **Integration**: Works with BI tools
+- **Compliance**: Meet regulatory requirements
 
-## 🔗 Integration with Microservices
+#### AWS Cost Anomaly Detection
+**Overview**: Automatically detect unusual spending patterns.
 
-### Cost Optimization for Microservices
+**Features**:
+- **Machine learning**: AI-powered anomaly detection
+- **Custom thresholds**: Set sensitivity levels
+- **Alerts**: Get notified of anomalies
+- **Root cause analysis**: Understand why costs increased
+- **Cost optimization**: Identify optimization opportunities
+
+### Cost Optimization Strategies
 
 #### Right-Sizing
-- **Instance types**: Choose appropriate instance types
-- **Auto Scaling**: Scale based on demand
-- **Load balancing**: Distribute traffic efficiently
-- **Monitoring**: Monitor resource utilization
+**Overview**: Match instance types to actual workload requirements.
+
+**Strategies**:
+- **Monitor utilization**: Use CloudWatch to track CPU, memory, network
+- **Choose appropriate instance types**: Match workload to instance family
+- **Use Auto Scaling**: Scale based on demand
+- **Regular reviews**: Periodically review and adjust
 
 #### Reserved Capacity
-- **Reserved Instances**: For predictable workloads
-- **Savings Plans**: Flexible pricing for compute usage
-- **Dedicated Hosts**: For compliance requirements
-- **Cost savings**: Significant discounts for committed usage
+**Overview**: Use Reserved Instances and Savings Plans for predictable workloads.
+
+**Strategies**:
+- **Analyze usage patterns**: Identify steady-state workloads
+- **Choose appropriate term**: 1-year vs 3-year commitment
+- **Payment options**: All upfront vs partial upfront
+- **Instance flexibility**: Standard vs Convertible RIs
 
 #### Serverless Architecture
+**Overview**: Use serverless services to pay only for actual usage.
+
+**Services**:
 - **AWS Lambda**: Pay per execution
 - **Amazon API Gateway**: Pay per API call
 - **Amazon DynamoDB**: Pay per request
-- **Cost efficiency**: Only pay for actual usage
+- **Amazon S3**: Pay per request and storage
 
 #### Storage Optimization
-- **S3 Storage Classes**: Choose appropriate storage class
+**Overview**: Optimize storage costs by choosing appropriate storage classes.
+
+**Strategies**:
 - **Lifecycle policies**: Automatically transition data
 - **Compression**: Reduce storage costs
 - **Deduplication**: Eliminate duplicate data
+- **Archive old data**: Move to cheaper storage classes
 
-#### Monitoring and Alerting
-- **CloudWatch**: Monitor costs and usage
-- **Budgets**: Set cost and usage budgets
-- **Alerts**: Get notified of unusual spending
-- **Cost optimization**: Regular cost reviews
+## 📊 Pricing Model Comparison Diagram
+
+```mermaid
+graph TB
+    subgraph "AWS Pricing Models"
+        OnDemand[On-Demand<br/>Pay per use<br/>No commitment<br/>Full price]
+        Reserved[Reserved Instances<br/>1-3 year commitment<br/>Up to 75% savings<br/>Predictable workloads]
+        Spot[Spot Instances<br/>Bid for capacity<br/>Up to 90% savings<br/>Interruptible]
+        Dedicated[Dedicated Hosts<br/>Physical servers<br/>Full control<br/>Compliance]
+        
+        OnDemand --> Variable[Variable Workloads<br/>Testing & Development<br/>Short-term Projects]
+        Reserved --> Steady[Steady-state Workloads<br/>Production Applications<br/>Databases]
+        Spot --> FaultTolerant[Fault-tolerant Applications<br/>Batch Processing<br/>Data Analysis]
+        Dedicated --> Compliance[Compliance Requirements<br/>Licensing Requirements<br/>Legacy Applications]
+        
+        subgraph "Storage Classes"
+            S3Standard[S3 Standard<br/>Frequent Access<br/>Highest Cost]
+            S3IA[S3 Standard-IA<br/>Infrequent Access<br/>Lower Cost]
+            S3Glacier[S3 Glacier<br/>Archive Data<br/>Lowest Cost]
+        end
+        
+        subgraph "Support Plans"
+            Basic[Basic Support<br/>Free<br/>Account & Billing]
+            Developer[Developer Support<br/>$29/month<br/>Business Hours Email]
+            Business[Business Support<br/>$100/month<br/>24/7 Support]
+            Enterprise[Enterprise Support<br/>$15,000/month<br/>TAM + 24/7]
+        end
+    end
+```
+
+## 🧠 Key Takeaways
+
+- **Pay-as-you-go**: Only pay for what you use, when you use it
+- **Reserved Instances save money**: Up to 75% savings for predictable workloads
+- **Spot Instances are cheapest**: Up to 90% savings for fault-tolerant workloads
+- **Data transfer out costs money**: Inbound data is free
+- **Organizations provide volume discounts**: Aggregate usage across accounts
+- **Support plans scale with usage**: Higher tiers for production workloads
+- **Cost optimization is ongoing**: Regular reviews and adjustments needed
+- **Use appropriate storage classes**: Match storage class to access patterns
+
+## ❓ Practice Questions
+
+1. **Question**: Which pricing model would be best for a production database that runs 24/7?
+   - A) On-Demand
+   - B) Reserved Instances
+   - C) Spot Instances
+   - D) Dedicated Hosts
+   - **Answer**: B - Reserved Instances provide up to 75% savings for predictable, steady-state workloads
+
+2. **Question**: What is the main advantage of Spot Instances?
+   - A) Guaranteed availability
+   - B) Lowest cost (up to 90% savings)
+   - C) No interruptions
+   - D) Full control over hardware
+   - **Answer**: B - Spot Instances can provide up to 90% savings compared to On-Demand pricing
+
+3. **Question**: Which AWS service provides cost visualization and analysis?
+   - A) AWS Budgets
+   - B) AWS Cost Explorer
+   - C) AWS Trusted Advisor
+   - D) AWS CloudWatch
+   - **Answer**: B - AWS Cost Explorer provides cost visualization and analysis tools
+
+4. **Question**: What is the main benefit of AWS Organizations for billing?
+   - A) Free service
+   - B) Consolidated billing and volume discounts
+   - C) Automatic cost optimization
+   - D) Unlimited accounts
+   - **Answer**: B - AWS Organizations provides consolidated billing and volume discounts across multiple accounts
+
+## 🔗 Integration with Microservices
+
+**Cost Optimization for Microservices Architecture**:
+- **Right-size microservice instances**: Match instance types to microservice requirements
+- **Use Auto Scaling**: Scale microservices based on demand
+- **Implement circuit breakers**: Prevent cascading failures and unnecessary costs
+- **Use serverless for lightweight microservices**: Lambda for simple microservices
+- **Optimize data transfer**: Use CloudFront for microservice APIs
+- **Implement cost allocation tags**: Track costs by microservice
+- **Use Reserved Instances for stable microservices**: For predictable workloads
+- **Monitor and alert on costs**: Set budgets for microservice spending
+
+## 📚 References
+
+- [AWS Pricing](https://aws.amazon.com/pricing/)
+- [AWS Pricing Calculator](https://calculator.aws/)
+- [AWS Free Tier](https://aws.amazon.com/free/)
+- [AWS Cost Management](https://aws.amazon.com/aws-cost-management/)
+- [AWS Support Plans](https://aws.amazon.com/premiumsupport/plans/)
+- [AWS Well-Architected Framework - Cost Optimization](https://aws.amazon.com/architecture/well-architected/)
 
 ---
 
-*Next: [Exam Simulation Questions](../exam-sim-questions.md)*
+*Last updated: January 27, 2025*
+*Next: [Deployment & Management Tools](./deployment-tools.md)*
